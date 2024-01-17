@@ -1,0 +1,6 @@
+@relation_one_to_many_HostAddress = http://localhost:5087
+
+GET {{relation_one_to_many_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

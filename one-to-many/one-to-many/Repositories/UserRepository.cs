@@ -8,6 +8,6 @@ namespace one_to_many.Repositories
         Task<UserDTO> FindById(int id);
         Task<UserDTO> Insert(UserDTO dto);
         Task<UserDTO> Update(UserDTO dto, int id);
-        Task<UserDTO> DeleteById(int id);
+        Task<bool> DeleteById(int id);
     }
 }

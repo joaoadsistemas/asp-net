@@ -22,6 +22,7 @@ namespace one_to_many
 
             // injeção de dependencia
             builder.Services.AddScoped<CharacterRepository, CharacterService>();
+            builder.Services.AddScoped<UserRepository, UserService>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

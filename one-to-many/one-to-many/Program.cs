@@ -1,6 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
-using relation_one_to_many.Repositories;
+using one_to_many.Repositories;
+using one_to_many.Repositories.db;
+using one_to_many.Services;
 
 namespace one_to_many
 {
@@ -12,12 +14,14 @@ namespace one_to_many
 
             // Add services to the container.
 
-
+            // inicialização do banco de dados
             builder.Services.AddDbContext<SystemDbContext>(option =>
             {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            // injeção de dependencia
+            builder.Services.AddScoped<CharacterRepository, CharacterService>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -4,7 +4,8 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using relation_one_to_many.Repositories;
+using one_to_many.Repositories.db;
+
 
 #nullable disable
 

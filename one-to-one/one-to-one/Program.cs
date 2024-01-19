@@ -1,15 +1,16 @@
 
 using Microsoft.EntityFrameworkCore;
-using relation_one_to_many.Repositories;
+using one_to_many.Repositories;
+using one_to_many.Repositories.db;
+using one_to_many.Services;
 
-namespace relation_one_to_many
+namespace one_to_one
 {
     public class Program
     {
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
 
             // Add services to the container.
 
@@ -20,6 +21,7 @@ namespace relation_one_to_many
             });
 
 
+            builder.Services.AddScoped<CharacterRepository, CharacterService>();
 
 
             builder.Services.AddControllers();

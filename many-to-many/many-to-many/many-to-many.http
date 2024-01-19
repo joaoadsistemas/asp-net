@@ -1,0 +1,6 @@
+@many_to_many_HostAddress = http://localhost:5077
+
+GET {{many_to_many_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

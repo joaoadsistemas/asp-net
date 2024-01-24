@@ -28,5 +28,6 @@ namespace one_to_many.Entities
         // configurando o outro lado MUITOS
         public List<Skill> Skills { get; set; } = new List<Skill>();
 
+
     }
 }

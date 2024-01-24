@@ -1,0 +1,6 @@
+@DSCommerce_HostAddress = http://localhost:5118
+
+GET {{DSCommerce_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

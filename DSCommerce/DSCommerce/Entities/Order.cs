@@ -17,15 +17,8 @@ namespace DSCommerce.Entities
         public long userId { get; set; }
         public User user { get; set; } 
 
-        public Order() { }
 
-        public Order(long id, DateTime moment, OrderStatus status, User user)
-        {
-            this.Id = id;
-            this.moment = moment;
-            this.status = status;
-            this.user = user;
-        }
+        public Payment Payment { get; set; }
 
     }
 }

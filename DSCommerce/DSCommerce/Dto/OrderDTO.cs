@@ -9,6 +9,7 @@ namespace DSCommerce.Dto
         public long Id { get; set; }
         public DateTime moment { get; set; }
         public OrderStatus status { get; set; }
+        public PaymentDTO? payment { get; set; }
 
 
         public long userId { get; set; }
@@ -19,20 +20,13 @@ namespace DSCommerce.Dto
 
         }
 
-        public OrderDTO(long id, DateTime moment, OrderStatus status, long userId)
-        {
-            this.Id = id;
-            this.moment = moment;
-            this.status = status;
-            this.userId = userId;
-        }
-
         public OrderDTO(Order entity)
         {
             this.Id = entity.Id;
             this.moment = entity.moment;
             this.status = entity.status;
             this.userId = entity.userId;
+            this.payment = entity.Payment != null ? new PaymentDTO(entity.Payment) : null;
         }
 
 

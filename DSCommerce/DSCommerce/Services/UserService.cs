@@ -14,14 +14,19 @@ namespace DSCommerce.Services
 
         public async Task<List<UserDTO>> FindAll()
         {
-            List<User> users = _dbContext.Users.Include(u => u.Orders).ToList();
-            return users.Select(u => new UserDTO(u)).ToList();
+            List<User> entity = dbContext.Users
+                .Include(u => u.Orders).ThenInclude(o => o.Payment).ToList();
+                  // ou qualquer método apropriado para obter um usuário
+
+            // Agora você pode acessar os dados carregados, incluindo Orders e Payments
+
+            return entity.Select(u => new UserDTO(u)).ToList();
         }
 
 
         public async Task<UserDTO> FindById(long id)
         {
-            User entity = _dbContext.Users.Include(u => u.Orders).SingleOrDefault(u => u.Id == id) 
+            User entity = _dbContext.Users.Include(u => u.Orders).ThenInclude(o => o.Payment).SingleOrDefault(u => u.Id == id) 
                           ?? throw new Exception("Resource not found");
 
             return new UserDTO(entity);

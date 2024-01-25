@@ -10,7 +10,7 @@ namespace DSCommerce.Services
             throw new NotImplementedException();
         }
 
-        public Task<OrderDTO> FindById(int id)
+        public Task<OrderDTO> FindById(long id)
         {
             throw new NotImplementedException();
         }
@@ -20,12 +20,12 @@ namespace DSCommerce.Services
             throw new NotImplementedException();
         }
 
-        public Task<OrderDTO> Update(OrderDTO dto, int id)
+        public Task<OrderDTO> Update(OrderDTO dto, long id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> DeleteById(int id)
+        public Task<bool> DeleteById(long id)
         {
             throw new NotImplementedException();
         }

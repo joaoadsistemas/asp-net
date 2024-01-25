@@ -1,4 +1,5 @@
 ﻿using DSCommerce.Entities;
+using DSCommerce.Entities.enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace DSCommerce.Repositories.db
@@ -11,6 +12,7 @@ namespace DSCommerce.Repositories.db
 
         public DbSet<User> Users { get; set; }
         public DbSet<Order> Orders { get; set; }
+
 
     }
 }

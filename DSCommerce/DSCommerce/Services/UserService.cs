@@ -1,33 +1,70 @@
 ﻿using DSCommerce.Dto;
+using DSCommerce.Entities;
 using DSCommerce.Repositories;
+using DSCommerce.Repositories.db;
+using Microsoft.EntityFrameworkCore;
 
 namespace DSCommerce.Services
 {
-    public class UserService : UserRepository
+    public class UserService(SystemDbContext dbContext) : UserRepository
     {
-        public Task<List<UserDTO>> FindAll()
+
+
+        private readonly SystemDbContext _dbContext = dbContext;
+
+        public async Task<List<UserDTO>> FindAll()
         {
-            throw new NotImplementedException();
+            List<User> users = _dbContext.Users.Include(u => u.Orders).ToList();
+            return users.Select(u => new UserDTO(u)).ToList();
         }
 
-        public Task<UserDTO> FindById(int id)
+
+        public async Task<UserDTO> FindById(long id)
         {
-            throw new NotImplementedException();
+            User entity = _dbContext.Users.Include(u => u.Orders).SingleOrDefault(u => u.Id == id) 
+                          ?? throw new Exception("Resource not found");
+
+            return new UserDTO(entity);
         }
 
-        public Task<UserDTO> Insert(UserDTO dto)
+        public async Task<UserSimpleDTO> Insert(UserSimpleDTO dto)
         {
-            throw new NotImplementedException();
+            User entity = new User();
+            copyDtoToEntity(dto, entity);
+            _dbContext.Add(entity);
+            _dbContext.SaveChanges();
+            return new UserSimpleDTO(entity);
+
         }
 
-        public Task<UserDTO> Update(UserDTO dto, int id)
+
+        public async Task<UserSimpleDTO> Update(UserSimpleDTO dto, long id)
         {
-            throw new NotImplementedException();
+            User entity = _dbContext.Users.Include(u => u.Orders).SingleOrDefault(u => u.Id == id)
+                          ?? throw new Exception("Resource not found");
+            copyDtoToEntity(dto, entity);
+            _dbContext.SaveChanges();
+            return new UserSimpleDTO(entity);
         }
 
-        public Task<bool> DeleteById(int id)
+        public async Task<bool> DeleteById(long id)
         {
-            throw new NotImplementedException();
+            User entity = _dbContext.Users.Include(u => u.Orders).SingleOrDefault(u => u.Id == id)
+                          ?? throw new Exception("Resource not found");
+            _dbContext.Remove(entity);
+            _dbContext.SaveChanges();
+            return true;
         }
+
+        private void copyDtoToEntity(UserSimpleDTO dto, User entity)
+        {
+            entity.Name = dto.Name;
+            entity.Email = dto.Email;
+            entity.Phone = dto.Phone;
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(dto.Password);
+            entity.Password = hashedPassword;
+
+        }
+
     }
 }

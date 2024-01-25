@@ -6,10 +6,10 @@ namespace DSCommerce.Repositories
     {
 
         Task<List<UserDTO>> FindAll();
-        Task<UserDTO> FindById(int id);
-        Task<UserDTO> Insert(UserDTO dto);
-        Task<UserDTO> Update(UserDTO dto, int id);
-        Task<bool> DeleteById(int id);
+        Task<UserDTO> FindById(long id);
+        Task<UserSimpleDTO> Insert(UserSimpleDTO dto);
+        Task<UserSimpleDTO> Update(UserSimpleDTO dto, long id);
+        Task<bool> DeleteById(long id);
 
     }
 }

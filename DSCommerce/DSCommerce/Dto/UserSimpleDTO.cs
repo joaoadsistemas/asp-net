@@ -2,27 +2,24 @@
 
 namespace DSCommerce.Dto
 {
-    public class UserDTO
+    public class UserSimpleDTO
     {
 
-        public long Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Phone { get; set; }
         public DateTime birthDate { get; set; }
 
-        public List<OrderDTO> Orders { get; set; } = new List<OrderDTO>();
 
 
-        public UserDTO()
+        public UserSimpleDTO()
         {
 
         }
 
-        public UserDTO(long id, string name, string email, string password, string phone, DateTime birthDate)
+        public UserSimpleDTO(long id, string name, string email, string password, string phone, DateTime birthDate)
         {
-            this.Id = id;
             this.Name = name;
             this.Email = email;
             this.Password = password;
@@ -31,19 +28,14 @@ namespace DSCommerce.Dto
         }
 
 
-        public UserDTO(User entity)
+        public UserSimpleDTO(User entity)
         {
-            this.Id = entity.Id;
             this.Name = entity.Name;
             this.Email = entity.Email;
             this.Password = entity.Password;
             this.Phone = entity.Phone;
             this.birthDate = entity.birthDate;
 
-            foreach (Order order in entity.Orders)
-            {
-                Orders.Add(new OrderDTO(order));
-            }
         }
 
     }

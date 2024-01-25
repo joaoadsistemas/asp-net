@@ -16,7 +16,7 @@ namespace DSCommerce.Entities
         [Column("birth_date")]
         public DateTime birthDate { get; set; }
 
-        public HashSet<Order> orders { get; set; } = new HashSet<Order>();
+        public List<Order> Orders { get; set; } = new List<Order>();
 
         public User()
         {

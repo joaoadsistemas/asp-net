@@ -1,4 +1,5 @@
 ﻿using DSCommerce.Dto;
+using DSCommerce.Entities;
 using DSCommerce.Repositories;
 using DSCommerce.Repositories.db;
 
@@ -14,29 +15,51 @@ namespace DSCommerce.Services
             _dbContext = dbContext;
         }
 
-        public Task<List<PaymentDTO>> FindAll()
+        public async Task<List<PaymentDTO>> FindAll()
         {
-            throw new NotImplementedException();
+            List<Payment> payments = _dbContext.Payments.ToList();
+            return payments.AsEnumerable().Select(p => new PaymentDTO(p)).ToList();
         }
 
-        public Task<PaymentDTO> FindById(long id)
+        public async Task<PaymentDTO> FindById(long id)
         {
-            throw new NotImplementedException();
+            Payment entity = await _dbContext.Payments.FindAsync(id) ?? throw new Exception("Resource not found");
+            return new PaymentDTO(entity);
         }
 
-        public Task<PaymentDTO> Insert(PaymentDTO dto)
+        public async Task<PaymentDTO> Insert(PaymentDTO dto)
         {
-            throw new NotImplementedException();
+            Payment entity = new Payment();
+            copyDtoToEntity(dto, entity);
+            _dbContext.Add(entity);
+            _dbContext.SaveChanges();
+            return new PaymentDTO(entity);
         }
 
-        public Task<PaymentDTO> Update(PaymentDTO dto, long id)
+        public async Task<PaymentDTO> Update(PaymentDTO dto, long id)
         {
-            throw new NotImplementedException();
+            Payment entity = await _dbContext.Payments.FindAsync(id) ?? throw new Exception("Resource not found");
+            copyDtoToEntity(dto,entity);
+            _dbContext.SaveChanges();
+            return new PaymentDTO(entity);
         }
 
-        public Task<bool> DeleteById(long id)
+        public async Task<bool> DeleteById(long id)
         {
-            throw new NotImplementedException();
+            Payment entity = await _dbContext.Payments.FindAsync(id) ?? throw new Exception("Resource not found");
+            _dbContext.Remove(entity);
+            _dbContext.SaveChanges();
+            return true;
+        }
+
+
+        private void copyDtoToEntity(PaymentDTO dto, Payment entity)
+        {
+
+            entity.Id = dto.Id;
+            entity.OrderId = dto.OrderId;
+            entity.Moment = dto.Moment;
+
         }
     }
 }

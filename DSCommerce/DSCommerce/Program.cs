@@ -22,6 +22,9 @@ namespace DSCommerce
 
             builder.Services.AddScoped<OrderRepository, OrderService>();
             builder.Services.AddScoped<UserRepository, UserService>();
+            builder.Services.AddScoped<ProductRepository, ProductService>();
+            builder.Services.AddScoped<PaymentRepository, PaymentService>();
+            builder.Services.AddScoped<CategoryRepository, CategoryService>();
 
 
 

@@ -18,14 +18,22 @@ namespace DSCommerce.Services
 
         public async Task<List<OrderDTO>> FindAll()
         {
-            List<Order> orders = _dbContext.Orders.Include(o => o.Payment).ToList();
+            List<Order> orders = _dbContext.Orders
+                .Include(o => o.Payment)
+                .Include(o => o.Items)
+                .ThenInclude(i => i.Product)
+                .ToList();
             return orders.AsEnumerable().Select(o => new OrderDTO(o)).ToList();
 
         }
 
         public async Task<OrderDTO> FindById(long id)
         {
-            Order entity = _dbContext.Orders.Include(o => o.Payment).SingleOrDefault()
+            Order entity = _dbContext.Orders
+                               .Include(o => o.Payment)
+                               .Include(o => o.Items)
+                               .ThenInclude(i => i.Product)
+                         .SingleOrDefault()
                            ?? throw new Exception("Resource not found");
             return new OrderDTO(entity);
         }

@@ -4,6 +4,7 @@ using DSCommerce.Repositories.db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DSCommerce.Migrations
 {
     [DbContext(typeof(SystemDbContext))]
-    partial class SystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240125211605_Product-Order")]
+    partial class ProductOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,29 +48,6 @@ namespace DSCommerce.Migrations
                     b.HasIndex("userId");
 
                     b.ToTable("tb_order");
-                });
-
-            modelBuilder.Entity("DSCommerce.Entities.OrderItem", b =>
-                {
-                    b.Property<long>("OrderId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("order_id");
-
-                    b.Property<long>("ProductId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("product_id");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrderId", "ProductId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("order_item");
                 });
 
             modelBuilder.Entity("DSCommerce.Entities.Payment", b =>
@@ -155,6 +135,21 @@ namespace DSCommerce.Migrations
                     b.ToTable("tb_user");
                 });
 
+            modelBuilder.Entity("OrderProduct", b =>
+                {
+                    b.Property<long>("ProductsId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ordersId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("ProductsId", "ordersId");
+
+                    b.HasIndex("ordersId");
+
+                    b.ToTable("OrderProduct");
+                });
+
             modelBuilder.Entity("DSCommerce.Entities.Order", b =>
                 {
                     b.HasOne("DSCommerce.Entities.User", "user")
@@ -164,25 +159,6 @@ namespace DSCommerce.Migrations
                         .IsRequired();
 
                     b.Navigation("user");
-                });
-
-            modelBuilder.Entity("DSCommerce.Entities.OrderItem", b =>
-                {
-                    b.HasOne("DSCommerce.Entities.Order", "Order")
-                        .WithMany("Items")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DSCommerce.Entities.Product", "Product")
-                        .WithMany("Items")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("DSCommerce.Entities.Payment", b =>
@@ -196,17 +172,25 @@ namespace DSCommerce.Migrations
                     b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("DSCommerce.Entities.Order", b =>
+            modelBuilder.Entity("OrderProduct", b =>
                 {
-                    b.Navigation("Items");
+                    b.HasOne("DSCommerce.Entities.Product", null)
+                        .WithMany()
+                        .HasForeignKey("ProductsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Payment")
+                    b.HasOne("DSCommerce.Entities.Order", null)
+                        .WithMany()
+                        .HasForeignKey("ordersId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DSCommerce.Entities.Product", b =>
+            modelBuilder.Entity("DSCommerce.Entities.Order", b =>
                 {
-                    b.Navigation("Items");
+                    b.Navigation("Payment")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DSCommerce.Entities.User", b =>

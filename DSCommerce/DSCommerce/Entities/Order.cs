@@ -20,5 +20,7 @@ namespace DSCommerce.Entities
 
         public Payment Payment { get; set; }
 
+        public List<OrderItem> Items { get; set; } = new List<OrderItem>();
+
     }
 }

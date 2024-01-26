@@ -12,6 +12,8 @@ namespace DSCommerce.Dto
         public double Price { get; set; }
         public string imgUrl { get; set; }
 
+        public List<CategoryDTO> Categories { get; set; } = new List<CategoryDTO>();
+
 
         public ProductDTO(Product entity)
         {
@@ -20,6 +22,13 @@ namespace DSCommerce.Dto
             this.Description = entity.Description;
             this.Price = entity.Price;
             this.imgUrl = entity.imgUrl;
+
+            foreach (Category category in entity.Categories)
+            {
+                Categories.Add(new CategoryDTO(category));
+            }
+
+
         }
 
     }

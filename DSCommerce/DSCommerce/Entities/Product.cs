@@ -17,5 +17,8 @@ namespace DSCommerce.Entities
 
         [JsonIgnore]
         public List<OrderItem> Items { get; set; } = new List<OrderItem>();
+
+       
+        public List<Category> Categories { get; set; } = new List<Category>();
     }
 }

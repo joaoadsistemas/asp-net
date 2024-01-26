@@ -16,6 +16,8 @@ namespace DSCommerce.Repositories.db
 
         public DbSet<OrderItem> Items { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Configuração da chave primária composta para a tabela associativa (OrderItem)

@@ -23,5 +23,19 @@ namespace DSCommerce.Entities
             get { return _price; }
             set { _price = Product?.Price * value ?? 0; }
         }
+
+
+        protected OrderItem()
+        {
+        }
+
+        public OrderItem(Order order, Product product, int quantity, double price)
+        {
+            this.Order = order;
+            this.Product = product;
+            this.Quantity = quantity;
+            this.Price = price;
+        }
+
     }
 }

@@ -20,6 +20,7 @@ namespace DSCommerce.Dto
             this.price = entity.Price;
             this.quantity = entity.Quantity;
             this.imgUrl = entity.Product?.imgUrl;
+
         }
 
     }

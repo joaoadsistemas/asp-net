@@ -2,7 +2,7 @@
 
 namespace DSCommerce.Dto
 {
-    public class OrderSimpleDTO
+    public class OrderInsertDTO
     {
         public long userId { get; set; }
         public List<ProductIdAndQuantity> items { get; set; } = new List<ProductIdAndQuantity>();

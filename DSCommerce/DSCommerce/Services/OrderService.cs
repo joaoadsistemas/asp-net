@@ -34,12 +34,12 @@ namespace DSCommerce.Services
                                .Include(o => o.Payment)
                                .Include(o => o.Items)
                                .ThenInclude(i => i.Product)
-                         .SingleOrDefault()
+                         .SingleOrDefault(o => o.Id == id)
                            ?? throw new Exception("Resource not found");
             return new OrderDTO(entity);
         }
 
-        public async Task<OrderDTO> Insert(OrderSimpleDTO dto)
+        public async Task<OrderDTO> Insert(OrderInsertDTO dto)
         {
             Order entity = new Order();
             copyDtoToEntity(dto, entity);
@@ -50,7 +50,7 @@ namespace DSCommerce.Services
         }
 
 
-        public async Task<OrderDTO> Update(OrderSimpleDTO dto, long id)
+        public async Task<OrderDTO> Update(OrderInsertDTO dto, long id)
         {
             Order entity = _dbContext.Orders.Find(id) ?? throw new Exception("Resource not found");
             copyDtoToEntity(dto, entity);
@@ -66,7 +66,7 @@ namespace DSCommerce.Services
             return true;
         }
 
-        private void copyDtoToEntity(OrderSimpleDTO dto, Order entity)
+        private void copyDtoToEntity(OrderInsertDTO dto, Order entity)
         {
             entity.userId = dto.userId;
             entity.moment = DateTime.Now;

@@ -2,7 +2,7 @@
 
 namespace DSCommerce.Dto
 {
-    public class UserSimpleDTO
+    public class UserInsertDTO
     {
 
         public string Name { get; set; }
@@ -13,12 +13,12 @@ namespace DSCommerce.Dto
 
 
 
-        public UserSimpleDTO()
+        public UserInsertDTO()
         {
 
         }
 
-        public UserSimpleDTO(long id, string name, string email, string password, string phone, DateTime birthDate)
+        public UserInsertDTO(long id, string name, string email, string password, string phone, DateTime birthDate)
         {
             this.Name = name;
             this.Email = email;
@@ -28,7 +28,7 @@ namespace DSCommerce.Dto
         }
 
 
-        public UserSimpleDTO(User entity)
+        public UserInsertDTO(User entity)
         {
             this.Name = entity.Name;
             this.Email = entity.Email;

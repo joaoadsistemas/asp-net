@@ -6,8 +6,8 @@ namespace DSCommerce.Repositories
     {
         Task<List<ProductDTO>> FindAll();
         Task<ProductDTO> FindById(long id);
-        Task<ProductDTO> Insert(ProductDTO dto);
-        Task<ProductDTO> Update(ProductDTO dto, long id);
+        Task<ProductInsertDTO> Insert(ProductInsertDTO dto);
+        Task<ProductDTO> Update(ProductInsertDTO dto, long id);
         Task<bool> DeleteById(long id);
     }
 }

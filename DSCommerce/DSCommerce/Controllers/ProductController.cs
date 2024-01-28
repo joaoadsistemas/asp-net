@@ -31,14 +31,14 @@ namespace DSCommerce.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ProductDTO>> InsertUser([FromBody] ProductDTO dto)
+        public async Task<ActionResult<ProductInsertDTO>> InsertUser([FromBody] ProductInsertDTO dto)
         {
             dto = await _productRepository.Insert(dto);
             return Created();
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<ProductDTO>> UpdateUser(long id, [FromBody] ProductDTO dto)
+        public async Task<ActionResult<ProductDTO>> UpdateUser(long id, [FromBody] ProductInsertDTO dto)
         {
             return Ok(_productRepository.Update(dto, id));
         }

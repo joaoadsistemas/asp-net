@@ -41,24 +41,24 @@ namespace DSCommerce.Services
             return new UserDTO(entity);
         }
 
-        public async Task<UserSimpleDTO> Insert(UserSimpleDTO dto)
+        public async Task<UserInsertDTO> Insert(UserInsertDTO dto)
         {
             User entity = new User();
             copyDtoToEntity(dto, entity);
             _dbContext.Add(entity);
             _dbContext.SaveChanges();
-            return new UserSimpleDTO(entity);
+            return new UserInsertDTO(entity);
 
         }
 
 
-        public async Task<UserSimpleDTO> Update(UserSimpleDTO dto, long id)
+        public async Task<UserInsertDTO> Update(UserInsertDTO dto, long id)
         {
             User entity = _dbContext.Users.Include(u => u.Orders).SingleOrDefault(u => u.Id == id)
                           ?? throw new Exception("Resource not found");
             copyDtoToEntity(dto, entity);
             _dbContext.SaveChanges();
-            return new UserSimpleDTO(entity);
+            return new UserInsertDTO(entity);
         }
 
         public async Task<bool> DeleteById(long id)
@@ -70,7 +70,7 @@ namespace DSCommerce.Services
             return true;
         }
 
-        private void copyDtoToEntity(UserSimpleDTO dto, User entity)
+        private void copyDtoToEntity(UserInsertDTO dto, User entity)
         {
             entity.Name = dto.Name;
             entity.Email = dto.Email;

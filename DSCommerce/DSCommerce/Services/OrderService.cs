@@ -78,6 +78,7 @@ namespace DSCommerce.Services
                 OrderItem item = new OrderItem(entity, product, itemDto.quantity, product.Price);
                 entity.Items.Add(item);
             }
+
         }
     }
 }

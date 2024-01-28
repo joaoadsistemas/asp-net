@@ -27,16 +27,16 @@ namespace DSCommerce.Services
             return new PaymentDTO(entity);
         }
 
-        public async Task<PaymentDTO> Insert(PaymentDTO dto)
+        public async Task<PaymentInsertDTO> Insert(PaymentInsertDTO dto)
         {
             Payment entity = new Payment();
             copyDtoToEntity(dto, entity);
             _dbContext.Add(entity);
             _dbContext.SaveChanges();
-            return new PaymentDTO(entity);
+            return new PaymentInsertDTO(entity);
         }
 
-        public async Task<PaymentDTO> Update(PaymentDTO dto, long id)
+        public async Task<PaymentDTO> Update(PaymentInsertDTO dto, long id)
         {
             Payment entity = await _dbContext.Payments.FindAsync(id) ?? throw new Exception("Resource not found");
             copyDtoToEntity(dto,entity);
@@ -53,10 +53,9 @@ namespace DSCommerce.Services
         }
 
 
-        private void copyDtoToEntity(PaymentDTO dto, Payment entity)
+        private void copyDtoToEntity(PaymentInsertDTO dto, Payment entity)
         {
 
-            entity.Id = dto.Id;
             entity.OrderId = dto.OrderId;
             entity.Moment = dto.Moment;
 

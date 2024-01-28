@@ -3,6 +3,7 @@ using DSCommerce.Repositories;
 using DSCommerce.Repositories.db;
 using DSCommerce.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 namespace DSCommerce
 {
@@ -31,7 +32,26 @@ namespace DSCommerce
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+
+            // configurações swqagger
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "DSCommerce",
+                    Version ="v1",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Joao Silveira",
+                        Email = "joaoadsistemas@gmail.com",
+                        Url = new Uri("https://www.linkedin.com/in/this-joao/")
+                    }
+                });
+
+                var xmlFile = "DSCommerce.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
 
             var app = builder.Build();
 

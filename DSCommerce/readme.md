@@ -2,6 +2,9 @@
 
 A DSCommerce API é um sistema de comércio eletrônico que oferece funcionalidades relacionadas a usuários, produtos, pedidos, pagamentos e categorias. A API é construída usando ASP.NET Core e Entity Framework Core para interação com o banco de dados.
 
+![Captura de tela 2024-01-28 144717](https://github.com/joaoadsistemas/asp-net/assets/121246045/fa405c4d-fac9-4c8a-8c91-0162d5056dcc)
+
+
 ## Configuração
 
 ### Pré-requisitos
@@ -77,7 +80,8 @@ A API oferece os seguintes endpoints:
   - `DELETE /api/payments/{id}`: Exclui um pagamento por ID.
 
 Consulte a documentação do Swagger em `https://localhost:5001/swagger` para obter detalhes adicionais sobre os endpoints e seus parâmetros.
-![Captura de tela 2024-01-28 144826](https://github.com/joaoadsistemas/asp-net/assets/121246045/fc1caa5c-cc42-447a-885f-1ce2a27a17f5)
+![image](https://github.com/joaoadsistemas/asp-net/assets/121246045/aba70ce7-fa6b-45b3-9fab-93ef8dc397fe)
+
 
 
 ## Tecnologias Utilizadas

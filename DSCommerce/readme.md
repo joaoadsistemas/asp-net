@@ -93,8 +93,5 @@ Consulte a documentação do Swagger em `https://localhost:5001/swagger` para ob
 
 ## Autor
 
-[Seu Nome]
+João Silveira
 
-## Licença
-
-Este projeto está licenciado sob a [MIT License](LICENSE).

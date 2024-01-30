@@ -14,10 +14,11 @@ namespace eCommerce.Entities
         public char RegisterSituation { get; set; }
         public DateTimeOffset RegisterTime { get; set; }
         
+        // permite a navegação, exemplo, User.Contact.CellPhone
+        public Contact Contact { get; set; }
         
         /*
          * TODO - Vincular com as classes:
-         * - Contact
          * - DeliverAddress
          * - Department
          */

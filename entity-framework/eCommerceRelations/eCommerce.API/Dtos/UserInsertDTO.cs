@@ -13,9 +13,9 @@ public class UserInsertDTO
     public char RegisterSituation { get; set; }
     public DateTimeOffset RegisterTime { get; set; }
         
-    public ContactDTO Contact { get; set; }
+    public ContactInsertDTO Contact { get; set; }
         
-    public List<int> DeliverAddressesId { get; set; } = new List<int>();
+    public List<DeliverAddressInsertDTO> DeliverAddress { get; set; } = new List<DeliverAddressInsertDTO>();
 
     public List<int> DepartmentsId { get; set; } = new List<int>();
 
@@ -34,11 +34,11 @@ public class UserInsertDTO
         MotherName = entity.MotherName;
         RegisterSituation = entity.RegisterSituation;
         RegisterTime = entity.RegisterTime;
-        Contact = new ContactDTO(entity.Contact);
+        Contact = new ContactInsertDTO(entity.Contact);
 
         foreach (DeliverAddress deliverAddress in entity.DeliverAddresses)
         {
-            this.DeliverAddressesId.Add(deliverAddress.Id);
+            this.DeliverAddress.Add(new DeliverAddressInsertDTO(deliverAddress));
         }
 
         foreach (Department department in entity.Departments)

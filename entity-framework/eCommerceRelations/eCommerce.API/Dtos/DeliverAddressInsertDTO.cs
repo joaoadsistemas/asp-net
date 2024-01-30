@@ -2,9 +2,9 @@
 
 namespace eCommerce.API.Dtos;
 
-public class DeliverAddressDTO
+public class DeliverAddressInsertDTO
 {
-    public int Id { get; set; }
+
     public string AddressName { get; set; }
     public string ZipCode { get; set; }
     public string State { get; set; }
@@ -13,16 +13,15 @@ public class DeliverAddressDTO
     public string Number { get; set; }
     public string Complement { get; set; }
     
-    public int? UserId { get; set; }
-
-    public DeliverAddressDTO()
+    
+    public DeliverAddressInsertDTO()
     {
         
     }
 
-    public DeliverAddressDTO(DeliverAddress entity)
+    public DeliverAddressInsertDTO(DeliverAddress entity)
     {
-        this.Id = entity.Id;
+
         this.AddressName = entity.AddressName;
         this.ZipCode = entity.ZipCode;
         this.State = entity.State;
@@ -30,6 +29,6 @@ public class DeliverAddressDTO
         this.Address = entity.Address;
         this.Number = entity.Number;
         this.Complement = entity.Complement;
-        this.UserId = entity.UserId;
+
     }
 }

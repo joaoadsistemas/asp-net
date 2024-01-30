@@ -1,11 +1,10 @@
 using eCommerce.API.Dtos;
 using eCommerce.API.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace eCommerce.API
+namespace eCommerce.API.Controllers
 {
-    [Route("users")]
+    [Route("/users")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -14,14 +13,64 @@ namespace eCommerce.API
         
         public UserController(IUserRepository userRepository)
         {
-            _userRepository = _userRepository;
+            _userRepository = userRepository;
         }
 
         [HttpGet]
-        public Task<ActionResult<List<UserDTO>>> GetAll()
+        public async Task<ActionResult<List<UserDTO>>> GetAll()
         {
-            return null;
+                return Ok(await _userRepository.GetAll());
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<UserDTO>> FindById(int id)
+        {
+            try
+            {
+                UserDTO result = await _userRepository.GetById(id);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return NotFound("Resource not found");
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult<dynamic>> PostUser([FromBody] UserInsertDTO dto)
+        {
+            _userRepository.Insert(dto);
+            return NoContent();
         }
         
+        [HttpPut("{id}")]
+        public async Task<ActionResult<dynamic>> UpdateUser([FromBody] UserInsertDTO dto, int id)
+        {
+            try
+            {
+                _userRepository.Update(dto, id);
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return NotFound("Resource not found");
+            }
+        }
+        
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<dynamic>> DeleteUser(int id)
+        {
+            try
+            {
+                _userRepository.Delete(id);
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return NotFound("Resource not found");
+            }
+        }
     }
 }
+

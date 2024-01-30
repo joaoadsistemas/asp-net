@@ -23,6 +23,5 @@ namespace eCommerce.Entities
 
         // relacionamento muitos para muitos simples, SEM DADOS ADICIONAISNA TABELA, apenas o Id do Department e do User
         public List<Department> Departments { get; set; } = new List<Department>();
-        
     }
 }

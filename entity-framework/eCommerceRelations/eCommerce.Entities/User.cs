@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace eCommerce.Entities
 {
@@ -17,10 +18,11 @@ namespace eCommerce.Entities
         // permite a navegação, exemplo, User.Contact.CellPhone
         public Contact Contact { get; set; }
         
-        /*
-         * TODO - Vincular com as classes:
-         * - DeliverAddress
-         * - Department
-         */
+        // permite a navegação, exemplo, User.DeliverAddresses[0].ZipCode
+        public List<DeliverAddress> DeliverAddresses { get; set; } = new List<DeliverAddress>();
+
+        // relacionamento muitos para muitos simples, SEM DADOS ADICIONAISNA TABELA, apenas o Id do Department e do User
+        public List<Department> Departments { get; set; } = new List<Department>();
+        
     }
 }

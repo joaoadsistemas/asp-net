@@ -3,6 +3,25 @@ using System.Collections.Generic;
 
 namespace eCommerce.Entities
 {
+    
+    /*
+     * Schema:
+     * [Table] = Definir o nome da tabela
+     * [Column] = Definir o nome da coluna
+     * [NotMapped] = Não mapear uma propriedade
+     * [ForeignKey] = Definir que a propriedade é o vinculo da chave estrangeira
+     * [InverseProperty] = Define a referência para cada FK vinda da mesma tabela.
+     *  [DatabaseGenerated] = Definir se uma propriedade vai ou não ser gerenciada pelo banco
+     *
+     * DataAnnotations:
+     * [Key] = Definir que a propriedade é uma PK.
+     *
+     * EF Core
+     * [Index] = Definir/Criar Indice no banco (Unique)
+     * 
+     */
+    
+    
     public class User
     {
         public int Id { get; set; }

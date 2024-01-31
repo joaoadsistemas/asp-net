@@ -1,4 +1,6 @@
-﻿namespace eCommerce.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace eCommerce.Entities
 {
     public class DeliverAddress
     {
@@ -12,6 +14,7 @@
         public string Complement { get; set; }
 
         // cria uma tabela no Banco de Dados
+        [ForeignKey("User")]
         public int UserId { get; set; }
         // Usado apenas para navegação, exemplo, DeliverAddress.User.Name
         public User User { get; set; }

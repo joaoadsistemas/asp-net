@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace eCommerce.Entities
 {
@@ -25,10 +26,14 @@ namespace eCommerce.Entities
     public class User
     {
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Email { get; set; }
         public char Genre { get; set; }
+        [Required]
         public string Rg { get; set; }
+        [Required]
         public string Cpf { get; set; }
         public string MotherName { get; set; }
         public char RegisterSituation { get; set; }

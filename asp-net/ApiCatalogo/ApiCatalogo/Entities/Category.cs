@@ -7,5 +7,5 @@ public class Category
     public string? ImgUrl { get; set; }
 
     // lado um
-    public List<Product> Products { get; set; } = new List<Product>();
+    public List<Product>? Products { get; set; } = new List<Product>();
 }

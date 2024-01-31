@@ -26,31 +26,21 @@ namespace eCommerce.Entities
     public class User
     {
         public int Id { get; set; }
-        [Required]
         public string Name { get; set; }
-        [Required]
         public string Email { get; set; }
         public char Genre { get; set; }
-        [Required]
         public string Rg { get; set; }
-        [Required]
         public string Cpf { get; set; }
         public string MotherName { get; set; }
         public char RegisterSituation { get; set; }
         public DateTimeOffset RegisterTime { get; set; }
         
-        // UM PARA UM
         // permite a navegação, exemplo, User.Contact.CellPhone
-        // Um usuário tem um contato, e um contato tem um Usuário
-        // modelBuilder.Entity<User>().HasOne(Contact).WithOne(User);
         public Contact Contact { get; set; }
         
-        // UM PARA MUITOS
         // permite a navegação, exemplo, User.DeliverAddresses[0].ZipCode
-        // // modelBuilder.Entity<User>().HasMany(DeliverAddress).WithOne(User);
         public List<DeliverAddress> DeliverAddresses { get; set; } = new List<DeliverAddress>();
 
-        // MUITOS PARA MUITOS
         // relacionamento muitos para muitos simples, SEM DADOS ADICIONAISNA TABELA, apenas o Id do Department e do User
         public List<Department> Departments { get; set; } = new List<Department>();
     }

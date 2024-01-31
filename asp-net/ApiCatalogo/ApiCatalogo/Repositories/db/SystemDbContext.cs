@@ -5,10 +5,7 @@ namespace ApiCatalogo.Repositories.db;
 
 public class SystemDbContext : DbContext
 {
-    public SystemDbContext(DbContextOptions<SystemDbContext> options) : base(options)
-    {
-        
-    }
+    public SystemDbContext(DbContextOptions<SystemDbContext> options) : base(options) { }
 
     public DbSet<Category> Categories { get; set; }
     public DbSet<Product> Products { get; set; }
@@ -19,6 +16,6 @@ public class SystemDbContext : DbContext
             .WithMany(c => c.Products).HasForeignKey(p => p.CategoryId);
 
         modelBuilder.Entity<Category>().HasMany(c => c.Products)
-            .WithOne(p => p.Category).OnDelete(DeleteBehavior.SetNull);
+            .WithOne(p => p.Category);
     }
 }

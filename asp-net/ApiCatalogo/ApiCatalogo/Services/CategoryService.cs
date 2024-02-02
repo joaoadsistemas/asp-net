@@ -21,7 +21,7 @@ public class CategoryService : CategoryRepository
     public async Task<List<CategoryDTO>> FindAllCategories()
     {
         List<Category> entity = _dbContext.Categories
-            .Include(c => c.Products).ToList();
+            .Include(c => c.Products).AsNoTracking().ToList();
         return entity.AsEnumerable().Select(c => new CategoryDTO(c)).ToList();
 
     }
@@ -30,6 +30,7 @@ public class CategoryService : CategoryRepository
     {
         Category entity = _dbContext.Categories
             .Include(c => c.Products)
+            .AsNoTracking()
             .SingleOrDefault(c => c.Id == id) ?? throw new Exception("Resource not found");
         return new CategoryDTO(entity);
     }

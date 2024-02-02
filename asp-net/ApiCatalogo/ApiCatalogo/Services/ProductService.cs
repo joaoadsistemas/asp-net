@@ -2,6 +2,7 @@
 using ApiCatalogo.Entities;
 using ApiCatalogo.Repositories;
 using ApiCatalogo.Repositories.db;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiCatalogo.Services;
 
@@ -17,13 +18,13 @@ public class ProductService : ProductRepository
     
     public async Task<List<ProductDTO>> FindAllProducts()
     {
-        List<Product> result = _dbContext.Products.ToList();
+        List<Product> result = _dbContext.Products.AsNoTracking().ToList();
         return result.AsEnumerable().Select(p => new ProductDTO(p)).ToList();
     }
 
     public async Task<ProductDTO> FindProductById(long id)
     {
-        Product result = _dbContext.Products.FirstOrDefault(p => p.Id == id) ?? throw new Exception("Resource not found");
+        Product result = _dbContext.Products.AsNoTracking().FirstOrDefault(p => p.Id == id) ?? throw new Exception("Resource not found");
         return new ProductDTO(result);
     }
 

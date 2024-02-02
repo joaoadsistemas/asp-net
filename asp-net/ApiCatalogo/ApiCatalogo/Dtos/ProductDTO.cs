@@ -11,7 +11,7 @@ public class ProductDTO
     public double Price { get; set; }
     public string? ImgUrl { get; set; }
     public double Stock { get; set; }
-    public DateTime RegisterData { get; set; }
+    public DateTimeOffset RegisterData { get; set; }
     
     public long CategoryId { get; set; }
 

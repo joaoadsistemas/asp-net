@@ -10,8 +10,6 @@ public class ProductInsertDTO
     public double Price { get; set; }
     public string? ImgUrl { get; set; }
     public double Stock { get; set; }
-    public DateTimeOffset RegisterData { get; set; } = DateTimeOffset.Now;
-    
     public long CategoryId { get; set; }
 
 

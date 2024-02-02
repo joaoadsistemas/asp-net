@@ -1,6 +1,9 @@
 ﻿using ApiCatalogo.Dtos;
+using ApiCatalogo.Entities;
 using ApiCatalogo.Repositories;
 using ApiCatalogo.Repositories.db;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ApiCatalogo.Services;
 
@@ -13,29 +16,56 @@ public class CategoryService : CategoryRepository
     {
         _dbContext = dbContext;
     }
+
+
+    public async Task<List<CategoryDTO>> FindAllCategories()
+    {
+        List<Category> entity = _dbContext.Categories
+            .Include(c => c.Products).ToList();
+        return entity.AsEnumerable().Select(c => new CategoryDTO(c)).ToList();
+
+    }
+
+    public async Task<CategoryDTO> FindCategoryById(int id)
+    {
+        Category entity = _dbContext.Categories
+            .Include(c => c.Products)
+            .SingleOrDefault(c => c.Id == id) ?? throw new Exception("Resource not found");
+        return new CategoryDTO(entity);
+    }
+
+    public void InsertCategory(CategoryInsertDTO dto)
+    {
+        Category entity = new Category();
+        copyDtoToEntity(dto,entity);
+        _dbContext.Add(entity);
+        _dbContext.SaveChanges();
+    }
+
+
+    public void UpdateCategory(CategoryInsertDTO dto, int id)
+    {
+        Category entity = _dbContext.Categories
+            .Include(c => c.Products)
+            .SingleOrDefault(c => c.Id == id) ?? throw new Exception("Resource not found");
+        copyDtoToEntity(dto, entity);
+        _dbContext.SaveChanges();
+    }
+
+    public bool DeleteCategory(int id)
+    {
+        Category entity = _dbContext.Categories
+            .Include(c => c.Products)
+            .SingleOrDefault(c => c.Id == id) ?? throw new Exception("Resource not found");
+        _dbContext.Remove(entity);
+        return true;
+    }
     
-    public async Task<List<CategoryDTO>> FindAllProducts()
+    private void copyDtoToEntity(CategoryInsertDTO dto, Category entity)
     {
-        throw new NotImplementedException();
-    }
-
-    public async Task<CategoryDTO> FindProductById(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void InsertProduct(CategoryInsertDTO dto)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void UpdateProduct(CategoryInsertDTO dto, int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool  DeleteProduct(int id)
-    {
-        throw new NotImplementedException();
+        entity.Name = dto.Name;
+        entity.ImgUrl = dto.ImgUrl;
+        
+        
     }
 }

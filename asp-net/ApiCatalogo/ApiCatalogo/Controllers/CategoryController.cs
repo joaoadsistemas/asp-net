@@ -1,0 +1,75 @@
+using ApiCatalogo.Dtos;
+using ApiCatalogo.Repositories;
+
+using Microsoft.AspNetCore.Mvc;
+
+namespace ApiCatalogo.Controllers
+{
+    [Route("categories")]
+    [ApiController]
+    public class CategoryController : ControllerBase
+    {
+        private readonly CategoryRepository _categoryRepository;
+
+        public CategoryController(CategoryRepository categoryRepository)
+        {
+            _categoryRepository = categoryRepository;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<CategoryDTO>>> FindAllCategories()
+        {
+            return Ok(_categoryRepository.FindAllCategories());
+        }
+        
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CategoryDTO>> FindCategoryById(int id) 
+        {
+            try
+            {
+                CategoryDTO result = await _categoryRepository.FindCategoryById(id);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return NotFound("Resource not found");
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<dynamic>> InsertCategory([FromBody] CategoryInsertDTO dto)
+        {
+            _categoryRepository.InsertCategory(dto);
+            return Created();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<dynamic>> UpdateCategory([FromBody] CategoryInsertDTO dto, int id)
+        {
+            try
+            {
+                _categoryRepository.UpdateCategory(dto, id);
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return NotFound("Resource not found");
+            }
+        }
+
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<dynamic>> DeleteById(int id)
+        {
+            try
+            {
+                _categoryRepository.DeleteCategory(id);
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return NotFound("Resource not found");
+            }
+        }
+    }
+}

@@ -24,7 +24,7 @@ namespace ApiCatalogo.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductDTO>> FindById(int id)
+        public async Task<ActionResult<ProductDTO>> FindById(long id)
         {
             try
             {
@@ -38,14 +38,14 @@ namespace ApiCatalogo.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<dynamic>> InsertProduct([FromBody] ProductInsertDTO dto)
+        public async Task<ActionResult<ProductDTO>> InsertProduct([FromBody] ProductInsertDTO dto)
         {
-            _productRepository.InsertProduct(dto);
-            return Created();
+            ProductDTO result = await _productRepository.InsertProduct(dto);
+            return CreatedAtAction(nameof(FindById), new { id = result.Id }, result);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<dynamic>> UpdateProduct([FromBody] ProductInsertDTO dto, int id)
+        public async Task<ActionResult<dynamic>> UpdateProduct([FromBody] ProductInsertDTO dto, long id)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace ApiCatalogo.Controllers
 
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<dynamic>> DeleteProduct(int id)
+        public async Task<ActionResult<dynamic>> DeleteProduct(long id)
         {
             try
             {

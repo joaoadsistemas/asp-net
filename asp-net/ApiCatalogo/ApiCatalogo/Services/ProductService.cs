@@ -21,28 +21,29 @@ public class ProductService : ProductRepository
         return result.AsEnumerable().Select(p => new ProductDTO(p)).ToList();
     }
 
-    public async Task<ProductDTO> FindProductById(int id)
+    public async Task<ProductDTO> FindProductById(long id)
     {
         Product result = _dbContext.Products.FirstOrDefault(p => p.Id == id) ?? throw new Exception("Resource not found");
         return new ProductDTO(result);
     }
 
-    public void InsertProduct(ProductInsertDTO dto)
+    public async Task<ProductDTO> InsertProduct(ProductInsertDTO dto)
     {
         Product entity = new Product();
         copyDtoToEntity(dto, entity);
         _dbContext.Add(entity);
         _dbContext.SaveChanges();
+        return new ProductDTO(entity);
     }
 
-    public void UpdateProduct(ProductInsertDTO dto, int id)
+    public void UpdateProduct(ProductInsertDTO dto, long id)
     {
         Product entity = _dbContext.Products.FirstOrDefault(p => p.Id == id) ?? throw new Exception("Resource not found");
         copyDtoToEntity(dto, entity);
         _dbContext.SaveChanges();
     }
 
-    public bool DeleteProduct(int id)
+    public bool DeleteProduct(long id)
     {
         Product entity = _dbContext.Products.FirstOrDefault(p => p.Id == id) ?? throw new Exception("Resource not found");
         _dbContext.Remove(entity);

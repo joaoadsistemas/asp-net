@@ -23,7 +23,7 @@ namespace ApiCatalogo.Controllers
         }
         
         [HttpGet("{id}")]
-        public async Task<ActionResult<CategoryDTO>> FindCategoryById(int id) 
+        public async Task<ActionResult<CategoryDTO>> FindCategoryById(long id) 
         {
             try
             {
@@ -37,10 +37,10 @@ namespace ApiCatalogo.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<dynamic>> InsertCategory([FromBody] CategoryInsertDTO dto)
+        public async Task<ActionResult<CategoryDTO>> InsertCategory([FromBody] CategoryInsertDTO dto)
         {
-            _categoryRepository.InsertCategory(dto);
-            return Created();
+            CategoryDTO result = await _categoryRepository.InsertCategory(dto);
+            return CreatedAtAction(nameof(FindCategoryById), new { id = result.Id }, result);
         }
 
         [HttpPut("{id}")]

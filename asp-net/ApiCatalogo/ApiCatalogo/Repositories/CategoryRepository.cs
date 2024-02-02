@@ -6,8 +6,8 @@ public interface CategoryRepository
 {
 
     Task<List<CategoryDTO>> FindAllCategories();
-    Task<CategoryDTO> FindCategoryById(int id);
-    void InsertCategory(CategoryInsertDTO dto);
-    void UpdateCategory(CategoryInsertDTO dto, int id);
-    bool DeleteCategory(int id);
+    Task<CategoryDTO> FindCategoryById(long id);
+    Task<CategoryDTO> InsertCategory(CategoryInsertDTO dto);
+    void UpdateCategory(CategoryInsertDTO dto, long id);
+    bool DeleteCategory(long id);
 }

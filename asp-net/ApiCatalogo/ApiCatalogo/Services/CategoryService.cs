@@ -26,7 +26,7 @@ public class CategoryService : CategoryRepository
 
     }
 
-    public async Task<CategoryDTO> FindCategoryById(int id)
+    public async Task<CategoryDTO> FindCategoryById(long id)
     {
         Category entity = _dbContext.Categories
             .Include(c => c.Products)
@@ -34,16 +34,17 @@ public class CategoryService : CategoryRepository
         return new CategoryDTO(entity);
     }
 
-    public void InsertCategory(CategoryInsertDTO dto)
+    public async Task<CategoryDTO> InsertCategory(CategoryInsertDTO dto)
     {
         Category entity = new Category();
         copyDtoToEntity(dto,entity);
         _dbContext.Add(entity);
         _dbContext.SaveChanges();
+        return new CategoryDTO(entity);
     }
 
 
-    public void UpdateCategory(CategoryInsertDTO dto, int id)
+    public void UpdateCategory(CategoryInsertDTO dto, long id)
     {
         Category entity = _dbContext.Categories
             .Include(c => c.Products)
@@ -52,7 +53,7 @@ public class CategoryService : CategoryRepository
         _dbContext.SaveChanges();
     }
 
-    public bool DeleteCategory(int id)
+    public bool DeleteCategory(long id)
     {
         Category entity = _dbContext.Categories
             .Include(c => c.Products)

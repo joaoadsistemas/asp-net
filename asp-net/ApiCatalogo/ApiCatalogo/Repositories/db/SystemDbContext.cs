@@ -65,6 +65,50 @@ public class SystemDbContext : DbContext
               Price = 25000.00,
               Stock = 2,
               ImgUrl = "https://img.com.br"
+            },
+            new Product
+            {
+                Id  = 2,
+                CategoryId = 1,
+                Name = "Fiesta",
+                Description = "Ford Fiesta",
+                RegisterData = DateTime.Now,
+                Price = 15000.00,
+                Stock = 1,
+                ImgUrl = "https://img.com.br"
+            },
+            new Product
+            {
+                Id  = 3,
+                CategoryId = 2,
+                Name = "MacBook",
+                Description = "Apple MacBook PRO",
+                RegisterData = DateTime.Now,
+                Price = 5000.00,
+                Stock = 10,
+                ImgUrl = "https://img.com.br"
+            },
+            new Product
+            {
+                Id  = 4,
+                CategoryId = 3,
+                Name = "Iphone 12",
+                Description = "Apple Iphone 12",
+                RegisterData = DateTime.Now,
+                Price = 3000.00,
+                Stock = 5,
+                ImgUrl = "https://img.com.br"
+            },
+            new Product
+            {
+                Id  = 5,
+                CategoryId = 3,
+                Name = "Galaxy s23 ultra",
+                Description = "Galaxy S23 Ultra",
+                RegisterData = DateTime.Now,
+                Price = 3000.00,
+                Stock = 3,
+                ImgUrl = "https://img.com.br"
             }
             );
     }

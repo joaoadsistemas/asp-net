@@ -18,7 +18,7 @@ namespace ApiCatalogo.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ProductDTO>>> FindAll(string name)
+        public async Task<ActionResult<List<ProductDTO>>> FindAll([FromQuery] string name)
         {
             // utlizando queryparams, se eu nao passsar nada, o nome vai ser uma string vazia, se nao vai ser o valor que passei
             name = name ?? "";

@@ -1,0 +1,10 @@
+* Utilizar AsNoTracking para todos os modos de somente leitura (get)
+_dbContext.Products.AsNoTracking().FirstOrDefault(p => p.Id == id) ?? throw new Exception("Resource not found");
+
+
+* Utilizar filtros ao fazer uma consulta
+_dbContext.Products.Take(10).ToList();
+
+
+* Nunca retornar os objetos relacionados sem aplicar um filtro
+_dbContext.Categories.Include(c => c.Products).Where(c => c.CategoryId <= 5).ToList();

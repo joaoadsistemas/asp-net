@@ -17,11 +17,11 @@ namespace ApiCatalogo.Controllers
             _productRepository = productRepository;
         }
 
+        
         [HttpGet]
-        public async Task<ActionResult<List<ProductDTO>>> FindAll([FromQuery] string name)
+        // utlizando queryparams, se eu nao passsar nada, o nome vai ser uma string vazia, se nao vai ser o valor que passei
+        public async Task<ActionResult<List<ProductDTO>>> FindAll([FromQuery] string name = "")
         {
-            // utlizando queryparams, se eu nao passsar nada, o nome vai ser uma string vazia, se nao vai ser o valor que passei
-            name = name ?? "";
             return Ok(_productRepository.FindAllProducts(name));
         }
 

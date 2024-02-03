@@ -14,10 +14,11 @@ public class SystemDbContext : DbContext
     {
         modelBuilder.Entity<Product>().HasOne(p => p.Category)
             .WithMany(c => c.Products).HasForeignKey(p => p.CategoryId);
+        modelBuilder.Entity<Product>().Property(p => p.Name).IsRequired();
 
         modelBuilder.Entity<Category>().HasMany(c => c.Products)
             .WithOne(p => p.Category);
-
+        modelBuilder.Entity<Category>().Property(c => c.Name).IsRequired();
 
         modelBuilder.Entity<Category>().HasData(
             new Category

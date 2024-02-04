@@ -35,7 +35,6 @@ public class ProductService : IProductRepository
         Product entity = new Product();
         copyDtoToEntity(dto, entity);
         _dbContext.Add(entity);
-        _dbContext.SaveChanges();
         return new ProductDTO(entity);
     }
 
@@ -43,7 +42,6 @@ public class ProductService : IProductRepository
     {
         Product entity = _dbContext.Products.Find(id) ?? throw new Exception("Resource not found");
         copyDtoToEntity(dto, entity);
-        _dbContext.SaveChanges();
         return new ProductDTO(entity);
     }
 
@@ -51,7 +49,6 @@ public class ProductService : IProductRepository
     {
         Product entity = _dbContext.Products.Find(id) ?? throw new Exception("Resource not found");
         _dbContext.Remove(entity);
-        _dbContext.SaveChanges();
         return true;
     }
     

@@ -25,6 +25,7 @@ namespace DSCommerce
             
             builder.Services.AddScoped<IProductRepository, ProductService>();
             builder.Services.AddScoped<ICategoryRepository, CategoryService>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 

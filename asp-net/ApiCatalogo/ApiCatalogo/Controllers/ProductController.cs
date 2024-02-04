@@ -10,19 +10,18 @@ namespace ApiCatalogo.Controllers
     public class ProductController : ControllerBase
     {
 
-        private readonly IProductRepository _productRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ProductController(IProductRepository productRepository)
+        public ProductController(IUnitOfWork unitOfWork)
         {
-            _productRepository = productRepository;
+            _unitOfWork = unitOfWork;
         }
 
-        
         [HttpGet]
         // utlizando queryparams, se eu nao passsar nada, o nome vai ser uma string vazia, se nao vai ser o valor que passei
         public async Task<ActionResult<IEnumerable<ProductDTO>>> FindAll([FromQuery] string name = "")
         {
-            return Ok(_productRepository.FindAllProducts(name));
+            return Ok(_unitOfWork.ProductRepository.FindAllProducts(name));
         }
 
         [HttpGet("{id}")]
@@ -30,7 +29,7 @@ namespace ApiCatalogo.Controllers
         {
             try
             {
-                ProductDTO result = _productRepository.FindProductById(id);
+                ProductDTO result = _unitOfWork.ProductRepository.FindProductById(id);
                 return Ok(result);
             }
             catch (Exception e)
@@ -42,7 +41,9 @@ namespace ApiCatalogo.Controllers
         [HttpPost]
         public async Task<ActionResult<ProductDTO>> InsertProduct([FromBody] ProductInsertDTO dto)
         {
-            ProductDTO result = _productRepository.InsertProduct(dto);
+            ProductDTO result = _unitOfWork.ProductRepository.InsertProduct(dto);
+            _unitOfWork.Commit();
+
             return CreatedAtAction(nameof(FindById), new { id = result.Id }, result);
         }
 
@@ -51,7 +52,8 @@ namespace ApiCatalogo.Controllers
         {
             try
             {
-                _productRepository.UpdateProduct(dto, id);
+                _unitOfWork.ProductRepository.UpdateProduct(dto, id);
+                _unitOfWork.Commit();
                 return NoContent();
             }
             catch (Exception e)
@@ -66,7 +68,8 @@ namespace ApiCatalogo.Controllers
         {
             try
             {
-                _productRepository.DeleteProduct(id);
+                _unitOfWork.ProductRepository.DeleteProduct(id);
+                _unitOfWork.Commit();
                 return NoContent();
             }
             catch (Exception e)

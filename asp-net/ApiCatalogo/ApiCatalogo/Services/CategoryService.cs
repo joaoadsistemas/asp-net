@@ -40,7 +40,6 @@ public class CategoryService : ICategoryRepository
         Category entity = new Category();
         copyDtoToEntity(dto,entity);
         _dbContext.Add(entity);
-        _dbContext.SaveChanges();
         return new CategoryDTO(entity);
     }
 
@@ -49,7 +48,6 @@ public class CategoryService : ICategoryRepository
     {
         Category entity = _dbContext.Categories.Find(id) ?? throw new Exception("Resource not found");
         copyDtoToEntity(dto, entity);
-        _dbContext.SaveChanges();
         return new CategoryDTO(entity);
     }
 

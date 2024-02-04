@@ -9,17 +9,17 @@ namespace ApiCatalogo.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CategoryController(ICategoryRepository categoryRepository)
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            _categoryRepository = categoryRepository;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CategoryDTO>>> FindAllCategories()
         {
-            return Ok(_categoryRepository.FindAllCategories());
+            return Ok(_unitOfWork.CategoryRepository.FindAllCategories());
         }
         
         [HttpGet("{id}")]
@@ -27,7 +27,7 @@ namespace ApiCatalogo.Controllers
         {
             try
             {
-                CategoryDTO result = _categoryRepository.FindCategoryById(id);
+                CategoryDTO result = _unitOfWork.CategoryRepository.FindCategoryById(id);
                 return Ok(result);
             }
             catch (Exception e)
@@ -39,7 +39,8 @@ namespace ApiCatalogo.Controllers
         [HttpPost]
         public async Task<ActionResult<CategoryDTO>> InsertCategory([FromBody] CategoryInsertDTO dto)
         {
-            CategoryDTO result = _categoryRepository.InsertCategory(dto);
+            CategoryDTO result = _unitOfWork.CategoryRepository.InsertCategory(dto);
+            _unitOfWork.Commit();
             return CreatedAtAction(nameof(FindCategoryById), new { id = result.Id }, result);
         }
 
@@ -48,7 +49,8 @@ namespace ApiCatalogo.Controllers
         {
             try
             {
-                _categoryRepository.UpdateCategory(dto, id);
+                _unitOfWork.CategoryRepository.UpdateCategory(dto, id);
+                _unitOfWork.Commit();
                 return NoContent();
             }
             catch (Exception e)
@@ -63,7 +65,8 @@ namespace ApiCatalogo.Controllers
         {
             try
             {
-                _categoryRepository.DeleteCategory(id);
+                _unitOfWork.CategoryRepository.DeleteCategory(id);
+                _unitOfWork.Commit();
                 return NoContent();
             }
             catch (Exception e)

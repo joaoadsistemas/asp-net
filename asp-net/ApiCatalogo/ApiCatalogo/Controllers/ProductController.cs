@@ -30,7 +30,7 @@ namespace ApiCatalogo.Controllers
         {
             try
             {
-                ProductDTO result = await _productRepository.FindProductById(id);
+                ProductDTO result = _productRepository.FindProductById(id);
                 return Ok(result);
             }
             catch (Exception e)
@@ -42,7 +42,7 @@ namespace ApiCatalogo.Controllers
         [HttpPost]
         public async Task<ActionResult<ProductDTO>> InsertProduct([FromBody] ProductInsertDTO dto)
         {
-            ProductDTO result = await _productRepository.InsertProduct(dto);
+            ProductDTO result = _productRepository.InsertProduct(dto);
             return CreatedAtAction(nameof(FindById), new { id = result.Id }, result);
         }
 

@@ -38,3 +38,36 @@ SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Desc
 FROM [Categories] AS [c]
 LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
 ORDER BY [c].[Id]
+Information: 14 - Now listening on: https://localhost:7258
+Information: 14 - Now listening on: http://localhost:5187
+Information: 0 - Application started. Press Ctrl+C to shut down.
+Information: 0 - Hosting environment: Development
+Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
+Information: 14 - Now listening on: https://localhost:7258
+Information: 14 - Now listening on: http://localhost:5187
+Information: 0 - Application started. Press Ctrl+C to shut down.
+Information: 0 - Hosting environment: Development
+Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
+Information: 20101 - Executed DbCommand (32ms) [Parameters=[@__id_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0
+Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__p_0
+Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[ImgUrl], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__p_0
+Information: 20101 - Executed DbCommand (6ms) [Parameters=[@p2='?' (DbType = Int64), @p0='?' (DbType = Double), @p1='?' (DbType = DateTimeOffset)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Products] SET [Price] = @p0, [RegisterData] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
+FROM [Categories] AS [c]
+LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
+ORDER BY [c].[Id]

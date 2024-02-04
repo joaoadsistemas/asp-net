@@ -17,20 +17,20 @@ public class ProductService : IProductRepository
         _dbContext = dbContext;
     }
     
-    public async Task<List<ProductDTO>> FindAllProducts(string name)
+    public IEnumerable<ProductDTO> FindAllProducts(string name)
     {
         // utilizando queryparams para pesquisar por nome do produto tambem
         List<Product> result = _dbContext.Products.Where(p => p.Name.Contains(name)).AsNoTracking().ToList();
         return result.AsEnumerable().Select(p => new ProductDTO(p)).ToList();
 
     }
-    public async Task<ProductDTO> FindProductById(long id)
+    public ProductDTO FindProductById(long id)
     {
         Product result = _dbContext.Products.AsNoTracking().FirstOrDefault(p => p.Id == id) ?? throw new Exception("Resource not found");
         return new ProductDTO(result);
     }
 
-    public async Task<ProductDTO> InsertProduct(ProductInsertDTO dto)
+    public ProductDTO InsertProduct(ProductInsertDTO dto)
     {
         Product entity = new Product();
         copyDtoToEntity(dto, entity);
@@ -39,16 +39,17 @@ public class ProductService : IProductRepository
         return new ProductDTO(entity);
     }
 
-    public void UpdateProduct(ProductInsertDTO dto, long id)
+    public ProductDTO UpdateProduct(ProductInsertDTO dto, long id)
     {
-        Product entity = _dbContext.Products.FirstOrDefault(p => p.Id == id) ?? throw new Exception("Resource not found");
+        Product entity = _dbContext.Products.Find(id) ?? throw new Exception("Resource not found");
         copyDtoToEntity(dto, entity);
         _dbContext.SaveChanges();
+        return new ProductDTO(entity);
     }
 
     public bool DeleteProduct(long id)
     {
-        Product entity = _dbContext.Products.FirstOrDefault(p => p.Id == id) ?? throw new Exception("Resource not found");
+        Product entity = _dbContext.Products.Find(id) ?? throw new Exception("Resource not found");
         _dbContext.Remove(entity);
         _dbContext.SaveChanges();
         return true;
@@ -64,7 +65,7 @@ public class ProductService : IProductRepository
         entity.Stock = dto.Stock;
         entity.RegisterData = DateTimeOffset.Now;
 
-        Category category = _dbContext.Categories.FirstOrDefault(c => c.Id == dto.CategoryId) ?? throw new Exception();
+        Category category = _dbContext.Categories.Find(dto.CategoryId) ?? throw new Exception();
         entity.CategoryId = category.Id;
     }
 }

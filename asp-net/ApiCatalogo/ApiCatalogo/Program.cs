@@ -2,6 +2,7 @@
 using ApiCatalogo.Repositories;
 using ApiCatalogo.Repositories.db;
 using ApiCatalogo.Services;
+using DSCommerce.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -53,6 +54,8 @@ namespace DSCommerce
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
+                // habilitando meu middleware personalizado
+                app.ConfigureExceptionHandler();
             }
 
             app.UseHttpsRedirection();

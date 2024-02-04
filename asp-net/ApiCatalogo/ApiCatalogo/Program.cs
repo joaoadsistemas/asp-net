@@ -3,6 +3,7 @@ using ApiCatalogo.Repositories;
 using ApiCatalogo.Repositories.db;
 using ApiCatalogo.Services;
 using DSCommerce.Extensions;
+using DSCommerce.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -46,6 +47,12 @@ namespace DSCommerce
                     }
                 });
             });
+
+            // adicionando o log customizado
+            builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration
+            {
+                LogLevel = LogLevel.Information
+            }));
 
             var app = builder.Build();
 

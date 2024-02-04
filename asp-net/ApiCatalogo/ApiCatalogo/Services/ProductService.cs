@@ -7,7 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace ApiCatalogo.Services;
 
-public class ProductService : ProductRepository
+public class ProductService : IProductRepository
 {
 
     private readonly SystemDbContext _dbContext;

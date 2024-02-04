@@ -10,9 +10,9 @@ namespace ApiCatalogo.Controllers
     public class ProductController : ControllerBase
     {
 
-        private readonly ProductRepository _productRepository;
+        private readonly IProductRepository _productRepository;
 
-        public ProductController(ProductRepository productRepository)
+        public ProductController(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }

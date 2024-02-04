@@ -23,8 +23,8 @@ namespace DSCommerce
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
             
-            builder.Services.AddScoped<ProductRepository, ProductService>();
-            builder.Services.AddScoped<CategoryRepository, CategoryService>();
+            builder.Services.AddScoped<IProductRepository, ProductService>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryService>();
 
 
 

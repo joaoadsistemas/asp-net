@@ -2,7 +2,7 @@
 
 namespace ApiCatalogo.Repositories;
 
-public interface ProductRepository
+public interface IProductRepository
 {
 
     Task<List<ProductDTO>> FindAllProducts(string name);

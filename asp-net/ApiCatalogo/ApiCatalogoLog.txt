@@ -12,3 +12,29 @@ Information: 20101 - Executed DbCommand (20ms) [Parameters=[@__name_0_rewritten=
 SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
 FROM [Products] AS [p]
 WHERE [p].[Name] LIKE @__name_0_rewritten ESCAPE N'\'
+Information: 0 - Application is shutting down...
+Information: 14 - Now listening on: https://localhost:7258
+Information: 14 - Now listening on: http://localhost:5187
+Information: 0 - Application started. Press Ctrl+C to shut down.
+Information: 0 - Hosting environment: Development
+Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
+Information: 20101 - Executed DbCommand (27ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
+FROM [Categories] AS [c]
+LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
+ORDER BY [c].[Id]
+Information: 20101 - Executed DbCommand (19ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[ImgUrl], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__p_0
+Information: 20101 - Executed DbCommand (6ms) [Parameters=[@p2='?' (DbType = Int64), @p0='?' (Size = 4000), @p1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Categories] SET [ImgUrl] = @p0, [Name] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
+FROM [Categories] AS [c]
+LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
+ORDER BY [c].[Id]

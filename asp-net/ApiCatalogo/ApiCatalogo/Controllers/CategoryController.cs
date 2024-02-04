@@ -9,9 +9,9 @@ namespace ApiCatalogo.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly CategoryRepository _categoryRepository;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public CategoryController(CategoryRepository categoryRepository)
+        public CategoryController(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }
@@ -27,7 +27,7 @@ namespace ApiCatalogo.Controllers
         {
             try
             {
-                CategoryDTO result = await _categoryRepository.FindCategoryById(id);
+                CategoryDTO result = _categoryRepository.FindCategoryById(id);
                 return Ok(result);
             }
             catch (Exception e)
@@ -39,7 +39,7 @@ namespace ApiCatalogo.Controllers
         [HttpPost]
         public async Task<ActionResult<CategoryDTO>> InsertCategory([FromBody] CategoryInsertDTO dto)
         {
-            CategoryDTO result = await _categoryRepository.InsertCategory(dto);
+            CategoryDTO result = _categoryRepository.InsertCategory(dto);
             return CreatedAtAction(nameof(FindCategoryById), new { id = result.Id }, result);
         }
 

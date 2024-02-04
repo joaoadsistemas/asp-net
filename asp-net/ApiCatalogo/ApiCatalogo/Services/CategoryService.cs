@@ -7,7 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace ApiCatalogo.Services;
 
-public class CategoryService : CategoryRepository
+public class CategoryService : ICategoryRepository
 {
 
     private readonly SystemDbContext _dbContext;
@@ -18,7 +18,7 @@ public class CategoryService : CategoryRepository
     }
 
 
-    public async Task<List<CategoryDTO>> FindAllCategories()
+    public IEnumerable<CategoryDTO> FindAllCategories()
     {
         List<Category> entity = _dbContext.Categories
             .Include(c => c.Products).AsNoTracking().ToList();
@@ -26,7 +26,7 @@ public class CategoryService : CategoryRepository
 
     }
 
-    public async Task<CategoryDTO> FindCategoryById(long id)
+    public CategoryDTO FindCategoryById(long id)
     {
         Category entity = _dbContext.Categories
             .Include(c => c.Products)
@@ -35,7 +35,7 @@ public class CategoryService : CategoryRepository
         return new CategoryDTO(entity);
     }
 
-    public async Task<CategoryDTO> InsertCategory(CategoryInsertDTO dto)
+    public CategoryDTO InsertCategory(CategoryInsertDTO dto)
     {
         Category entity = new Category();
         copyDtoToEntity(dto,entity);
@@ -45,20 +45,17 @@ public class CategoryService : CategoryRepository
     }
 
 
-    public void UpdateCategory(CategoryInsertDTO dto, long id)
+    public CategoryDTO UpdateCategory(CategoryInsertDTO dto, long id)
     {
-        Category entity = _dbContext.Categories
-            .Include(c => c.Products)
-            .SingleOrDefault(c => c.Id == id) ?? throw new Exception("Resource not found");
+        Category entity = _dbContext.Categories.Find(id) ?? throw new Exception("Resource not found");
         copyDtoToEntity(dto, entity);
         _dbContext.SaveChanges();
+        return new CategoryDTO(entity);
     }
 
     public bool DeleteCategory(long id)
     {
-        Category entity = _dbContext.Categories
-            .Include(c => c.Products)
-            .SingleOrDefault(c => c.Id == id) ?? throw new Exception("Resource not found");
+        Category entity = _dbContext.Categories.Find(id) ?? throw new Exception("Resource not found");
         _dbContext.Remove(entity);
         return true;
     }

@@ -17,7 +17,7 @@ namespace ApiCatalogo.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<CategoryDTO>>> FindAllCategories()
+        public async Task<ActionResult<IEnumerable<CategoryDTO>>> FindAllCategories()
         {
             return Ok(_categoryRepository.FindAllCategories());
         }

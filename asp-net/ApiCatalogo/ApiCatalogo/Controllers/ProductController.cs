@@ -1,4 +1,5 @@
 using ApiCatalogo.Dtos;
+using ApiCatalogo.Pagination;
 using ApiCatalogo.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,10 +19,10 @@ namespace ApiCatalogo.Controllers
         }
 
         [HttpGet]
-        // utlizando queryparams, se eu nao passsar nada, o nome vai ser uma string vazia, se nao vai ser o valor que passei
-        public async Task<ActionResult<IEnumerable<ProductDTO>>> FindAll([FromQuery] string name = "")
+        // utlizando queryparams, para passar dados de paginação e busca por nome
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> FindAll([FromQuery] PageQueryParams pageQueryParams)
         {
-            return Ok(_unitOfWork.ProductRepository.FindAllProducts(name));
+            return Ok(_unitOfWork.ProductRepository.FindAllProducts(pageQueryParams));
         }
 
         [HttpGet("{id}")]

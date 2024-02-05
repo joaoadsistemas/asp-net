@@ -1,5 +1,6 @@
 ﻿using ApiCatalogo.Dtos;
 using ApiCatalogo.Entities;
+using ApiCatalogo.Pagination;
 using ApiCatalogo.Repositories;
 using ApiCatalogo.Repositories.db;
 using Microsoft.EntityFrameworkCore;
@@ -17,10 +18,14 @@ public class ProductService : IProductRepository
         _dbContext = dbContext;
     }
     
-    public IEnumerable<ProductDTO> FindAllProducts(string name)
+    public IEnumerable<ProductDTO> FindAllProducts(PageQueryParams pageQueryParams)
     {
-        // utilizando queryparams para pesquisar por nome do produto tambem
-        List<Product> result = _dbContext.Products.Where(p => p.Name.Contains(name)).AsNoTracking().ToList();
+        // utilizando queryparams para pesquisar por nome do produto e paginando tambem
+        List<Product> result = _dbContext.Products.Where(p => p.Name.Contains(pageQueryParams.Name))
+            .OrderBy(p => p.Name)
+            .Skip((pageQueryParams.PageNumber - 1) * pageQueryParams.PageSize)
+            .Take(pageQueryParams.PageSize)
+            .AsNoTracking().ToList();
         return result.AsEnumerable().Select(p => new ProductDTO(p)).ToList();
 
     }

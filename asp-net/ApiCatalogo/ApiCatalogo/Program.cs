@@ -4,8 +4,12 @@ using ApiCatalogo.Repositories.db;
 using ApiCatalogo.Services;
 using DSCommerce.Extensions;
 using DSCommerce.Logging;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Text;
 
 namespace DSCommerce
 {
@@ -27,6 +31,34 @@ namespace DSCommerce
             builder.Services.AddScoped<ICategoryRepository, CategoryService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            // configuração jwt
+            builder.Services.AddAuthentication("Bearer").AddJwtBearer();
+            builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<SystemDbContext>()
+                .AddDefaultTokenProviders();
+
+            var secrety = builder.Configuration["JWT:SecretKey"] ?? throw new ArgumentException("Invalid Secret key");
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.RequireHttpsMetadata = false;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ClockSkew = TimeSpan.Zero,
+                    ValidAudience = builder.Configuration["JWT:ValidAudience"],
+                    ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secrety))
+
+                };
+            });
 
 
             builder.Services.AddControllers();

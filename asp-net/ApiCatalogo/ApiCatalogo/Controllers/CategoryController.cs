@@ -19,7 +19,7 @@ namespace ApiCatalogo.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CategoryDTO>>> FindAllCategories()
         {
-            return Ok(_unitOfWork.CategoryRepository.FindAllCategories());
+            return Ok(await _unitOfWork.CategoryRepository.FindAllCategoriesAsync());
         }
         
         [HttpGet("{id}")]
@@ -27,7 +27,7 @@ namespace ApiCatalogo.Controllers
         {
             try
             {
-                CategoryDTO result = _unitOfWork.CategoryRepository.FindCategoryById(id);
+                CategoryDTO result =await  _unitOfWork.CategoryRepository.FindCategoryByIdAsync(id);
                 return Ok(result);
             }
             catch (Exception e)
@@ -40,7 +40,7 @@ namespace ApiCatalogo.Controllers
         public async Task<ActionResult<CategoryDTO>> InsertCategory([FromBody] CategoryInsertDTO dto)
         {
             CategoryDTO result = _unitOfWork.CategoryRepository.InsertCategory(dto);
-            _unitOfWork.Commit();
+            await _unitOfWork.CommitAsync();
             return CreatedAtAction(nameof(FindCategoryById), new { id = result.Id }, result);
         }
 
@@ -50,7 +50,7 @@ namespace ApiCatalogo.Controllers
             try
             {
                 _unitOfWork.CategoryRepository.UpdateCategory(dto, id);
-                _unitOfWork.Commit();
+                await _unitOfWork.CommitAsync();
                 return NoContent();
             }
             catch (Exception e)
@@ -66,7 +66,7 @@ namespace ApiCatalogo.Controllers
             try
             {
                 _unitOfWork.CategoryRepository.DeleteCategory(id);
-                _unitOfWork.Commit();
+                await _unitOfWork.CommitAsync();
                 return NoContent();
             }
             catch (Exception e)

@@ -22,7 +22,7 @@ namespace ApiCatalogo.Controllers
         // utlizando queryparams, para passar dados de paginação e busca por nome
         public async Task<ActionResult<IEnumerable<ProductDTO>>> FindAll([FromQuery] PageQueryParams pageQueryParams)
         {
-            return Ok(_unitOfWork.ProductRepository.FindAllProducts(pageQueryParams));
+            return Ok(await _unitOfWork.ProductRepository.FindAllProductsAsync(pageQueryParams));
         }
 
         [HttpGet("{id}")]
@@ -30,7 +30,7 @@ namespace ApiCatalogo.Controllers
         {
             try
             {
-                ProductDTO result = _unitOfWork.ProductRepository.FindProductById(id);
+                ProductDTO result = await _unitOfWork.ProductRepository.FindProductByIdAsync(id);
                 return Ok(result);
             }
             catch (Exception e)
@@ -43,7 +43,7 @@ namespace ApiCatalogo.Controllers
         public async Task<ActionResult<ProductDTO>> InsertProduct([FromBody] ProductInsertDTO dto)
         {
             ProductDTO result = _unitOfWork.ProductRepository.InsertProduct(dto);
-            _unitOfWork.Commit();
+            await _unitOfWork.CommitAsync();
 
             return CreatedAtAction(nameof(FindById), new { id = result.Id }, result);
         }
@@ -54,7 +54,7 @@ namespace ApiCatalogo.Controllers
             try
             {
                 _unitOfWork.ProductRepository.UpdateProduct(dto, id);
-                _unitOfWork.Commit();
+                await _unitOfWork.CommitAsync();
                 return NoContent();
             }
             catch (Exception e)
@@ -70,7 +70,7 @@ namespace ApiCatalogo.Controllers
             try
             {
                 _unitOfWork.ProductRepository.DeleteProduct(id);
-                _unitOfWork.Commit();
+                await _unitOfWork.CommitAsync();
                 return NoContent();
             }
             catch (Exception e)

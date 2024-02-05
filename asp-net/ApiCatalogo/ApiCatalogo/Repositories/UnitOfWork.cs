@@ -19,14 +19,14 @@ namespace ApiCatalogo.Repositories
         public IProductRepository ProductRepository { get { return _productRepository = _productRepository ?? new ProductService(_dbContext); } }
         public ICategoryRepository CategoryRepository { get { return _categoryRepository = _categoryRepository ?? new CategoryService(_dbContext); } }
 
-        public void Commit()
+        public async Task CommitAsync()
         {
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
         }
 
-        public void Dispose()
+        public async Task Dispose()
         {
-            _dbContext.Dispose();
+            await _dbContext.DisposeAsync();
         }
     }
 }

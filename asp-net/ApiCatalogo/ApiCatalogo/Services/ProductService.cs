@@ -18,20 +18,20 @@ public class ProductService : IProductRepository
         _dbContext = dbContext;
     }
     
-    public IEnumerable<ProductDTO> FindAllProducts(PageQueryParams pageQueryParams)
+    public async Task<IEnumerable<ProductDTO>> FindAllProductsAsync(PageQueryParams pageQueryParams)
     {
         // utilizando queryparams para pesquisar por nome do produto e paginando tambem
-        List<Product> result = _dbContext.Products.Where(p => p.Name.Contains(pageQueryParams.Name))
+        List<Product> result = await _dbContext.Products.Where(p => p.Name.Contains(pageQueryParams.Name))
             .OrderBy(p => p.Name)
             .Skip((pageQueryParams.PageNumber - 1) * pageQueryParams.PageSize)
             .Take(pageQueryParams.PageSize)
-            .AsNoTracking().ToList();
+            .AsNoTracking().ToListAsync();
         return result.AsEnumerable().Select(p => new ProductDTO(p)).ToList();
 
     }
-    public ProductDTO FindProductById(long id)
+    public async Task<ProductDTO> FindProductByIdAsync(long id)
     {
-        Product result = _dbContext.Products.AsNoTracking().FirstOrDefault(p => p.Id == id) ?? throw new Exception("Resource not found");
+        Product result = await _dbContext.Products.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id) ?? throw new Exception("Resource not found");
         return new ProductDTO(result);
     }
 

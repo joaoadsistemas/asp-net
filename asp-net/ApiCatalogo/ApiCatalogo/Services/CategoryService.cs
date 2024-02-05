@@ -18,27 +18,32 @@ public class CategoryService : ICategoryRepository
     }
 
 
-    public IEnumerable<CategoryDTO> FindAllCategories()
+    public async Task<IEnumerable<CategoryDTO>> FindAllCategoriesAsync()
     {
-        List<Category> entity = _dbContext.Categories
-            .Include(c => c.Products).AsNoTracking().ToList();
-        return entity.AsEnumerable().Select(c => new CategoryDTO(c)).ToList();
-
-    }
-
-    public CategoryDTO FindCategoryById(long id)
-    {
-        Category entity = _dbContext.Categories
+        List<Category> entities = await _dbContext.Categories
             .Include(c => c.Products)
             .AsNoTracking()
-            .SingleOrDefault(c => c.Id == id) ?? throw new Exception("Resource not found");
+            .ToListAsync();
+
+        return entities.Select(c => new CategoryDTO(c)).ToList();
+    }
+
+
+    public async Task<CategoryDTO> FindCategoryByIdAsync(long id)
+    {
+        Category entity = await _dbContext.Categories
+            .Include(c => c.Products)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(c => c.Id == id) ?? throw new Exception("Resource not found");
+
         return new CategoryDTO(entity);
     }
+
 
     public CategoryDTO InsertCategory(CategoryInsertDTO dto)
     {
         Category entity = new Category();
-        copyDtoToEntity(dto,entity);
+        copyDtoToEntity(dto, entity);
         _dbContext.Add(entity);
         return new CategoryDTO(entity);
     }
@@ -57,12 +62,14 @@ public class CategoryService : ICategoryRepository
         _dbContext.Remove(entity);
         return true;
     }
-    
+
     private void copyDtoToEntity(CategoryInsertDTO dto, Category entity)
     {
         entity.Name = dto.Name;
         entity.ImgUrl = dto.ImgUrl;
-        
-        
+
+
     }
 }
+
+  

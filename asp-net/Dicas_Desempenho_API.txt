@@ -8,3 +8,8 @@ _dbContext.Products.Take(10).ToList();
 
 * Nunca retornar os objetos relacionados sem aplicar um filtro
 _dbContext.Categories.Include(c => c.Products).Where(c => c.CategoryId <= 5).ToList();
+
+
+
+* Ao usar o mapper, basicamente é o seguinte
+var DESTINO = _mapper.map<Destino>(origem);

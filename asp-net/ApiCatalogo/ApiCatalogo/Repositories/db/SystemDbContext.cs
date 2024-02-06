@@ -4,8 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApiCatalogo.Repositories.db;
 
-public class SystemDbContext : IdentityDbContext
+public class SystemDbContext : IdentityDbContext<ApplicationUser>
 {
+
+
     public SystemDbContext(DbContextOptions<SystemDbContext> options) : base(options) { }
 
     public DbSet<Category> Categories { get; set; }
@@ -14,6 +16,7 @@ public class SystemDbContext : IdentityDbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<Product>().HasOne(p => p.Category)
             .WithMany(c => c.Products).HasForeignKey(p => p.CategoryId);
         modelBuilder.Entity<Product>().Property(p => p.Name).IsRequired();

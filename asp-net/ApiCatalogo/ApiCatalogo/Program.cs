@@ -1,4 +1,5 @@
 
+using ApiCatalogo.Entities;
 using ApiCatalogo.Repositories;
 using ApiCatalogo.Repositories.db;
 using ApiCatalogo.Services;
@@ -21,6 +22,10 @@ namespace DSCommerce
 
             // Add services to the container.
 
+            // config database with user and roles
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+             .AddEntityFrameworkStores<SystemDbContext>()
+             .AddDefaultTokenProviders();
 
             builder.Services.AddDbContext<SystemDbContext>(option =>
             {
@@ -33,10 +38,6 @@ namespace DSCommerce
 
             // configuração jwt
             builder.Services.AddAuthentication("Bearer").AddJwtBearer();
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<SystemDbContext>()
-                .AddDefaultTokenProviders();
-
             var secrety = builder.Configuration["JWT:SecretKey"] ?? throw new ArgumentException("Invalid Secret key");
             builder.Services.AddAuthentication(options =>
             {

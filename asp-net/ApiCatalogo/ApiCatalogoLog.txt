@@ -270,3 +270,43 @@ CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHER
 Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
 VALUES (N'20240205165704_TablesIdentity', N'8.0.1');
+Information: 20101 - Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+Information: 20101 - Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+Information: 20101 - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+Information: 20101 - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+Information: 20402 - Applying migration '20240206000902_ApplicationUserWithRefreshToken'.
+Information: 20101 - Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [AspNetUsers] ADD [RefreshToken] nvarchar(max) NULL;
+Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [AspNetUsers] ADD [RefreshTokenExpiryTime] datetime2 NOT NULL DEFAULT '0001-01-01T00:00:00.0000000';
+Information: 20101 - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE [Products] SET [RegisterData] = '2024-02-05T21:09:01.2658247-03:00'
+WHERE [Id] = CAST(1 AS bigint);
+SELECT @@ROWCOUNT;
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE [Products] SET [RegisterData] = '2024-02-05T21:09:01.2658284-03:00'
+WHERE [Id] = CAST(2 AS bigint);
+SELECT @@ROWCOUNT;
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE [Products] SET [RegisterData] = '2024-02-05T21:09:01.2658287-03:00'
+WHERE [Id] = CAST(3 AS bigint);
+SELECT @@ROWCOUNT;
+Information: 20101 - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE [Products] SET [RegisterData] = '2024-02-05T21:09:01.2658289-03:00'
+WHERE [Id] = CAST(4 AS bigint);
+SELECT @@ROWCOUNT;
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE [Products] SET [RegisterData] = '2024-02-05T21:09:01.2658291-03:00'
+WHERE [Id] = CAST(5 AS bigint);
+SELECT @@ROWCOUNT;
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240206000902_ApplicationUserWithRefreshToken', N'8.0.1');

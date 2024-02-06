@@ -74,7 +74,7 @@ namespace ApiCatalogo.Controllers
                 // Retorna os tokens gerados
                 return Ok(new
                 {
-                    Token = token,
+                    Token = new JwtSecurityTokenHandler().WriteToken(token),
                     RefreshToken = refreshToken,
                     Expiration = token.ValidTo
                 });

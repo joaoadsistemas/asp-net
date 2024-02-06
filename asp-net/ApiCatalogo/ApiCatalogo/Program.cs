@@ -37,15 +37,12 @@ namespace DSCommerce
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<ITokenService, TokenService>();
 
+
             // configuração jwt
-            builder.Services.AddAuthentication("Bearer").AddJwtBearer();
-            var secrety = builder.Configuration["JWT:SecretKey"] ?? throw new ArgumentException("Invalid Secret key");
-            builder.Services.AddAuthentication(options =>
+            builder.Services.AddAuthentication().AddJwtBearer(options =>
             {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
-            {
+                var secrety = builder.Configuration["JWT:SecretKey"] ?? throw new ArgumentException("Invalid Secret key");
+
                 options.SaveToken = true;
                 options.RequireHttpsMetadata = false;
                 options.TokenValidationParameters = new TokenValidationParameters()
@@ -58,9 +55,9 @@ namespace DSCommerce
                     ValidAudience = builder.Configuration["JWT:ValidAudience"],
                     ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secrety))
-
                 };
             });
+
 
 
             builder.Services.AddControllers();
@@ -70,6 +67,32 @@ namespace DSCommerce
             // configura��es swqagger
             builder.Services.AddSwaggerGen(c =>
             {
+
+                // config auth swagger
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    Name = "Authorizarion",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "Bearer JWT"
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string []{}
+                    }
+                });
+
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "DSCommerce",

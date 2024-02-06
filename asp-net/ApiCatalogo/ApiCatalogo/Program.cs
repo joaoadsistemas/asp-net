@@ -35,6 +35,7 @@ namespace DSCommerce
             builder.Services.AddScoped<IProductRepository, ProductService>();
             builder.Services.AddScoped<ICategoryRepository, CategoryService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<ITokenService, TokenService>();
 
             // configuração jwt
             builder.Services.AddAuthentication("Bearer").AddJwtBearer();

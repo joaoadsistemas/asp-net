@@ -35,7 +35,7 @@ namespace ApiCatalogo.Controllers
         public async Task<ActionResult> Login([FromBody] LoginDTO loginDTO)
         {
             // Procura o usuário pelo nome de usuário
-            var user = await _userManager.FindByNameAsync(loginDTO.Username);
+            var user = await _userManager.FindByEmailAsync(loginDTO.Email);
 
             // Verifica se o usuário existe e a senha está correta
             if (user != null && await _userManager.CheckPasswordAsync(user, loginDTO.Password!))

@@ -75,5 +75,44 @@ namespace ApiCatalogo.Controllers
             return Unauthorized();
         }
 
+
+        [HttpPost("register")]
+        public async Task<ActionResult> Register([FromBody] RegisterDTO registerDTO)
+        {
+            var userExists = await _userManager.FindByNameAsync(registerDTO.Username);
+            if (userExists != null) 
+            {
+                return StatusCode(StatusCodes.Status401Unauthorized, new ResponseDTO
+                {
+                    Status = "Error",
+                    Message = "User already exists!"
+                });
+            }
+
+            ApplicationUser user = new()
+            {
+                Email = registerDTO.Email,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = registerDTO.Username,
+            };
+            var result = await _userManager.CreateAsync(user, registerDTO.Password);
+
+            if (!result.Succeeded) 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseDTO
+                {
+                    Status = "Error",
+                    Message = "User creation failed"
+                });
+            }
+
+            return StatusCode(StatusCodes.Status201Created, new ResponseDTO
+            {
+                Status = "Success",
+                Message = "User created successfuly!"
+            });
+        }
+
+
     }
 }

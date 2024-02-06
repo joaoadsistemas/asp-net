@@ -8,48 +8,56 @@ namespace ApiCatalogo.Repositories
 {
     public class TokenService : ITokenService
     {
+        // Método para gerar um token de acesso
         public JwtSecurityToken GenerateAccessToken(IEnumerable<Claim> claims, IConfiguration _config)
         {
-
+            // Recupera a chave secreta da configuração
             var key = _config.GetSection("JWT").GetValue<string>("SecretKey") ??
-                throw new InvalidOperationException("Invalid Secret Key");
+                throw new InvalidOperationException("Chave Secreta Inválida");
 
-
+            // Converte a chave em bytes
             var privateKey = Encoding.UTF8.GetBytes(key);
 
-            var signingCredentilas = new SigningCredentials(new SymmetricSecurityKey(privateKey), SecurityAlgorithms.HmacSha256Signature);
+            // Configura as credenciais de assinatura usando HMAC SHA-256
+            var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(privateKey), SecurityAlgorithms.HmacSha256Signature);
 
+            // Configura os detalhes do token
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.UtcNow.AddMinutes(_config.GetSection("JWT").GetValue<double>("TokenValidityInMinutes")),
                 Audience = _config.GetSection("JWT").GetValue<string>("ValidAudience"),
                 Issuer = _config.GetSection("JWT").GetValue<string>("ValidIssuer"),
-                SigningCredentials = signingCredentilas,
+                SigningCredentials = signingCredentials,
             };
 
+            // Cria um token JWT usando o handler
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateJwtSecurityToken(tokenDescriptor);
             return token;
-
         }
 
+        // Método para gerar um token de refresh
         public string GenerateRefreshToken()
         {
+            // Gera bytes aleatórios seguros
             var secureRandomBytes = new Byte[128];
 
             using var randomNumberGenerator = RandomNumberGenerator.Create();
-
             randomNumberGenerator.GetBytes(secureRandomBytes);
 
+            // Converte os bytes em uma string Base64
             var refreshToken = Convert.ToBase64String(secureRandomBytes);
             return refreshToken;
         }
 
+        // Método para obter o principal de um token expirado
         public ClaimsPrincipal GetPrincipalFromExpiredToken(string token, IConfiguration _config)
         {
-            var secretKey = _config["JWT:SecretKey"] ?? throw new InvalidOperationException("Invalid Key");
+            // Recupera a chave secreta da configuração
+            var secretKey = _config["JWT:SecretKey"] ?? throw new InvalidOperationException("Chave Inválida");
 
+            // Configura os parâmetros de validação do token
             var tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateAudience = false,
@@ -59,13 +67,16 @@ namespace ApiCatalogo.Repositories
                 ValidateLifetime = false,
             };
 
+            // Valida o token e obtém o principal
             var tokenHandler = new JwtSecurityTokenHandler();
             var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
 
+            // Verifica se o token é do tipo JWT e usa o algoritmo HMAC SHA-256
             if (securityToken is not JwtSecurityToken jwtSecurityToken || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new SecurityTokenException("Invalid Token");
+                throw new SecurityTokenException("Token Inválido");
             }
+
             return principal;
         }
     }

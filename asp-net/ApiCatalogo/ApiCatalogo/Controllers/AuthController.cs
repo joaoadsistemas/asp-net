@@ -1,6 +1,7 @@
 ﻿using ApiCatalogo.Dtos;
 using ApiCatalogo.Entities;
 using ApiCatalogo.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -158,6 +159,27 @@ namespace ApiCatalogo.Controllers
             });
 
         }
+
+
+        [HttpPost("revoke/{username}")]
+        [Authorize]
+        public async Task<ActionResult> Revoke (string username)
+        {
+            var user = await _userManager.FindByIdAsync(username);
+
+            if (user == null)
+            {
+                return BadRequest("Invalid username");
+            }
+
+            user.RefreshToken = null;
+
+            await _userManager.UpdateAsync(user);
+
+            return NoContent();
+        }
+
+
 
     }
 }

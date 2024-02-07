@@ -1,6 +1,7 @@
 using ApiCatalogo.Dtos;
 using ApiCatalogo.Pagination;
 using ApiCatalogo.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,12 +19,14 @@ namespace ApiCatalogo.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        
         [HttpGet]
         // utlizando queryparams, para passar dados de paginação e busca por nome
         public async Task<ActionResult<IEnumerable<ProductDTO>>> FindAll([FromQuery] PageQueryParams pageQueryParams)
         {
             return Ok(await _unitOfWork.ProductRepository.FindAllProductsAsync(pageQueryParams));
         }
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductDTO>> FindById(long id)
@@ -39,6 +42,7 @@ namespace ApiCatalogo.Controllers
             }
         }
 
+        [Authorize(Policy = "UserOnly")]
         [HttpPost]
         public async Task<ActionResult<ProductDTO>> InsertProduct([FromBody] ProductInsertDTO dto)
         {
@@ -48,6 +52,7 @@ namespace ApiCatalogo.Controllers
             return CreatedAtAction(nameof(FindById), new { id = result.Id }, result);
         }
 
+        [Authorize(Policy = "UserOnly")]
         [HttpPut("{id}")]
         public async Task<ActionResult<dynamic>> UpdateProduct([FromBody] ProductInsertDTO dto, long id)
         {
@@ -64,6 +69,7 @@ namespace ApiCatalogo.Controllers
         }
 
 
+        [Authorize(Policy = "UserOnly")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<dynamic>> DeleteProduct(long id)
         {

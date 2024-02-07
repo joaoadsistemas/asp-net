@@ -34,7 +34,7 @@ namespace ApiCatalogo.Controllers
         }
 
 
-
+        [Authorize(Policy = "AdminOnly")]
         [HttpPost("createRole/{roleName}")]
         public async Task<ActionResult> CreateRole(string roleName)
         {
@@ -62,7 +62,7 @@ namespace ApiCatalogo.Controllers
                     );
         }
 
-
+        [Authorize(Policy = "AdminOnly")]
         [HttpPost("AddUserToRole/{email}/{roleName}")]
         public async Task<ActionResult> AddUserRole(string email, string roleName)
         {
@@ -252,7 +252,7 @@ namespace ApiCatalogo.Controllers
 
 
         // Método para revogar um token (requer autenticação)
-        [Authorize]
+        [Authorize(Policy = "AdminOnly")]
         [HttpPost("revoke")]
         public async Task<ActionResult> Revoke(RevokeDTO emailDTO)
         {

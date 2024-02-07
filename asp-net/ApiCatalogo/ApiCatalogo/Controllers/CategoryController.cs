@@ -1,6 +1,6 @@
 using ApiCatalogo.Dtos;
 using ApiCatalogo.Repositories;
-
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiCatalogo.Controllers
@@ -36,6 +36,7 @@ namespace ApiCatalogo.Controllers
             }
         }
 
+        [Authorize(Policy = "AdminOnly")]
         [HttpPost]
         public async Task<ActionResult<CategoryDTO>> InsertCategory([FromBody] CategoryInsertDTO dto)
         {
@@ -44,6 +45,7 @@ namespace ApiCatalogo.Controllers
             return CreatedAtAction(nameof(FindCategoryById), new { id = result.Id }, result);
         }
 
+        [Authorize(Policy = "AdminOnly")]
         [HttpPut("{id}")]
         public async Task<ActionResult<dynamic>> UpdateCategory([FromBody] CategoryInsertDTO dto, int id)
         {
@@ -60,6 +62,7 @@ namespace ApiCatalogo.Controllers
         }
 
 
+        [Authorize(Policy = "AdminOnly")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<dynamic>> DeleteById(int id)
         {

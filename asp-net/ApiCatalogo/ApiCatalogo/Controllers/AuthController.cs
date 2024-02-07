@@ -175,6 +175,8 @@ namespace ApiCatalogo.Controllers
                 UserName = registerDTO.Username,
             };
 
+            await _userManager.AddToRoleAsync(user, "Client");
+
             // Tenta criar o usuário
             var result = await _userManager.CreateAsync(user, registerDTO.Password);
 

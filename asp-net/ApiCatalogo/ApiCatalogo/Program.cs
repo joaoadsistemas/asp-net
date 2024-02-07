@@ -62,6 +62,12 @@ namespace DSCommerce
                 };
             });
 
+            // config e criação de politicas de acesso
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+                options.AddPolicy("ClientOnly", policy => policy.RequireRole("Client"));
+            });
 
 
             builder.Services.AddControllers();

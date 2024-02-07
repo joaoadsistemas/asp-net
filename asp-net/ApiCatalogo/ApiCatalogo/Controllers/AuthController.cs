@@ -63,6 +63,36 @@ namespace ApiCatalogo.Controllers
         }
 
 
+        [HttpPost("AddUserToRole/{email}/{roleName}")]
+        public async Task<ActionResult> AddUserRole(string email, string roleName)
+        {
+
+            var user = await _userManager.FindByEmailAsync(email);
+
+            if (user != null)
+            {
+                var result = await _userManager.AddToRoleAsync(user, roleName);
+
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation(1, $"User {user.Email} added to the {roleName} role");
+                    return StatusCode(StatusCodes.Status200OK,
+                        new ResponseDTO { Status = "Success", Message = $"User {user.Email} added to the {roleName} role!" }
+                        );
+                }
+
+                _logger.LogInformation(1, $"Error: Unable to add user {user.Email} to the {roleName} role");
+                return StatusCode(StatusCodes.Status400BadRequest,
+                    new ResponseDTO { Status = "Error", Message = $"Error: Unable to add user {user.Email} to the {roleName} role" }
+                    );
+            }
+
+            return StatusCode(StatusCodes.Status400BadRequest,
+                    new ResponseDTO { Status = "Error", Message = $"Unable to find User" }
+                    );
+        }
+
+
 
         // Método para lidar com a solicitação de login
         [HttpPost("login")]

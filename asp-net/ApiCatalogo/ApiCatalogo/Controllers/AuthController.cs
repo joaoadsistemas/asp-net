@@ -16,18 +16,52 @@ namespace ApiCatalogo.Controllers
     public class AuthController : ControllerBase
     {
 
+        private readonly ILogger<AuthController> _logger;
+
+
         private readonly ITokenService _tokenService;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
 
-        public AuthController(ITokenService tokenService, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
+        public AuthController(ITokenService tokenService, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, ILogger<AuthController> logger = null)
         {
             _tokenService = tokenService;
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
+            _logger = logger;
         }
+
+
+
+        [HttpPost("createRole/{roleName}")]
+        public async Task<ActionResult> CreateRole(string roleName)
+        {
+            var roleExists = await _roleManager.RoleExistsAsync(roleName);
+            if (!roleExists)
+            {
+                var roleResult = await _roleManager.CreateAsync(new IdentityRole(roleName));
+
+                if (roleResult.Succeeded)
+                {
+                    _logger.LogInformation(1, "Roles Added");
+                    return StatusCode(StatusCodes.Status200OK,
+                        new ResponseDTO { Status = "Success", Message = $"Role {roleName} added successfuly!" }
+                        );
+                }
+
+                _logger.LogInformation(2, "Error");
+                return StatusCode(StatusCodes.Status400BadRequest,
+                    new ResponseDTO { Status = "Error", Message = $"Issue adding the new {roleName} role" }
+                    );
+            }
+
+            return StatusCode(StatusCodes.Status400BadRequest,
+                    new ResponseDTO { Status = "Error", Message = $"Role already exist" }
+                    );
+        }
+
 
 
         // Método para lidar com a solicitação de login
@@ -99,7 +133,7 @@ namespace ApiCatalogo.Controllers
                 return StatusCode(StatusCodes.Status401Unauthorized, new ResponseDTO
                 {
                     Status = "Error",
-                    Message = "User already exists!"
+                    Message = "Email already exists!"
                 });
             }
 
@@ -186,17 +220,19 @@ namespace ApiCatalogo.Controllers
 
 
         // Método para revogar um token (requer autenticação)
-        [HttpPost("revoke/{username}")]
         [Authorize]
-        public async Task<ActionResult> Revoke(string username)
+        [HttpPost("revoke")]
+        public async Task<ActionResult> Revoke(RevokeDTO emailDTO)
         {
-            // Procura o usuário pelo ID
-            var user = await _userManager.FindByIdAsync(username);
+            // Procura o usuário pelo Nome
+            var user = await _userManager.FindByEmailAsync(emailDTO.Email);
 
             // Retorna um erro se o usuário não existir
             if (user == null)
             {
-                return BadRequest("Invalid username");
+                _logger.LogInformation(3, $"Usuário não encontrado para o e-mail: {emailDTO}");
+                return BadRequest("Invalid email");
+
             }
 
             // Remove o token de atualização do usuário
@@ -205,9 +241,16 @@ namespace ApiCatalogo.Controllers
             // Atualiza as informações do usuário no banco de dados
             await _userManager.UpdateAsync(user);
 
+            _logger.LogInformation(4,$"Token revogado para o usuário com e-mail: {emailDTO}");
+
+
             // Retorna uma resposta indicando que a revogação foi bem-sucedida
             return NoContent();
         }
+
+
+        
+
 
     }
 }

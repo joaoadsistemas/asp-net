@@ -36,6 +36,10 @@ namespace DSCommerce
             builder.Services.AddScoped<ICategoryRepository, CategoryService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<ITokenService, TokenService>();
+            builder.Services.AddLogging(builder =>
+            {
+                builder.AddConsole();
+            });
 
 
             // configuração jwt
@@ -71,7 +75,7 @@ namespace DSCommerce
                 // config auth swagger
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
-                    Name = "Authorizarion",
+                    Name = "Authorization",
                     Type = SecuritySchemeType.ApiKey,
                     Scheme = "Bearer",
                     BearerFormat = "JWT",
@@ -89,7 +93,7 @@ namespace DSCommerce
                                 Id = "Bearer"
                             }
                         },
-                        new string []{}
+                        new string[] {}
                     }
                 });
 

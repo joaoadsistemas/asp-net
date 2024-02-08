@@ -2,6 +2,7 @@ using ApiCatalogo.Dtos;
 using ApiCatalogo.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace ApiCatalogo.Controllers
 {
@@ -23,6 +24,9 @@ namespace ApiCatalogo.Controllers
         }
         
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<CategoryDTO>> FindCategoryById(long id) 
         {
             try
@@ -38,6 +42,8 @@ namespace ApiCatalogo.Controllers
 
         [Authorize(Policy = "AdminOnly")]
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<CategoryDTO>> InsertCategory([FromBody] CategoryInsertDTO dto)
         {
             CategoryDTO result = _unitOfWork.CategoryRepository.InsertCategory(dto);
@@ -47,6 +53,9 @@ namespace ApiCatalogo.Controllers
 
         [Authorize(Policy = "AdminOnly")]
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<dynamic>> UpdateCategory([FromBody] CategoryInsertDTO dto, int id)
         {
             try
@@ -64,6 +73,9 @@ namespace ApiCatalogo.Controllers
 
         [Authorize(Policy = "AdminOnly")]
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<dynamic>> DeleteById(int id)
         {
             try

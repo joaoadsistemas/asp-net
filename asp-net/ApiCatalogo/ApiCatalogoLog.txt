@@ -1455,3 +1455,13 @@ FROM [Products] AS [p]
 WHERE [p].[Name] LIKE @__pageQueryParams_Name_0_rewritten ESCAPE N'\'
 ORDER BY [p].[Name]
 OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+Information: 14 - Now listening on: https://localhost:7258
+Information: 14 - Now listening on: http://localhost:5187
+Information: 0 - Application started. Press Ctrl+C to shut down.
+Information: 0 - Hosting environment: Development
+Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
+Information: 14 - Now listening on: https://localhost:7258
+Information: 14 - Now listening on: http://localhost:5187
+Information: 0 - Application started. Press Ctrl+C to shut down.
+Information: 0 - Hosting environment: Development
+Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo

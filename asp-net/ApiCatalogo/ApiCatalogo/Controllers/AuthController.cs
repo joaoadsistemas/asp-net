@@ -36,6 +36,9 @@ namespace ApiCatalogo.Controllers
 
         [Authorize(Policy = "AdminOnly")]
         [HttpPost("createRole/{roleName}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseDTO), StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult> CreateRole(string roleName)
         {
             // Verifica se a role já existe
@@ -69,6 +72,9 @@ namespace ApiCatalogo.Controllers
 
         [Authorize(Policy = "AdminOnly")]
         [HttpPost("AddUserToRole/{email}/{roleName}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseDTO), StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult> AddUserRole(string email, string roleName)
         {
             // Procura o usuário pelo email
@@ -105,6 +111,9 @@ namespace ApiCatalogo.Controllers
 
         // Método para lidar com a solicitação de login
         [HttpPost("login")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult> Login([FromBody] LoginDTO loginDTO)
         {
             // Procura o usuário pelo nome de usuário
@@ -161,6 +170,10 @@ namespace ApiCatalogo.Controllers
 
         // Método para lidar com a solicitação de registro
         [HttpPost("register")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ResponseDTO), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(ResponseDTO), StatusCodes.Status500InternalServerError)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult> Register([FromBody] RegisterDTO registerDTO)
         {
             // Verifica se o usuário já existe
@@ -263,6 +276,9 @@ namespace ApiCatalogo.Controllers
         // Método para revogar um token (requer autenticação)
         [Authorize(Policy = "AdminOnly")]
         [HttpPost("revoke")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult> Revoke(RevokeDTO emailDTO)
         {
             // Procura o usuário pelo Nome

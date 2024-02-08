@@ -33,6 +33,9 @@ namespace ApiCatalogo.Controllers
 
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<ProductDTO>> FindById(long id)
         {
             try
@@ -48,6 +51,8 @@ namespace ApiCatalogo.Controllers
 
         [Authorize(Policy = "UserOnly")]
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<ProductDTO>> InsertProduct([FromBody] ProductInsertDTO dto)
         {
             ProductDTO result = _unitOfWork.ProductRepository.InsertProduct(dto);
@@ -58,6 +63,9 @@ namespace ApiCatalogo.Controllers
 
         [Authorize(Policy = "UserOnly")]
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<dynamic>> UpdateProduct([FromBody] ProductInsertDTO dto, long id)
         {
             try
@@ -75,6 +83,9 @@ namespace ApiCatalogo.Controllers
 
         [Authorize(Policy = "UserOnly")]
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<dynamic>> DeleteProduct(long id)
         {
             try

@@ -1,33 +1,45 @@
-﻿using System.Net;
+﻿// Importando namespaces necessários
+using System.Net;
 using ApiCatalogo.Entities;
 using Microsoft.AspNetCore.Diagnostics;
 
-namespace DSCommerce.Extensions;
-
-public static class ApiExceptionMiddlewareExtensions
+namespace DSCommerce.Extensions
 {
-    public static void ConfigureExceptionHandler(this IApplicationBuilder app)
+    // Classe estática que contém métodos de extensão para configurar middleware personalizado
+    public static class ApiExceptionMiddlewareExtensions
     {
-        app.UseExceptionHandler(appError =>
+        // Método de extensão para configurar o tratamento de exceções
+        public static void ConfigureExceptionHandler(this IApplicationBuilder app)
         {
-            appError.Run(async context =>
+            // Configura o middleware para lidar com exceções
+            app.UseExceptionHandler(appError =>
             {
-                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                context.Response.ContentType = "application/json";
-
-                var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
-
-                if (contextFeature != null)
+                // Configuração do pipeline para lidar com exceções
+                appError.Run(async context =>
                 {
-                    await context.Response.WriteAsync(new ErrorDetails()
+                    // Configura a resposta HTTP com código de status 500 (Internal Server Error) e tipo de conteúdo JSON
+                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    context.Response.ContentType = "application/json";
+
+                    // Obtém a feature de tratamento de exceções do contexto
+                    var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
+
+                    // Verifica se a feature de tratamento de exceções não é nula
+                    if (contextFeature != null)
                     {
-                        StatusCode = context.Response.StatusCode,
-                        Message = contextFeature.Error.Message,
-                        Trace = contextFeature.Error.StackTrace
-                    }.ToString());
-                }
-                
+                        // Cria um objeto ErrorDetails com os detalhes da exceção
+                        var errorDetails = new ErrorDetails()
+                        {
+                            StatusCode = context.Response.StatusCode,
+                            Message = contextFeature.Error.Message,
+                            Trace = contextFeature.Error.StackTrace
+                        };
+
+                        // Escreve os detalhes da exceção como JSON na resposta
+                        await context.Response.WriteAsync(errorDetails.ToString());
+                    }
+                });
             });
-        });
+        }
     }
 }

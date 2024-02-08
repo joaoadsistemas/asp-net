@@ -1,4 +1,3 @@
-
 using ApiCatalogo.Entities;
 using ApiCatalogo.Repositories;
 using ApiCatalogo.Repositories.db;
@@ -10,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System;
 using System.Text;
 
 namespace DSCommerce
@@ -22,16 +22,16 @@ namespace DSCommerce
 
             // Add services to the container.
 
-            // config database with user and roles
+            // Configuração do banco de dados com usuários e funções
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-             .AddEntityFrameworkStores<SystemDbContext>()
-             .AddDefaultTokenProviders();
+                .AddEntityFrameworkStores<SystemDbContext>()
+                .AddDefaultTokenProviders();
 
-            builder.Services.AddDbContext<SystemDbContext>(option =>
+            builder.Services.AddDbContext<SystemDbContext>(options =>
             {
-                option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
-            
+
             builder.Services.AddScoped<IProductRepository, ProductService>();
             builder.Services.AddScoped<ICategoryRepository, CategoryService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -41,9 +41,7 @@ namespace DSCommerce
                 builder.AddConsole();
             });
 
-
-
-            // configuração jwt
+            // Configuração JWT
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -51,7 +49,7 @@ namespace DSCommerce
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
-                var secrety = builder.Configuration["JWT:SecretKey"] ?? throw new ArgumentException("Invalid Secret key");
+                var secretKey = builder.Configuration["JWT:SecretKey"] ?? throw new ArgumentException("Invalid Secret key");
 
                 options.SaveToken = true;
                 options.RequireHttpsMetadata = false;
@@ -64,27 +62,45 @@ namespace DSCommerce
                     ClockSkew = TimeSpan.Zero,
                     ValidAudience = builder.Configuration["JWT:ValidAudience"],
                     ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secrety))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
                 };
             });
 
-            // config e criação de politicas de acesso
+            // Configuração e criação de políticas de acesso
             builder.Services.AddAuthorization(options =>
             {
                 options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
                 options.AddPolicy("ClientOnly", policy => policy.RequireRole("Client"));
             });
 
-
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+
+            // cors
+            string OrigensComAcessoPermitido = "_origensComAcessoPermitido";
+
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: OrigensComAcessoPermitido,
+                    policy =>
+                    {
+                        policy.WithOrigins("http://www.airequest.io")
+                        .AllowAnyHeader()
+                        .WithMethods("GET", "POST")
+                        ;
+                    });
+            });
+
+
+
+
             builder.Services.AddEndpointsApiExplorer();
 
-            // configura��es swqagger
+            // Configurações Swagger
             builder.Services.AddSwaggerGen(c =>
             {
-
-                // config auth swagger
+                // Configuração de autenticação do Swagger
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
                     Name = "Authorization",
@@ -95,25 +111,24 @@ namespace DSCommerce
                     Description = "Bearer JWT"
                 });
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-    {
-        new OpenApiSecurityScheme
-        {
-            Reference = new OpenApiReference
-            {
-                Type = ReferenceType.SecurityScheme,
-                Id = "Bearer"
-            }
-        },
-        new string[] {}
-    }
-});
-
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
 
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "DSCommerce",
-                    Version ="v1",
+                    Version = "v1",
                     Contact = new OpenApiContact
                     {
                         Name = "Joao Silveira",
@@ -123,7 +138,7 @@ namespace DSCommerce
                 });
             });
 
-            // adicionando o log customizado
+            // Adicionando o log personalizado
             builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration
             {
                 LogLevel = LogLevel.Information
@@ -131,20 +146,25 @@ namespace DSCommerce
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // Configurar o pipeline de solicitações HTTP
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
-                // habilitando meu middleware personalizado
+                // Habilitar middleware personalizado
                 app.ConfigureExceptionHandler();
             }
 
             app.UseHttpsRedirection();
+            app.UseRouting();
+
+
+            app.UseCors(OrigensComAcessoPermitido);
+
+
 
             app.UseAuthentication();
             app.UseAuthorization();
-
 
             app.MapControllers();
 

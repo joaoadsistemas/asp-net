@@ -6,11 +6,13 @@ using DSCommerce.Extensions;
 using DSCommerce.Logging;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Text;
+using System.Threading.RateLimiting;
 
 namespace DSCommerce
 {
@@ -40,6 +42,47 @@ namespace DSCommerce
             {
                 builder.AddConsole();
             });
+
+
+
+
+            //configuração limitador de requests por controller
+            builder.Services.AddRateLimiter(rateLimiterOptions =>
+            {
+                rateLimiterOptions.AddFixedWindowLimiter(policyName: "fixedWindow", options =>
+                {
+                    options.PermitLimit = 1;
+                    options.Window = TimeSpan.FromSeconds(4);
+                    options.QueueLimit = 1;
+                    options.QueueLimit = 2;
+                    options.QueueProcessingOrder = System.Threading.RateLimiting.QueueProcessingOrder.OldestFirst;
+                });
+                rateLimiterOptions.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+            });
+
+
+            //configuração limitador de requests GLOBAL
+            builder.Services.AddRateLimiter(options =>
+            {
+                options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+
+                options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+                    RateLimitPartition.GetFixedWindowLimiter(
+                            partitionKey: httpContext.User.Identity?.Name ?? httpContext.Request.Headers.Host.ToString(),
+                            factory: partition => new FixedWindowRateLimiterOptions
+                            {
+                                AutoReplenishment = true,
+                                PermitLimit = 5,
+                                QueueLimit = 1,
+                                Window = TimeSpan.FromSeconds(10)
+                            }
+                        )
+                );
+
+            });
+
+
+
 
             // Configuração JWT
             builder.Services.AddAuthentication(options =>
@@ -159,10 +202,15 @@ namespace DSCommerce
             app.UseRouting();
 
 
+            // limitador de requests
+            app.UseRateLimiter();
+
+
+            // uso cors
             app.UseCors(OrigensComAcessoPermitido);
 
 
-
+            // essa ordem importa
             app.UseAuthentication();
             app.UseAuthorization();
 

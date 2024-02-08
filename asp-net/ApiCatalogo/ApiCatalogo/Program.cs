@@ -2,10 +2,12 @@ using ApiCatalogo.Entities;
 using ApiCatalogo.Repositories;
 using ApiCatalogo.Repositories.db;
 using ApiCatalogo.Services;
+using Asp.Versioning;
 using DSCommerce.Extensions;
 using DSCommerce.Logging;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -53,7 +55,6 @@ namespace DSCommerce
                 {
                     options.PermitLimit = 1;
                     options.Window = TimeSpan.FromSeconds(4);
-                    options.QueueLimit = 1;
                     options.QueueLimit = 2;
                     options.QueueProcessingOrder = System.Threading.RateLimiting.QueueProcessingOrder.OldestFirst;
                 });
@@ -81,6 +82,21 @@ namespace DSCommerce
 
             });
 
+
+
+
+            //versionameno API
+            builder.Services.AddApiVersioning(o =>
+            {
+                o.AssumeDefaultVersionWhenUnspecified = true;
+                o.DefaultApiVersion = new ApiVersion(1, 0);
+                o.ApiVersionReader = ApiVersionReader.Combine(new UrlSegmentApiVersionReader());
+
+            }).AddApiExplorer(options =>
+            {
+                options.GroupNameFormat = "'v'VVV";
+                options.SubstituteApiVersionInUrl = true;
+            });
 
 
 

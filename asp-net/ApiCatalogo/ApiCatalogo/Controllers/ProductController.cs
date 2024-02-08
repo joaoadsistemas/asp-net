@@ -1,14 +1,18 @@
 using ApiCatalogo.Dtos;
 using ApiCatalogo.Pagination;
 using ApiCatalogo.Repositories;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiCatalogo.Controllers
 {
-    [Route("products")]
+
+    // controle de versão
+    [Route("v{version:apiVersion}/products")]
     [ApiController]
+    [ApiVersion("1.0")]
     public class ProductController : ControllerBase
     {
 

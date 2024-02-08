@@ -38,58 +38,67 @@ namespace ApiCatalogo.Controllers
         [HttpPost("createRole/{roleName}")]
         public async Task<ActionResult> CreateRole(string roleName)
         {
+            // Verifica se a role já existe
             var roleExists = await _roleManager.RoleExistsAsync(roleName);
             if (!roleExists)
             {
+                // Cria a nova role
                 var roleResult = await _roleManager.CreateAsync(new IdentityRole(roleName));
 
                 if (roleResult.Succeeded)
                 {
                     _logger.LogInformation(1, "Roles Added");
+                    // Retorna uma resposta de sucesso
                     return StatusCode(StatusCodes.Status200OK,
-                        new ResponseDTO { Status = "Success", Message = $"Role {roleName} added successfuly!" }
-                        );
+                        new ResponseDTO { Status = "Success", Message = $"Role {roleName} added successfully!" }
+                    );
                 }
 
                 _logger.LogInformation(2, "Error");
+                // Retorna uma resposta de erro se houver problemas ao adicionar a nova role
                 return StatusCode(StatusCodes.Status400BadRequest,
                     new ResponseDTO { Status = "Error", Message = $"Issue adding the new {roleName} role" }
-                    );
+                );
             }
 
+            // Retorna uma resposta de erro se a role já existir
             return StatusCode(StatusCodes.Status400BadRequest,
-                    new ResponseDTO { Status = "Error", Message = $"Role already exist" }
-                    );
+                new ResponseDTO { Status = "Error", Message = $"Role already exists" }
+            );
         }
 
         [Authorize(Policy = "AdminOnly")]
         [HttpPost("AddUserToRole/{email}/{roleName}")]
         public async Task<ActionResult> AddUserRole(string email, string roleName)
         {
-
+            // Procura o usuário pelo email
             var user = await _userManager.FindByEmailAsync(email);
 
             if (user != null)
             {
+                // Adiciona o usuário à role especificada
                 var result = await _userManager.AddToRoleAsync(user, roleName);
 
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, $"User {user.Email} added to the {roleName} role");
+                    // Retorna uma resposta de sucesso
                     return StatusCode(StatusCodes.Status200OK,
                         new ResponseDTO { Status = "Success", Message = $"User {user.Email} added to the {roleName} role!" }
-                        );
+                    );
                 }
 
                 _logger.LogInformation(1, $"Error: Unable to add user {user.Email} to the {roleName} role");
+                // Retorna uma resposta de erro se houver problemas ao adicionar o usuário à role
                 return StatusCode(StatusCodes.Status400BadRequest,
                     new ResponseDTO { Status = "Error", Message = $"Error: Unable to add user {user.Email} to the {roleName} role" }
-                    );
+                );
             }
 
+            // Retorna uma resposta de erro se o usuário não for encontrado
             return StatusCode(StatusCodes.Status400BadRequest,
-                    new ResponseDTO { Status = "Error", Message = $"Unable to find User" }
-                    );
+                new ResponseDTO { Status = "Error", Message = $"Unable to find User" }
+            );
         }
 
 

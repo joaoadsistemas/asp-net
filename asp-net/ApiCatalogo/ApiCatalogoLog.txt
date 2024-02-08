@@ -1207,3 +1207,8 @@ UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [E
 OUTPUT 1
 WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
 Information: 4 - Token revogado para o usuário com e-mail: ApiCatalogo.Dtos.RevokeDTO
+Information: 14 - Now listening on: https://localhost:7258
+Information: 14 - Now listening on: http://localhost:5187
+Information: 0 - Application started. Press Ctrl+C to shut down.
+Information: 0 - Hosting environment: Development
+Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo

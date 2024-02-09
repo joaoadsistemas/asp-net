@@ -8,7 +8,7 @@ namespace DSLearn.Entities
 
        
         public int OfferId { get; set; }
-        public Offer offer { get; set; }
+        public Offer Offer { get; set; }
 
         public int UserId { get; set; }
         public User User { get; set; }

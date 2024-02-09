@@ -12,6 +12,8 @@ namespace DSLearn.Entities
         public string Description { get; set; }
         public int Position { get; set; }
         public string ImgUri { get; set; }
+
+        public int? PreRequisiteId { get; set; }
         public Section? PreRequisite { get; set; }
 
 

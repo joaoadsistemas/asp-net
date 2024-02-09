@@ -11,5 +11,9 @@ namespace DSLearn.Entities
         public DateTime RefreshTokenExpiryTime { get; set; }
 
         public IEnumerable<Notification> Notifications { get; set; } 
+
+        public IEnumerable<Offer> Offers { get; set; }
+
+        public IEnumerable<Enrollment> Enrollments { get; set; }
     }
 }

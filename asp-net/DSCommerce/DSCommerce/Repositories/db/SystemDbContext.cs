@@ -31,7 +31,7 @@ namespace DSCommerce.Repositories.db
                 .HasForeignKey(oi => oi.OrderId);
 
             modelBuilder.Entity<OrderItem>()
-                .HasOne(oi => oi.Product)
+                .HasOne(oi => oi.Product)   
                 .WithMany(p => p.Items)
                 .HasForeignKey(oi => oi.ProductId);
         }

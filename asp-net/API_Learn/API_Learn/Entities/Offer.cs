@@ -14,12 +14,19 @@ namespace DSLearn.Entities
         public DateTime EndMoment { get; set; }
 
 
+        public IEnumerable<User> Users { get; set; }
+
+        public IEnumerable<Enrollment> Enrollments { get; set; }
+
+
 
         public int CourseId { get; set; }
         public Course Course { get; set;}
 
 
         public IEnumerable<Resource> Resources { get; set; }
+
+        public IEnumerable<Topic> Topics { get; set; }
 
     }
 }

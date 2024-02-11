@@ -194,6 +194,7 @@ namespace ApiCatalogo.Controllers
             {
                 Email = registerDTO.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
+                // TODO: Usuario nao esta aceitando nome composto com espaço, ex: Joao Henrique
                 UserName = registerDTO.Username,
             };
 

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DSLearn.Entities
 {
-    [Table("tb_user")]
+
     public class User : IdentityUser
     {
 

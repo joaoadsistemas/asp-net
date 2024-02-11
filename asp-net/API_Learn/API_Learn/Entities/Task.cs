@@ -2,7 +2,7 @@
 
 namespace DSLearn.Entities
 {
-    [Table("tb_lesson")]
+    [Table("tb_task")]
     public class Task : Lesson
     {
         public string Description { get; set; }

@@ -4,6 +4,7 @@ using DSLearn.Repositories.db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DSLearn.Migrations
 {
     [DbContext(typeof(SystemDbContext))]
-    partial class SystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240210154813_Inital")]
+    partial class Inital
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,15 +48,6 @@ namespace DSLearn.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("tb_course");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ImgGrayUri = "https://upload.wikimedia.org/wikipedia/commons/1/1f/Switch-course-book-grey.svg",
-                            ImgUri = "https://cdn.pixabay.com/photo/2018/03/22/10/55/training-course-3250007_1280.jpg",
-                            Name = "Bootcamp HTML"
-                        });
                 });
 
             modelBuilder.Entity("DSLearn.Entities.Deliver", b =>
@@ -67,7 +61,18 @@ namespace DSLearn.Migrations
                     b.Property<int?>("CorrectCount")
                         .HasColumnType("int");
 
+                    b.Property<int>("EnrollmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EnrollmentOfferId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EnrollmentUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Feedback")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("LessonId")
@@ -76,9 +81,6 @@ namespace DSLearn.Migrations
                     b.Property<DateTime>("Moment")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("OfferId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -86,29 +88,13 @@ namespace DSLearn.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("LessonId");
 
-                    b.HasIndex("OfferId", "UserId");
+                    b.HasIndex("EnrollmentOfferId", "EnrollmentUserId");
 
                     b.ToTable("tb_deliver");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            LessonId = 4,
-                            Moment = new DateTime(2020, 12, 10, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            OfferId = 1,
-                            Status = 0,
-                            Uri = "https://github.com/devsuperior/bds-dslearn",
-                            UserId = "3b01910b-4e21-4cf3-a859-9a79261d0385"
-                        });
                 });
 
             modelBuilder.Entity("DSLearn.Entities.Enrollment", b =>
@@ -136,24 +122,6 @@ namespace DSLearn.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("tb_enrollment");
-
-                    b.HasData(
-                        new
-                        {
-                            OfferId = 1,
-                            UserId = "3b01910b-4e21-4cf3-a859-9a79261d0385",
-                            Available = true,
-                            EnrollMoment = new DateTime(2020, 11, 20, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            OnlyUpdate = false
-                        },
-                        new
-                        {
-                            OfferId = 2,
-                            UserId = "fc8cf0a3-c3d2-49d2-8d20-1e22a6c4b8a7",
-                            Available = true,
-                            EnrollMoment = new DateTime(2020, 11, 20, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            OnlyUpdate = false
-                        });
                 });
 
             modelBuilder.Entity("DSLearn.Entities.Lesson", b =>
@@ -214,35 +182,6 @@ namespace DSLearn.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("tb_notification");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Moment = new DateTime(2020, 12, 10, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            Read = true,
-                            Route = "/offers/1/resource/1/sections/1",
-                            Text = "Primeiro feedback de tarefa: favor revisar",
-                            UserId = "3b01910b-4e21-4cf3-a859-9a79261d0385"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Moment = new DateTime(2020, 12, 12, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            Read = true,
-                            Route = "/offers/1/resource/1/sections/1",
-                            Text = "Segundo feedback: favor revisar",
-                            UserId = "3b01910b-4e21-4cf3-a859-9a79261d0385"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Moment = new DateTime(2020, 12, 14, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            Read = true,
-                            Route = "/offers/1/resource/1/sections/1",
-                            Text = "Terceiro feedback: favor revisar",
-                            UserId = "3b01910b-4e21-4cf3-a859-9a79261d0385"
-                        });
                 });
 
             modelBuilder.Entity("DSLearn.Entities.Offer", b =>
@@ -271,24 +210,6 @@ namespace DSLearn.Migrations
                     b.HasIndex("CourseId");
 
                     b.ToTable("tb_offer");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CourseId = 1,
-                            Edition = "1.0",
-                            EndMoment = new DateTime(2021, 11, 20, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            StartMoment = new DateTime(2020, 11, 20, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CourseId = 1,
-                            Edition = "2.0",
-                            EndMoment = new DateTime(2021, 12, 20, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            StartMoment = new DateTime(2020, 12, 20, 3, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("DSLearn.Entities.Reply", b =>
@@ -320,24 +241,6 @@ namespace DSLearn.Migrations
                     b.HasIndex("TopicId");
 
                     b.ToTable("Replys");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AuthorId = "fc8cf0a3-c3d2-49d2-8d20-1e22a6c4b8a7",
-                            Body = "Tente reiniciar o computador",
-                            Moment = new DateTime(2020, 12, 15, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            TopicId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AuthorId = "3b01910b-4e21-4cf3-a859-9a79261d0385",
-                            Body = "Deu certo, valeu!",
-                            Moment = new DateTime(2020, 12, 20, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            TopicId = 1
-                        });
                 });
 
             modelBuilder.Entity("DSLearn.Entities.Resource", b =>
@@ -377,38 +280,6 @@ namespace DSLearn.Migrations
                     b.HasIndex("OfferId");
 
                     b.ToTable("tb_resource");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Trilha principal do curso",
-                            OfferId = 1,
-                            Position = 1,
-                            Title = "Trilha HTML",
-                            Type = 1,
-                            imgUri = "https://cdn.pixabay.com/photo/2018/03/22/10/55/training-course-3250007_1280.jpg"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Tire suas dúvidas",
-                            OfferId = 1,
-                            Position = 2,
-                            Title = "Forum",
-                            Type = 2,
-                            imgUri = "https://cdn.pixabay.com/photo/2018/03/22/10/55/training-course-3250007_1280.jpg"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Lives exclusivas para a turma",
-                            OfferId = 1,
-                            Position = 3,
-                            Title = "Lives",
-                            Type = 0,
-                            imgUri = "https://cdn.pixabay.com/photo/2018/03/22/10/55/training-course-3250007_1280.jpg"
-                        });
                 });
 
             modelBuilder.Entity("DSLearn.Entities.Section", b =>
@@ -447,37 +318,6 @@ namespace DSLearn.Migrations
                     b.HasIndex("ResourceId");
 
                     b.ToTable("tb_section");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Neste capítulo vamos começar",
-                            ImgUri = "https://cdn.pixabay.com/photo/2018/03/22/10/55/training-course-3250007_1280.jpg",
-                            Position = 1,
-                            ResourceId = 1,
-                            Title = "Capítulo 1"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Neste capítulo vamos continuar",
-                            ImgUri = "https://cdn.pixabay.com/photo/2018/03/22/10/55/training-course-3250007_1280.jpg",
-                            Position = 2,
-                            PreRequisiteId = 1,
-                            ResourceId = 1,
-                            Title = "Capítulo 2"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Neste capítulo vamos finalizar",
-                            ImgUri = "https://cdn.pixabay.com/photo/2018/03/22/10/55/training-course-3250007_1280.jpg",
-                            Position = 3,
-                            PreRequisiteId = 2,
-                            ResourceId = 1,
-                            Title = "Capítulo 3"
-                        });
                 });
 
             modelBuilder.Entity("DSLearn.Entities.Topic", b =>
@@ -523,68 +363,6 @@ namespace DSLearn.Migrations
                     b.HasIndex("ReplyId");
 
                     b.ToTable("tb_topic");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AuthorId = "3b01910b-4e21-4cf3-a859-9a79261d0385",
-                            Body = "Corpo do tópico 1",
-                            LessonId = 1,
-                            Moment = new DateTime(2020, 12, 12, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            OfferId = 1,
-                            Title = "Título do tópico 1"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AuthorId = "fc8cf0a3-c3d2-49d2-8d20-1e22a6c4b8a7",
-                            Body = "Corpo do tópico 2",
-                            LessonId = 1,
-                            Moment = new DateTime(2020, 12, 13, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            OfferId = 1,
-                            Title = "Título do tópico 2"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AuthorId = "fc8cf0a3-c3d2-49d2-8d20-1e22a6c4b8a7",
-                            Body = "Corpo do tópico 3",
-                            LessonId = 1,
-                            Moment = new DateTime(2020, 12, 14, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            OfferId = 1,
-                            Title = "Título do tópico 3"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AuthorId = "3b01910b-4e21-4cf3-a859-9a79261d0385",
-                            Body = "Corpo do tópico 4",
-                            LessonId = 2,
-                            Moment = new DateTime(2020, 12, 15, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            OfferId = 1,
-                            Title = "Título do tópico 4"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            AuthorId = "3b01910b-4e21-4cf3-a859-9a79261d0385",
-                            Body = "Corpo do tópico 5",
-                            LessonId = 2,
-                            Moment = new DateTime(2020, 12, 16, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            OfferId = 1,
-                            Title = "Título do tópico 5"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            AuthorId = "fc8cf0a3-c3d2-49d2-8d20-1e22a6c4b8a7",
-                            Body = "Corpo do tópico 6",
-                            LessonId = 3,
-                            Moment = new DateTime(2020, 12, 17, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            OfferId = 1,
-                            Title = "Título do tópico 6"
-                        });
                 });
 
             modelBuilder.Entity("DSLearn.Entities.User", b =>
@@ -666,53 +444,6 @@ namespace DSLearn.Migrations
                     b.HasIndex("TopicId");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "3b01910b-4e21-4cf3-a859-9a79261d0385",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "b82acd4f-2cc2-4a0c-8846-077d47a5c6b6",
-                            Email = "alex@gmail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PasswordHash = "$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG",
-                            PhoneNumberConfirmed = false,
-                            RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SecurityStamp = "68a3f01f-17bc-4033-b955-330be6a27abf",
-                            TwoFactorEnabled = false,
-                            UserName = "Alex Brown"
-                        },
-                        new
-                        {
-                            Id = "fc8cf0a3-c3d2-49d2-8d20-1e22a6c4b8a7",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "deb1f14e-7ea7-46c6-b92f-dab6094b1821",
-                            Email = "bob@gmail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PasswordHash = "$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG",
-                            PhoneNumberConfirmed = false,
-                            RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SecurityStamp = "9fbfffb0-f47c-419d-9cb7-fd004d24c990",
-                            TwoFactorEnabled = false,
-                            UserName = "Bob Brown"
-                        },
-                        new
-                        {
-                            Id = "a1ff4f6c-5011-4b95-9bda-2bc33693fcac",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "3f39f4a1-1b6e-413e-aa16-c31490a5f321",
-                            Email = "maria@gmail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PasswordHash = "$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG",
-                            PhoneNumberConfirmed = false,
-                            RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SecurityStamp = "40adcd14-bf65-4691-8338-c6fc7ceccd59",
-                            TwoFactorEnabled = false,
-                            UserName = "Maria Green"
-                        });
                 });
 
             modelBuilder.Entity("EnrollmentLesson", b =>
@@ -758,26 +489,6 @@ namespace DSLearn.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "1",
-                            Name = "ROLE_STUDENT",
-                            NormalizedName = "ROLE_STUDENT"
-                        },
-                        new
-                        {
-                            Id = "2",
-                            Name = "ROLE_INSTRUCTOR",
-                            NormalizedName = "ROLE_INSTRUCTOR"
-                        },
-                        new
-                        {
-                            Id = "3",
-                            Name = "ROLE_ADMIN",
-                            NormalizedName = "ROLE_ADMIN"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -865,38 +576,6 @@ namespace DSLearn.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "3b01910b-4e21-4cf3-a859-9a79261d0385",
-                            RoleId = "1"
-                        },
-                        new
-                        {
-                            UserId = "fc8cf0a3-c3d2-49d2-8d20-1e22a6c4b8a7",
-                            RoleId = "1"
-                        },
-                        new
-                        {
-                            UserId = "fc8cf0a3-c3d2-49d2-8d20-1e22a6c4b8a7",
-                            RoleId = "2"
-                        },
-                        new
-                        {
-                            UserId = "a1ff4f6c-5011-4b95-9bda-2bc33693fcac",
-                            RoleId = "1"
-                        },
-                        new
-                        {
-                            UserId = "a1ff4f6c-5011-4b95-9bda-2bc33693fcac",
-                            RoleId = "2"
-                        },
-                        new
-                        {
-                            UserId = "a1ff4f6c-5011-4b95-9bda-2bc33693fcac",
-                            RoleId = "3"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -944,35 +623,6 @@ namespace DSLearn.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.ToTable("tb_content");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Position = 1,
-                            SectionId = 1,
-                            Title = "Aula 1 do capítulo 1",
-                            TextContent = "Material de apoio: abc",
-                            VideoUri = "https://www.youtube.com/watch?v=sqbqoR-lMf8"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Position = 2,
-                            SectionId = 1,
-                            Title = "Aula 2 do capítulo 1",
-                            TextContent = "",
-                            VideoUri = "https://www.youtube.com/watch?v=sqbqoR-lMf8"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Position = 3,
-                            SectionId = 1,
-                            Title = "Aula 3 do capítulo 1",
-                            TextContent = "",
-                            VideoUri = "https://www.youtube.com/watch?v=sqbqoR-lMf8"
-                        });
                 });
 
             modelBuilder.Entity("DSLearn.Entities.Task", b =>
@@ -996,20 +646,6 @@ namespace DSLearn.Migrations
                         .HasColumnType("float");
 
                     b.ToTable("tb_task");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 4,
-                            Position = 4,
-                            SectionId = 1,
-                            Title = "Tarefa do capítulo 1",
-                            ApprovalCount = 4,
-                            Description = "Fazer um trabalho legal",
-                            DueMoment = new DateTime(2020, 11, 25, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            QuestionCount = 5,
-                            Weight = 1.0
-                        });
                 });
 
             modelBuilder.Entity("DSLearn.Entities.Deliver", b =>
@@ -1022,7 +658,7 @@ namespace DSLearn.Migrations
 
                     b.HasOne("DSLearn.Entities.Enrollment", "Enrollment")
                         .WithMany("Deliveries")
-                        .HasForeignKey("OfferId", "UserId")
+                        .HasForeignKey("EnrollmentOfferId", "EnrollmentUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

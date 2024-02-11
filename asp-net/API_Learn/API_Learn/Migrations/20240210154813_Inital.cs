@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DSLearn.Migrations
 {
     /// <inheritdoc />
-    public partial class FluentApi : Migration
+    public partial class Inital : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -296,14 +296,38 @@ namespace DSLearn.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "OfferUser",
+                columns: table => new
+                {
+                    OffersId = table.Column<int>(type: "int", nullable: false),
+                    UsersId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OfferUser", x => new { x.OffersId, x.UsersId });
+                    table.ForeignKey(
+                        name: "FK_OfferUser_AspNetUsers_UsersId",
+                        column: x => x.UsersId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OfferUser_tb_offer_OffersId",
+                        column: x => x.OffersId,
+                        principalTable: "tb_offer",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "tb_enrollment",
                 columns: table => new
                 {
                     OfferId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     EnrollMoment = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    RefoundMoment = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Avaiable = table.Column<bool>(type: "bit", nullable: false),
+                    RefundMoment = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Available = table.Column<bool>(type: "bit", nullable: false),
                     OnlyUpdate = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -368,7 +392,7 @@ namespace DSLearn.Migrations
                         column: x => x.LessonsDoneId,
                         principalTable: "tb_lesson",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -401,7 +425,7 @@ namespace DSLearn.Migrations
                         column: x => x.LessonId,
                         principalTable: "tb_lesson",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -465,7 +489,7 @@ namespace DSLearn.Migrations
                         column: x => x.OfferId,
                         principalTable: "tb_offer",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
@@ -521,6 +545,11 @@ namespace DSLearn.Migrations
                 name: "IX_EnrollmentLesson_EnrollmentsDoneOfferId_EnrollmentsDoneUserId",
                 table: "EnrollmentLesson",
                 columns: new[] { "EnrollmentsDoneOfferId", "EnrollmentsDoneUserId" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OfferUser_UsersId",
+                table: "OfferUser",
+                column: "UsersId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Replys_AuthorId",
@@ -641,7 +670,7 @@ namespace DSLearn.Migrations
                 column: "TopicId",
                 principalTable: "tb_topic",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
         }
 
         /// <inheritdoc />
@@ -676,6 +705,9 @@ namespace DSLearn.Migrations
 
             migrationBuilder.DropTable(
                 name: "EnrollmentLesson");
+
+            migrationBuilder.DropTable(
+                name: "OfferUser");
 
             migrationBuilder.DropTable(
                 name: "tb_content");

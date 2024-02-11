@@ -4,6 +4,7 @@ using DSLearn.Repositories.db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DSLearn.Migrations
 {
     [DbContext(typeof(SystemDbContext))]
-    partial class SystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240210164735_Seed")]
+    partial class Seed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -672,14 +675,14 @@ namespace DSLearn.Migrations
                         {
                             Id = "3b01910b-4e21-4cf3-a859-9a79261d0385",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b82acd4f-2cc2-4a0c-8846-077d47a5c6b6",
+                            ConcurrencyStamp = "e232e65c-6eaf-4bec-a670-03f79bdae734",
                             Email = "alex@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG",
                             PhoneNumberConfirmed = false,
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SecurityStamp = "68a3f01f-17bc-4033-b955-330be6a27abf",
+                            SecurityStamp = "9495a870-3954-443c-a81e-b2ac3752bd7c",
                             TwoFactorEnabled = false,
                             UserName = "Alex Brown"
                         },
@@ -687,14 +690,14 @@ namespace DSLearn.Migrations
                         {
                             Id = "fc8cf0a3-c3d2-49d2-8d20-1e22a6c4b8a7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "deb1f14e-7ea7-46c6-b92f-dab6094b1821",
+                            ConcurrencyStamp = "39a4c971-c582-4747-953c-c04259324c79",
                             Email = "bob@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG",
                             PhoneNumberConfirmed = false,
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SecurityStamp = "9fbfffb0-f47c-419d-9cb7-fd004d24c990",
+                            SecurityStamp = "b1703405-4fce-4b02-96e2-e71a5a92781f",
                             TwoFactorEnabled = false,
                             UserName = "Bob Brown"
                         },
@@ -702,14 +705,14 @@ namespace DSLearn.Migrations
                         {
                             Id = "a1ff4f6c-5011-4b95-9bda-2bc33693fcac",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3f39f4a1-1b6e-413e-aa16-c31490a5f321",
+                            ConcurrencyStamp = "76d7e625-f131-44d2-b4ed-ee813f94fb23",
                             Email = "maria@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG",
                             PhoneNumberConfirmed = false,
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SecurityStamp = "40adcd14-bf65-4691-8338-c6fc7ceccd59",
+                            SecurityStamp = "5376244a-3a4c-42bc-98cc-199c06dbd64c",
                             TwoFactorEnabled = false,
                             UserName = "Maria Green"
                         });

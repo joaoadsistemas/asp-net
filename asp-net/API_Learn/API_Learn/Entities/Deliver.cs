@@ -13,14 +13,15 @@ namespace DSLearn.Entities
         public string Uri { get; set; }
         public DateTime Moment {  get; set; }
         public DeliverStatus Status { get; set; }
-        public string Feedback { get; set; }
+        public string? Feedback { get; set; }
         public int? CorrectCount { get; set; }
 
 
         public int LessonId { get; set; }
         public Lesson Lesson { get; set; }
 
-        public int EnrollmentId { get; set; }
+        public int OfferId { get; set; }
+        public string UserId { get; set; }
         public Enrollment Enrollment { get; set; }
 
     }

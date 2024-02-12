@@ -6,6 +6,7 @@ namespace ApiCatalogo.Repositories
     {
 
         IUserRepository UserRepository { get; }
+        INotificationRepository NotificationRepository { get; }
         
         Task CommitAsync();
 

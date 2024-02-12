@@ -13,7 +13,7 @@ namespace ApiCatalogo.Dtos
         [Required(ErrorMessage = "Phone is required")]
         public string PhoneNumber { get; set; }
 
-        public bool PhoneNumberIsConfirmed { get; set; }
+        public bool PhoneNumberIsConfirmed { get; set; } = false;
 
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }

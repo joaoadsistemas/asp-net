@@ -44,9 +44,9 @@ namespace DSLearn.Services
             return new UserDTO(entity);
         }
 
-        public async Task<bool> UpdateAsync(RegisterUserDTO registerUserDTO, string id)
+        public UserDTO Update(RegisterUserDTO registerUserDTO, string id)
         {
-            User entity = await _dbContext.Users.SingleOrDefaultAsync(u => u.Id == id)
+            User entity = _dbContext.Users.Find(id)
                 ?? throw new ArgumentException("Resource not found");
 
             copyDtoToEntity(registerUserDTO, entity);
@@ -57,16 +57,16 @@ namespace DSLearn.Services
                 entity.PasswordHash = newPasswordHash;
             }
 
-            var result = await _userManager.UpdateAsync(entity);
+           
 
-            return result.Succeeded;
+            return new UserDTO(entity);
         }
 
 
 
-        public async Task<bool> DeleteAsync(string id)
+        public bool Delete(string id)
         {
-            User entity = await _dbContext.Users.SingleOrDefaultAsync(u => u.Id == id)
+            User entity =  _dbContext.Users.Find(id)
                 ?? throw new ArgumentException("Resource not found");
             _dbContext.Users.Remove(entity);
             return true;

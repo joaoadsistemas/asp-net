@@ -8,7 +8,8 @@ namespace DSLearn.AutoMapper
 {
     public EntityToDTOProfile() 
     { 
-        
+        CreateMap<NotificationDTO, Notification>().ReverseMap();
+            
     }
 }
 }

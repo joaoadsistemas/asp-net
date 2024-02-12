@@ -50,7 +50,7 @@ namespace DSLearn.Controllers
             try
             {
 
-                await _unitOfWork.UserRepository.UpdateAsync(registerUserDTO, id);
+                _unitOfWork.UserRepository.Update(registerUserDTO, id);
                 await _unitOfWork.CommitAsync();
                 return NoContent();
 
@@ -67,7 +67,7 @@ namespace DSLearn.Controllers
             try
             {
 
-                await _unitOfWork.UserRepository.DeleteAsync(id);
+                _unitOfWork.UserRepository.Delete(id);
                 await _unitOfWork.CommitAsync();
                 return NoContent();
 

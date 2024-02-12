@@ -12,12 +12,10 @@ namespace ApiCatalogo.Repositories
     {
 
         private readonly SystemDbContext _dbContext;
-        private readonly IMapper _mapper;
 
-        public NotificationService(SystemDbContext dbContext, IMapper mapper)
+        public NotificationService(SystemDbContext dbContext)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
 
         public async Task<IEnumerable<NotificationDTO>> FindAllAsync(PageQueryParams pageQueryParams)

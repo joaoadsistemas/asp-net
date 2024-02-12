@@ -10,11 +10,12 @@ namespace ApiCatalogo.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly IMapper _mapper;
+
         public SystemDbContext _dbContext;
         private IUserRepository _userRepository;
         private readonly UserManager<User> _userManager;
         private INotificationRepository _notificationRepository;
+        private ICourseRepository _courseRepository;
 
 
 
@@ -22,12 +23,12 @@ namespace ApiCatalogo.Repositories
         {
             _dbContext = dbContext;
             _userManager = userManager;
-            _mapper = mapper;
         }
 
 
         public IUserRepository UserRepository { get { return _userRepository = _userRepository ?? new UserService(_dbContext, _userManager); } }
-        public INotificationRepository NotificationRepository { get { return _notificationRepository = _notificationRepository ?? new NotificationService(_dbContext, _mapper);} }
+        public INotificationRepository NotificationRepository { get { return _notificationRepository = _notificationRepository ?? new NotificationService(_dbContext);} }
+        public ICourseRepository CourseRepository { get { return _courseRepository = _courseRepository ?? new CourseService(_dbContext);} }
 
         public async System.Threading.Tasks.Task CommitAsync()
         {

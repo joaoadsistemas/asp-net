@@ -42,6 +42,7 @@ namespace DSCommerce
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            builder.Services.AddScoped<ICourseRepository, CourseService>();
             builder.Services.AddScoped<INotificationRepository, NotificationService>();
             builder.Services.AddAutoMapper(typeof(EntityToDTOProfile));
             builder.Services.AddScoped<IUserRepository, UserService>();

@@ -202,10 +202,9 @@ namespace ApiCatalogo.Controllers
         public async Task<ActionResult> Register([FromBody] RegisterUserDTO registerDTO)
         {
 
-            // Normaliza o nome de usuário, tirando os espaços e transformando em minuscula
-            var normalizedUsername = registerDTO.Username.ToLower().Replace(" ", ""); 
+           
             // Verifica se o usuário já existe
-            var userExists = await _userManager.FindByNameAsync(normalizedUsername);
+            var userExists = await _userManager.FindByNameAsync(registerDTO.Username);
 
             // Retorna erro se o usuário já existir
             if (userExists != null)

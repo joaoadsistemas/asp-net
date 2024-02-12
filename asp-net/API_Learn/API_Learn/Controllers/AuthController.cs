@@ -201,8 +201,11 @@ namespace ApiCatalogo.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Register([FromBody] RegisterUserDTO registerDTO)
         {
+
+            // Normaliza o nome de usuário, tirando os espaços e transformando em minuscula
+            var normalizedUsername = registerDTO.Username.ToLower().Replace(" ", ""); 
             // Verifica se o usuário já existe
-            var userExists = await _userManager.FindByNameAsync(registerDTO.Username);
+            var userExists = await _userManager.FindByNameAsync(normalizedUsername);
 
             // Retorna erro se o usuário já existir
             if (userExists != null)
@@ -213,6 +216,7 @@ namespace ApiCatalogo.Controllers
                     Message = "Email already exists!"
                 });
             }
+
 
             // Cria uma nova instância de ApplicationUser com os dados fornecidos
             User user = new()

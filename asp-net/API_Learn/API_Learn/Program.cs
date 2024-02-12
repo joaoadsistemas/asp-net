@@ -28,7 +28,12 @@ namespace DSCommerce
             // Add services to the container.
 
             // Configuração do banco de dados com usuários e funções
-            builder.Services.AddIdentity<User, IdentityRole>()
+            builder.Services.AddIdentity<User, IdentityRole>(options =>
+            {
+                // Configurações de normalização
+                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 "; // Adicione ou remova caracteres conforme necessário
+                options.User.RequireUniqueEmail = true; // Garante que os emails sejam únicos
+            })
                 .AddEntityFrameworkStores<SystemDbContext>()
                 .AddDefaultTokenProviders();
 

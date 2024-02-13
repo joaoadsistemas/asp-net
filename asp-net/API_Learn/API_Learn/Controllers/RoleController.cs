@@ -1,5 +1,6 @@
 ﻿using DSLearn.Dtos;
 using DSLearn.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,7 @@ namespace DSLearn.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "AdminOnly")]
         public async Task<ActionResult<IEnumerable<string>>> GetRoles()
         {
             var roles = await _roleManager.Roles.Select(r => r.Name).ToListAsync();
@@ -31,6 +33,7 @@ namespace DSLearn.Controllers
         }
 
         [HttpGet("{roleName}/users")]
+        [Authorize(Policy = "AdminOnly")]
         public async Task<ActionResult<IEnumerable<string>>> GetUsersInRole(string roleName)
         {
             IdentityRole role = await _roleManager.FindByNameAsync(roleName);

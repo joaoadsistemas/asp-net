@@ -36,6 +36,7 @@ namespace ApiCatalogo.Controllers
 
 
         [HttpPost("createRole/{roleName}")]
+        [Authorize(Policy = "AdminOnly")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseDTO), StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
@@ -72,6 +73,7 @@ namespace ApiCatalogo.Controllers
 
        
         [HttpPost("AddUserToRole/{email}/{roleName}")]
+        [Authorize(Policy = "AdminOnly")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseDTO), StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
@@ -125,9 +127,10 @@ namespace ApiCatalogo.Controllers
                 // Obtém as funções (roles) do usuário
                 var userRoles = await _userManager.GetRolesAsync(user);
 
-                // Cria uma lista de reivindicações (claims) de autenticação
+                // Cria uma lista de reivindicações (claims) de autenticação, que serao exibidos no PAYLOAD do token
                 var authClaims = new List<Claim>
                 {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.UserName!),
                 new Claim(ClaimTypes.Email, user.Email!),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
@@ -170,7 +173,7 @@ namespace ApiCatalogo.Controllers
         // adicionar um refresh token a um usuário
 
         [HttpPut("add-refresh-token")]
-        [Authorize(Policy = "ROLE_STUDENT")]
+        [Authorize(Policy = "StudentOnly")]
         public async Task<ActionResult> RefreshToken(RevokeDTO dto)
         {
             var user = await _userManager.FindByEmailAsync(dto.Email);
@@ -254,6 +257,7 @@ namespace ApiCatalogo.Controllers
 
         // Método para lidar com a renovação de token
         [HttpPost("refresh-token")]
+        [Authorize(Policy = "StudentOnly")]
         public async Task<ActionResult> RefreshToken(TokenDTO tokenDTO)
         {
             // Verifica se os tokens são válidos e se o usuário associado ao token ainda existe
@@ -306,7 +310,7 @@ namespace ApiCatalogo.Controllers
 
 
         // Método para revogar um token (requer autenticação)
-        [Authorize(Policy = "ROLE_ADMIN")]
+        [Authorize(Policy = "AdminOnly")]
         [HttpPost("revoke")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]

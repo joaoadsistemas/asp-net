@@ -2,6 +2,7 @@
 using ApiCatalogo.Repositories;
 using DSLearn.Controllers.Utils;
 using DSLearn.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,12 +37,11 @@ namespace DSLearn.Controllers
                 return Ok(result);
             }
             catch (ArgumentException ex) { return ErrorMessages.ErrorMessage(id); }
-
-
         }
 
 
         [HttpPost]
+        [Authorize(Policy = "AdminOnly")]
         public async Task<ActionResult<dynamic>> Insert([FromBody] CourseInsertDTO dto)
         {
             CourseDTO result = _unitOfWork.CourseRepository.Insert(dto);
@@ -51,6 +51,7 @@ namespace DSLearn.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Policy = "AdminOnly")]
         public async Task<ActionResult<dynamic>> Update([FromBody] CourseInsertDTO dto, int id)
         {
             try
@@ -63,6 +64,7 @@ namespace DSLearn.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Policy = "AdminOnly")]
         public async Task<ActionResult<dynamic>> Delete(int id)
         {
             try

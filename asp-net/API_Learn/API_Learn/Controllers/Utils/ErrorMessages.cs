@@ -11,5 +11,11 @@ namespace DSLearn.Controllers.Utils
         }
 
 
+        public static ActionResult<string> ErrorMessage(string id)
+        {
+            return new BadRequestObjectResult($"Id {id} does not exist");
+        }
+
+
     }
 }

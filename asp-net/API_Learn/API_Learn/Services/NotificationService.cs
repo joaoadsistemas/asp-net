@@ -4,7 +4,9 @@ using DSLearn.Dtos;
 using DSLearn.Entities;
 using DSLearn.Interfaces;
 using DSLearn.Repositories.db;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace ApiCatalogo.Repositories
 {
@@ -13,9 +15,11 @@ namespace ApiCatalogo.Repositories
 
         private readonly SystemDbContext _dbContext;
 
+
         public NotificationService(SystemDbContext dbContext)
         {
             _dbContext = dbContext;
+
         }
 
         public async Task<IEnumerable<NotificationDTO>> FindAllAsync(PageQueryParams pageQueryParams)
@@ -39,6 +43,23 @@ namespace ApiCatalogo.Repositories
                 .FirstOrDefaultAsync(n => n.Id == id) ?? throw new ArgumentException("Resource not found");
 
             return new NotificationDTO(result);
+        }
+
+        public async Task<IEnumerable<NotificationDTO>> FindByUserAsync(string id)
+        {
+
+            IEnumerable<Notification> result = await _dbContext.Notifications
+                .Include(n => n.User)
+                .Where(n => n.User.Id == id)
+                .AsNoTracking()
+                .ToListAsync();
+
+            if (result == null)
+            {
+                throw new ArgumentException("Resource not found");
+            }
+
+            return result.AsEnumerable().Select(n => new NotificationDTO(n));
         }
 
         public NotificationDTO Insert(NotificationInsertDTO notificationInsertDTO)
@@ -70,6 +91,8 @@ namespace ApiCatalogo.Repositories
             _dbContext.Notifications.Remove(entity);
             return true;
         }
+
+        
 
         private void copyDTOToEntity(NotificationInsertDTO notificationInsertDTO, Notification entity)
         {

@@ -9,6 +9,7 @@ namespace DSLearn.Interfaces
     public interface IUserRepository
     {
         Task<IEnumerable<UserDTO>> FindAllAsync(PageQueryParams pageQueryParams);
+        Task<IEnumerable<UserRolesDTO>> FindAllUserRolesAsync(PageQueryParams pageQueryParams);
         Task<UserDTO> FindByIdAsync(string id);
         UserDTO Update(RegisterUserDTO registerUserDTO, string id);
         bool Delete(string id);

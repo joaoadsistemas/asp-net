@@ -33,7 +33,20 @@ namespace DSLearn.Services
            .Take(pageQueryParams.PageSize)
            .AsNoTracking().ToListAsync();
 
+
             return result.AsEnumerable().Select(u => new UserDTO(u)).ToList(); ;
+        }
+
+        public async Task<IEnumerable<UserRolesDTO>> FindAllUserRolesAsync(PageQueryParams pageQueryParams)
+        {
+            List<User> result = await _dbContext.Users.Where(p => p.UserName.Contains(pageQueryParams.Name))
+           .OrderBy(p => p.UserName)
+           .Skip((pageQueryParams.PageNumber - 1) * pageQueryParams.PageSize)
+           .Take(pageQueryParams.PageSize)
+           .AsNoTracking().ToListAsync();
+
+
+            return result.AsEnumerable().Select(u => new UserRolesDTO(u, _userManager)).ToList(); ;
         }
 
         public async Task<UserDTO> FindByIdAsync(string id)

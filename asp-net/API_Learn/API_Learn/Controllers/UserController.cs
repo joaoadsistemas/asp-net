@@ -4,6 +4,7 @@ using ApiCatalogo.Repositories;
 using DSLearn.Dtos;
 using DSLearn.Entities;
 using DSLearn.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,7 @@ namespace DSLearn.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "StudentOnly")]
         public async Task<ActionResult<IEnumerable<UserDTO>>> FindAll([FromQuery] PageQueryParams pageQueryParams)
         {
             return Ok(await _unitOfWork.UserRepository.FindAllAsync(pageQueryParams));
@@ -29,7 +31,17 @@ namespace DSLearn.Controllers
         }
 
 
+        [HttpGet("user-roles")]
+        [Authorize(Policy = "AdminOnly")]
+        public async Task<ActionResult<IEnumerable<UserDTO>>> FindAllUserRoles ([FromQuery] PageQueryParams pageQueryParams)
+        {
+            return Ok(await _unitOfWork.UserRepository.FindAllUserRolesAsync(pageQueryParams));
+
+        }
+
+
         [HttpGet("{id}")]
+        [Authorize(Policy = "StudentOnly")]
         public async Task<ActionResult<UserDTO>> FindById(string id)
         {
             try
@@ -45,6 +57,7 @@ namespace DSLearn.Controllers
 
 
         [HttpPut("{id}")]
+        [Authorize(Policy = "AdminOnly")]
         public async Task<ActionResult<dynamic>> Insert([FromBody] RegisterUserDTO registerUserDTO, string id)
         {
             try
@@ -62,6 +75,7 @@ namespace DSLearn.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Policy = "AdminOnly")]
         public async Task<ActionResult<dynamic>> Delete(string id)
         {
             try

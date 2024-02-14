@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DSLearn.Entities
 {
     [Table("tb_deliver")]
-    public class DeliverDTO
+    public class Deliver
     {
 
         [Key]

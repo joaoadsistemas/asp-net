@@ -18,7 +18,7 @@ namespace DSLearn.Entities
 
         public IEnumerable<Enrollment> EnrollmentsDone { get; set; }
 
-        public IEnumerable<DeliverDTO> Deliveries { get; set; }
+        public IEnumerable<Deliver> Deliveries { get; set; }
 
         public IEnumerable<Topic> Topics { get; set; }
     }

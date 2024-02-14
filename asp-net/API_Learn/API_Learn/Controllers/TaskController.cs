@@ -8,23 +8,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DSLearn.Controllers
 {
-    [Route("sections")]
+    [Route("tasks")]
     [ApiController]
-    public class SectionController : ControllerBase
+    public class TaskController : ControllerBase
     {
 
         private readonly IUnitOfWork _unitOfWork;
 
-        public SectionController(IUnitOfWork unitOfWork)
+        public TaskController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<SectionDTO>>> FindAll([FromQuery] PageQueryParams pageQueryParams)
+        public async Task<ActionResult<IEnumerable<TaskDTO>>> FindAll([FromQuery] PageQueryParams pageQueryParams)
         {
-            return Ok(await _unitOfWork.SectionRepository.FindAllAsync(pageQueryParams));
+            return Ok(await _unitOfWork.TaskRepository.FindAllAsync(pageQueryParams));
 
         }
 
@@ -33,7 +33,7 @@ namespace DSLearn.Controllers
         {
             try
             {
-                SectionDTO result = await _unitOfWork.SectionRepository.FindByIdAsync(id);
+                TaskDTO result = await _unitOfWork.TaskRepository.FindByIdAsync(id);
                 return Ok(result);
             }
             catch (ArgumentException ex) { return ErrorMessages.ErrorMessage(id); }
@@ -41,22 +41,22 @@ namespace DSLearn.Controllers
 
 
         [HttpPost]
-        [Authorize(Policy = "InstructorOnly")]
-        public async Task<ActionResult<dynamic>> Insert([FromBody] SectionInsertDTO dto)
+        //[Authorize(Policy = "AdminOnly")]
+        public async Task<ActionResult<dynamic>> Insert([FromBody] TaskInsertDTO dto)
         {
-            SectionDTO result = _unitOfWork.SectionRepository.Insert(dto);
+            TaskDTO result = _unitOfWork.TaskRepository.Insert(dto);
             await _unitOfWork.CommitAsync();
 
             return CreatedAtAction(nameof(FindById), new { Id = result.Id }, result);
         }
 
         [HttpPut("{id}")]
-        [Authorize(Policy = "InstructorOnly")]
-        public async Task<ActionResult<dynamic>> Update([FromBody] SectionInsertDTO dto, int id)
+       // [Authorize(Policy = "AdminOnly")]
+        public async Task<ActionResult<dynamic>> Update([FromBody] TaskInsertDTO dto, int id)
         {
             try
             {
-                SectionDTO result = _unitOfWork.SectionRepository.Update(dto, id);
+                TaskDTO result = _unitOfWork.TaskRepository.Update(dto, id);
                 await _unitOfWork.CommitAsync();
                 return Ok(result);
             }
@@ -64,12 +64,12 @@ namespace DSLearn.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Policy = "InstructorOnly")]
+        //[Authorize(Policy = "AdminOnly")]
         public async Task<ActionResult<dynamic>> Delete(int id)
         {
             try
             {
-                _unitOfWork.SectionRepository.Delete(id);
+                _unitOfWork.TaskRepository.Delete(id);
                 await _unitOfWork.CommitAsync();
                 return NoContent();
 

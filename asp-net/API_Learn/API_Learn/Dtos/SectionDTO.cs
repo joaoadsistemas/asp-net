@@ -1,4 +1,6 @@
 ﻿using DSLearn.Entities;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DSLearn.Dtos
 {
@@ -9,11 +11,8 @@ namespace DSLearn.Dtos
         public string Description { get; set; }
         public int Position { get; set; }
         public string ImgUri { get; set; }
-
         public int? PrerequesiteId { get; set; }
-
-        public IEnumerable<LessonDTO> Lessons { get; set; }
-
+        public List<LessonDTO> Lessons { get; set; }
 
         public SectionDTO(Section entity)
         {
@@ -24,7 +23,22 @@ namespace DSLearn.Dtos
             this.ImgUri = entity.ImgUri;
             this.PrerequesiteId = entity.PreRequisiteId;
 
-            this.Lessons = entity.Lessons != null ? entity.Lessons.AsEnumerable().Select(l => new LessonDTO(l)) : null;
+            this.Lessons = entity.Lessons != null ?
+                entity.Lessons.AsEnumerable().Select(l => ConvertLessonToDTO(l)).ToList() : null;
+        }
+
+        // tentando implementar um retorno personalizado se for uma Task ou se for um Content
+        private LessonDTO ConvertLessonToDTO(Lesson lesson)
+        {
+            if (lesson is Entities.Task)
+            {
+                return new TaskDTO((Entities.Task) lesson); 
+            }
+            else if (lesson is Content)
+            {
+                return new ContentDTO(lesson);
+            }
+            return new LessonDTO(lesson);
         }
     }
 }

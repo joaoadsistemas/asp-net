@@ -1,7 +1,6 @@
 using ApiCatalogo.Entities;
 using ApiCatalogo.Repositories;
 using DSCommerce.Extensions;
-using DSLearn.AutoMapper;
 using DSLearn.Entities;
 using DSLearn.Interfaces;
 using DSLearn.Repositories.db;

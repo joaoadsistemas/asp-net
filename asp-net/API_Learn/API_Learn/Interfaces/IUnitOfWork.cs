@@ -9,6 +9,7 @@ namespace ApiCatalogo.Repositories
         INotificationRepository NotificationRepository { get; }
         ICourseRepository CourseRepository { get; }
         IOfferRepository OfferRepository { get; }
+        IResourceRepository ResourceRepository { get; }
 
         Task CommitAsync();
 

@@ -2,25 +2,24 @@
 
 namespace DSLearn.Dtos
 {
-    public class SectionDTO
+    public class SectionInsertDTO
     {
-        public long Id { get; set; }
+
         public string Title { get; set; }
         public string Description { get; set; }
         public int Position { get; set; }
         public string ImgUri { get; set; }
 
-        public IEnumerable<LessonDTO> Lessons { get; set; }
+        public int ResourceId { get; set; }
 
-        public SectionDTO(Section entity)
+        public SectionInsertDTO(Section entity)
         {
-            this.Id = entity.Id;
             this.Title = entity.Title;
             this.Description = entity.Description;
             this.Position = entity.Position;
             this.ImgUri = entity.ImgUri;
 
-            this.Lessons = null;// implementar
+            this.ResourceId = entity.ResourceId;
         }
     }
 }

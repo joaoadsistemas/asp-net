@@ -5,6 +5,7 @@ using DSLearn.Repositories.db;
 using DSLearn.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.Design;
 
 namespace ApiCatalogo.Repositories
 {
@@ -17,6 +18,7 @@ namespace ApiCatalogo.Repositories
         private INotificationRepository _notificationRepository;
         private ICourseRepository _courseRepository;
         private IOfferRepository _offerRepository;
+        private IResourceRepository _resourceRepository;
 
 
 
@@ -31,6 +33,7 @@ namespace ApiCatalogo.Repositories
         public INotificationRepository NotificationRepository { get { return _notificationRepository = _notificationRepository ?? new NotificationService(_dbContext);} }
         public ICourseRepository CourseRepository { get { return _courseRepository = _courseRepository ?? new CourseService(_dbContext);} }
         public IOfferRepository OfferRepository { get { return _offerRepository = _offerRepository ?? new OfferService(_dbContext); } }
+        public IResourceRepository ResourceRepository { get { return _resourceRepository = _resourceRepository ?? new ResourceService(_dbContext); } }
 
         public async System.Threading.Tasks.Task CommitAsync()
         {

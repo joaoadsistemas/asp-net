@@ -90,7 +90,6 @@ namespace ApiCatalogo.Repositories
         {
             Offer entity = _dbContext.Offers
                .Include(o => o.Course)
-               .AsNoTracking()
                .FirstOrDefault(o => o.Id == id) ?? throw new ArgumentException("Resource not found");
             copyDTOToEntity(offerInsertDTO, entity);
             return new OfferDTO(entity);
@@ -99,7 +98,6 @@ namespace ApiCatalogo.Repositories
         public bool Delete(int id)
         {
             Offer entity = _dbContext.Offers
-                 .AsNoTracking()
                  .FirstOrDefault(o => o.Id == id) ?? throw new ArgumentException("Resource not found");
             _dbContext.Offers.Remove(entity);
             return true;

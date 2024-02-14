@@ -8,23 +8,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DSLearn.Controllers
 {
-    [Route("offers")]
+    [Route("resources")]
     [ApiController]
-    public class OfferController : ControllerBase
+    public class ResourceController : ControllerBase
     {
 
         private readonly IUnitOfWork _unitOfWork;
 
-        public OfferController(IUnitOfWork unitOfWork)
+        public ResourceController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<OfferDTO>>> FindAll([FromQuery] PageQueryParams pageQueryParams)
+        public async Task<ActionResult<IEnumerable<ResourceDTO>>> FindAll([FromQuery] PageQueryParams pageQueryParams)
         {
-            return Ok(await _unitOfWork.OfferRepository.FindAllAsync(pageQueryParams));
+            return Ok(await _unitOfWork.ResourceRepository.FindAllAsync(pageQueryParams));
 
         }
 
@@ -33,27 +33,18 @@ namespace DSLearn.Controllers
         {
             try
             {
-                OfferDTO result = await _unitOfWork.OfferRepository.FindByIdAsync(id);
+                ResourceDTO result = await _unitOfWork.ResourceRepository.FindByIdAsync(id);
                 return Ok(result);
             }
             catch (ArgumentException ex) { return ErrorMessages.ErrorMessage(id); }
         }
 
-        [HttpPost("insert-user-to-offer")]
-        [Authorize(Policy = "AdminOnly")]
-        public async Task<ActionResult<dynamic>> Insert([FromBody] OfferUserInsertDTO dto)
-        {
-            OfferDTO result = await _unitOfWork.OfferRepository.InsertUserToOffer(dto);
-            await _unitOfWork.CommitAsync();
-
-            return CreatedAtAction(nameof(FindById), new { Id = result.Id }, result);
-        }
 
         [HttpPost]
         [Authorize(Policy = "AdminOnly")]
-        public async Task<ActionResult<dynamic>> Insert([FromBody] OfferInsertDTO dto)
+        public async Task<ActionResult<dynamic>> Insert([FromBody] ResourceInsertDTO dto)
         {
-            OfferDTO result = _unitOfWork.OfferRepository.Insert(dto);
+            ResourceDTO result = _unitOfWork.ResourceRepository.Insert(dto);
             await _unitOfWork.CommitAsync();
 
             return CreatedAtAction(nameof(FindById), new { Id = result.Id }, result);
@@ -61,11 +52,11 @@ namespace DSLearn.Controllers
 
         [HttpPut("{id}")]
         [Authorize(Policy = "AdminOnly")]
-        public async Task<ActionResult<dynamic>> Update([FromBody] OfferInsertDTO dto, int id)
+        public async Task<ActionResult<dynamic>> Update([FromBody] ResourceInsertDTO dto, int id)
         {
             try
             {
-                OfferDTO result = _unitOfWork.OfferRepository.Update(dto, id);
+                ResourceDTO result = _unitOfWork.ResourceRepository.Update(dto, id);
                 await _unitOfWork.CommitAsync();
                 return Ok(result);
             }
@@ -78,7 +69,7 @@ namespace DSLearn.Controllers
         {
             try
             {
-                _unitOfWork.OfferRepository.Delete(id);
+                _unitOfWork.ResourceRepository.Delete(id);
                 await _unitOfWork.CommitAsync();
                 return NoContent();
 

@@ -14,8 +14,6 @@ namespace DSLearn.Dtos
         public ResourceType Type { get; set; }
         public string? ExternalLink { get; set; }
 
-        public int OfferId { get; set; }
-
         public IEnumerable<SectionDTO> Sections { get; set; }
 
 
@@ -23,13 +21,12 @@ namespace DSLearn.Dtos
         {
             this.Id = entity.Id;
             this.Title = entity.Title;
-            this.Description = entity.Description;
-            this.Position = entity.Position;
             this.imgUri = entity.imgUri;
+            this.Description = entity.Description;
+            this.Position = entity.Position; 
             this.Type = entity.Type;
             this.ExternalLink = entity.ExternalLink;
-            this.OfferId = entity.OfferId;
-            this.Sections = null;// implementar
+            this.Sections = entity.Sections != null ? entity.Sections.AsEnumerable().Select(s => new SectionDTO(s)) : null;
         }
     }
 }

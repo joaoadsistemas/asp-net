@@ -10,6 +10,8 @@ namespace DSLearn.Interfaces
     {
         Task<IEnumerable<UserDTO>> FindAllAsync(PageQueryParams pageQueryParams);
         Task<IEnumerable<UserRolesDTO>> FindAllUserRolesAsync(PageQueryParams pageQueryParams);
+        Task<IEnumerable<UserAllInformationsDTO>> FindAllUserAllInformationsAsync(PageQueryParams pageQueryParams);
+        Task<UserAllInformationsDTO> FindByIdUserAllInformationsAsync(string id);
         Task<UserDTO> FindByIdAsync(string id);
         UserDTO Update(RegisterUserDTO registerUserDTO, string id);
         bool Delete(string id);

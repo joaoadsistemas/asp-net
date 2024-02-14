@@ -26,8 +26,8 @@ namespace DSLearn.Entities
         public User Author { get; set; }
 
 
-        public int? ReplyId { get; set; }
-        public Reply? Reply { get; set; }
+        public int? AnswerId { get; set; }
+        public Reply? Answer { get; set; }
 
 
         public IEnumerable<Reply> Replies { get; set; }

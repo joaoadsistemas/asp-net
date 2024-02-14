@@ -20,6 +20,6 @@ namespace DSLearn.Entities
       
         public IEnumerable<Lesson> LessonsDone { get; set; }
 
-        public IEnumerable<Deliver> Deliveries { get; set; }
+        public IEnumerable<DeliverDTO> Deliveries { get; set; }
     }
 }

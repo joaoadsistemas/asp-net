@@ -15,7 +15,7 @@ namespace DSLearn.Repositories.db
 
         public DbSet<Content> Contents { get; set; }
         public DbSet<Course> Courses { get; set; }
-        public DbSet<Deliver> Delivers { get; set; }
+        public DbSet<DeliverDTO> Delivers { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<Notification> Notifications { get; set; }
@@ -31,16 +31,16 @@ namespace DSLearn.Repositories.db
             base.OnModelCreating(builder);
 
             builder.Entity<Topic>()
-                .HasOne(t => t.Reply)
+                .HasOne(t => t.Answer)
                 .WithMany()
-                .HasForeignKey(t => t.ReplyId);
+                .HasForeignKey(t => t.AnswerId);
 
             builder.Entity<Reply>()
                 .HasOne(r => r.Topic)
                 .WithMany(t => t.Replies)
                 .HasForeignKey(r => r.TopicId);
 
-            builder.Entity<Deliver>()
+            builder.Entity<DeliverDTO>()
                 .HasOne(d => d.Lesson)
                 .WithMany(l => l.Deliveries)
                 .HasForeignKey(d => d.LessonId);
@@ -64,7 +64,7 @@ namespace DSLearn.Repositories.db
                 .HasMany(l => l.EnrollmentsDone)
                 .WithMany(e => e.LessonsDone);
 
-            builder.Entity<Deliver>()
+            builder.Entity<DeliverDTO>()
                 .HasOne(d => d.Enrollment)
                 .WithMany(e => e.Deliveries)
                 .HasForeignKey(d => new { d.OfferId, d.UserId }); // Use the correct foreign key properties
@@ -299,8 +299,8 @@ namespace DSLearn.Repositories.db
                 }
             );
 
-            builder.Entity<Deliver>().HasData(
-                new Deliver
+            builder.Entity<DeliverDTO>().HasData(
+                new DeliverDTO
                 {
                     Id = 1,
                     Uri = "https://github.com/devsuperior/bds-dslearn",

@@ -16,6 +16,7 @@ namespace ApiCatalogo.Repositories
         private readonly UserManager<User> _userManager;
         private INotificationRepository _notificationRepository;
         private ICourseRepository _courseRepository;
+        private IOfferRepository _offerRepository;
 
 
 
@@ -29,6 +30,7 @@ namespace ApiCatalogo.Repositories
         public IUserRepository UserRepository { get { return _userRepository = _userRepository ?? new UserService(_dbContext, _userManager); } }
         public INotificationRepository NotificationRepository { get { return _notificationRepository = _notificationRepository ?? new NotificationService(_dbContext);} }
         public ICourseRepository CourseRepository { get { return _courseRepository = _courseRepository ?? new CourseService(_dbContext);} }
+        public IOfferRepository OfferRepository { get { return _offerRepository = _offerRepository ?? new OfferService(_dbContext); } }
 
         public async System.Threading.Tasks.Task CommitAsync()
         {

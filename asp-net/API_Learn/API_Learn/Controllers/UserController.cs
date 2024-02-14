@@ -39,6 +39,29 @@ namespace DSLearn.Controllers
 
         }
 
+        [HttpGet("user-all-info")]
+        [Authorize(Policy = "AdminOnly")]
+        public async Task<ActionResult<IEnumerable<UserAllInformationsDTO>>> FindAllUserAllInformations([FromQuery] PageQueryParams pageQueryParams)
+        {
+            return Ok(await _unitOfWork.UserRepository.FindAllUserAllInformationsAsync(pageQueryParams));
+
+        }
+
+        [HttpGet("user-all-info/{id}")]
+        [Authorize(Policy = "AdminOnly")]
+        public async Task<ActionResult<UserAllInformationsDTO>> FindAllUserInfoById(string id)
+        {
+            try
+            {
+                UserAllInformationsDTO result = await _unitOfWork.UserRepository.FindByIdUserAllInformationsAsync(id);
+                return Ok(result);
+
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest($"Id {id} does not exists");
+            }
+        }
 
         [HttpGet("{id}")]
         [Authorize(Policy = "StudentOnly")]

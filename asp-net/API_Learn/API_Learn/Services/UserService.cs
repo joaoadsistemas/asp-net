@@ -34,7 +34,7 @@ namespace DSLearn.Services
            .AsNoTracking().ToListAsync();
 
 
-            return result.AsEnumerable().Select(u => new UserDTO(u)).ToList(); ;
+            return result.AsEnumerable().Select(u => new UserDTO(u)).ToList();
         }
 
         public async Task<IEnumerable<UserRolesDTO>> FindAllUserRolesAsync(PageQueryParams pageQueryParams)
@@ -46,7 +46,31 @@ namespace DSLearn.Services
            .AsNoTracking().ToListAsync();
 
 
-            return result.AsEnumerable().Select(u => new UserRolesDTO(u, _userManager)).ToList(); ;
+            return result.AsEnumerable().Select(u => new UserRolesDTO(u, _userManager)).ToList();
+        }
+
+        public async Task<IEnumerable<UserAllInformationsDTO>> FindAllUserAllInformationsAsync(PageQueryParams pageQueryParams)
+        {
+           List<User> result = await _dbContext.Users
+                .Include(u => u.Notifications)
+                .Include(u => u.Enrollments)
+                .Where(p => p.UserName.Contains(pageQueryParams.Name))
+          .OrderBy(p => p.UserName)
+          .Skip((pageQueryParams.PageNumber - 1) * pageQueryParams.PageSize)
+          .Take(pageQueryParams.PageSize)
+          .AsNoTracking().ToListAsync();
+
+
+            return result.AsEnumerable().Select(u => new UserAllInformationsDTO(u)).ToList();
+        }
+
+        public async Task<UserAllInformationsDTO> FindByIdUserAllInformationsAsync(string id)
+        {
+            User entity = await _dbContext.Users.Include(u => u.Notifications)
+                .Include(u => u.Enrollments).AsNoTracking().FirstOrDefaultAsync(u => u.Id == id)
+                ?? throw new ArgumentException("Resource not found");
+
+            return new UserAllInformationsDTO(entity);
         }
 
         public async Task<UserDTO> FindByIdAsync(string id)

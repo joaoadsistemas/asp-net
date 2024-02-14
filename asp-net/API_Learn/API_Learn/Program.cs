@@ -47,7 +47,6 @@ namespace DSCommerce
             builder.Services.AddScoped<IResourceRepository, ResourceService>();
             builder.Services.AddScoped<ICourseRepository, CourseService>();
             builder.Services.AddScoped<INotificationRepository, NotificationService>();
-            builder.Services.AddAutoMapper(typeof(EntityToDTOProfile));
             builder.Services.AddScoped<IUserRepository, UserService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<ITokenService, TokenService>();

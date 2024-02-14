@@ -19,6 +19,7 @@ namespace ApiCatalogo.Repositories
         private ICourseRepository _courseRepository;
         private IOfferRepository _offerRepository;
         private IResourceRepository _resourceRepository;
+        private ISectionRepository _sectionRepository;
 
 
 
@@ -34,6 +35,7 @@ namespace ApiCatalogo.Repositories
         public ICourseRepository CourseRepository { get { return _courseRepository = _courseRepository ?? new CourseService(_dbContext);} }
         public IOfferRepository OfferRepository { get { return _offerRepository = _offerRepository ?? new OfferService(_dbContext); } }
         public IResourceRepository ResourceRepository { get { return _resourceRepository = _resourceRepository ?? new ResourceService(_dbContext); } }
+        public ISectionRepository SectionRepository { get { return _sectionRepository = _sectionRepository ?? new SectionService(_dbContext); } }
 
         public async System.Threading.Tasks.Task CommitAsync()
         {

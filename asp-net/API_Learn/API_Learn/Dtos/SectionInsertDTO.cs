@@ -12,14 +12,7 @@ namespace DSLearn.Dtos
 
         public int ResourceId { get; set; }
 
-        public SectionInsertDTO(Section entity)
-        {
-            this.Title = entity.Title;
-            this.Description = entity.Description;
-            this.Position = entity.Position;
-            this.ImgUri = entity.ImgUri;
+        public int? PrerequesiteId { get; set; }
 
-            this.ResourceId = entity.ResourceId;
-        }
     }
 }

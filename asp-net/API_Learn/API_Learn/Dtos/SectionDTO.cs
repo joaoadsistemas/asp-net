@@ -10,7 +10,10 @@ namespace DSLearn.Dtos
         public int Position { get; set; }
         public string ImgUri { get; set; }
 
+        public int? PrerequesiteId { get; set; }
+
         public IEnumerable<LessonDTO> Lessons { get; set; }
+
 
         public SectionDTO(Section entity)
         {
@@ -19,8 +22,9 @@ namespace DSLearn.Dtos
             this.Description = entity.Description;
             this.Position = entity.Position;
             this.ImgUri = entity.ImgUri;
+            this.PrerequesiteId = entity.PreRequisiteId;
 
-            this.Lessons = null;// implementar
+            this.Lessons = entity.Lessons != null ? entity.Lessons.AsEnumerable().Select(l => new LessonDTO(l)) : null;
         }
     }
 }

@@ -42,6 +42,7 @@ namespace DSCommerce
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            builder.Services.AddScoped<IEnrollmentRepository, EnrollmentService>();
             builder.Services.AddScoped<IDeliverRepository, DeliverService>();
             builder.Services.AddScoped<ITaskRepository, TaskService>();
             builder.Services.AddScoped<IContentRepository, ContentService>();

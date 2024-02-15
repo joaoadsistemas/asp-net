@@ -6,7 +6,6 @@ namespace DSLearn.Dtos
     {
 
         public int OfferId { get; set; }
-
         public string UserId { get; set; }
 
         public DateTime EnrollMoment { get; set; }
@@ -29,8 +28,8 @@ namespace DSLearn.Dtos
             this.Available = entity.Available;
             this.OnlyUpdate = entity.OnlyUpdate;
 
-            this.LessonsDone = null;///// implementar
-            this.Deliveries = null;//// implementar
+            this.LessonsDone = entity.LessonsDone != null ? entity.LessonsDone.AsEnumerable().Select(l => new LessonDTO(l)) : null;
+            this.Deliveries = entity.Deliveries != null ? entity.Deliveries.AsEnumerable().Select(d => new DeliverDTO(d)) : null;
         }
 
     }

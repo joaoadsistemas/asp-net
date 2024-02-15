@@ -16,6 +16,8 @@ namespace DSLearn.Dtos
         public TaskDTO(Entities.Task taskEntity) : base(taskEntity)
         {
             base.Id = taskEntity.Id;
+            base.Title = taskEntity.Title;
+            base.Position = taskEntity.Position;
             this.Description = taskEntity.Description;
             this.QuestionCount = taskEntity.QuestionCount;
             this.ApprovalCount = taskEntity.ApprovalCount;

@@ -21,13 +21,15 @@ namespace ApiCatalogo.Repositories
         private IResourceRepository _resourceRepository;
         private ISectionRepository _sectionRepository;
         private ITaskRepository _taskRepository;
+        private IContentRepository _contentRepository;
 
 
 
-        public UnitOfWork(SystemDbContext dbContext, UserManager<User> userManager, IMapper mapper)
+        public UnitOfWork(SystemDbContext dbContext, UserManager<User> userManager, IContentRepository contentRepository)
         {
             _dbContext = dbContext;
             _userManager = userManager;
+            _contentRepository = contentRepository;
         }
 
 
@@ -38,6 +40,7 @@ namespace ApiCatalogo.Repositories
         public IResourceRepository ResourceRepository { get { return _resourceRepository = _resourceRepository ?? new ResourceService(_dbContext); } }
         public ISectionRepository SectionRepository { get { return _sectionRepository = _sectionRepository ?? new SectionService(_dbContext); } }
         public ITaskRepository TaskRepository { get { return _taskRepository = _taskRepository ?? new TaskService(_dbContext); } }
+        public IContentRepository ContentRepository { get { return _contentRepository = _contentRepository ?? new ContentService(_dbContext); } }
 
         public async System.Threading.Tasks.Task CommitAsync()
         {

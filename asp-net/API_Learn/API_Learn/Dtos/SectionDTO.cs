@@ -36,7 +36,7 @@ namespace DSLearn.Dtos
             }
             else if (lesson is Content)
             {
-                return new ContentDTO(lesson);
+                return new ContentDTO((Content) lesson);
             }
             return new LessonDTO(lesson);
         }

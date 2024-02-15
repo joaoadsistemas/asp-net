@@ -1,4 +1,5 @@
 ﻿using ApiCatalogo.Dtos;
+using ApiCatalogo.Dtos;
 using ApiCatalogo.Pagination;
 using DSLearn.Dtos;
 using DSLearn.Entities;

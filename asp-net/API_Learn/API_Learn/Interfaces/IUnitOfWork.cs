@@ -13,6 +13,7 @@ namespace ApiCatalogo.Repositories
         ISectionRepository SectionRepository { get; }
         ITaskRepository TaskRepository { get; } 
         IContentRepository ContentRepository { get; }
+        IDeliverRepository DeliverRepository { get; }
 
         Task CommitAsync();
 

@@ -22,6 +22,7 @@ namespace ApiCatalogo.Repositories
         private ISectionRepository _sectionRepository;
         private ITaskRepository _taskRepository;
         private IContentRepository _contentRepository;
+        private IDeliverRepository _deliverRepository;
 
 
 
@@ -41,6 +42,7 @@ namespace ApiCatalogo.Repositories
         public ISectionRepository SectionRepository { get { return _sectionRepository = _sectionRepository ?? new SectionService(_dbContext); } }
         public ITaskRepository TaskRepository { get { return _taskRepository = _taskRepository ?? new TaskService(_dbContext); } }
         public IContentRepository ContentRepository { get { return _contentRepository = _contentRepository ?? new ContentService(_dbContext); } }
+        public IDeliverRepository DeliverRepository { get { return _deliverRepository = _deliverRepository ?? new DeliverService(_dbContext); } }
 
         public async System.Threading.Tasks.Task CommitAsync()
         {

@@ -72,7 +72,9 @@ namespace DSLearn.Services
             Lesson lesson = _dbContext.Lessons.Find(deliverInsertDTO.LessonId);
             entity.LessonId = lesson.Id;
 
-           Enrollment enrollment = _dbContext.Enrollments.Find(deliverInsertDTO.EnrollmentId);
+
+            Enrollment enrollment = _dbContext.Enrollments.Find(deliverInsertDTO.OfferId, deliverInsertDTO.UserId);
+
             entity.UserId = enrollment.UserId;
             entity.OfferId = enrollment.OfferId;
            

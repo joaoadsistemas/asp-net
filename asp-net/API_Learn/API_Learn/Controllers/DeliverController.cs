@@ -69,7 +69,7 @@ namespace DSLearn.Controllers
         {
             try
             {
-                _unitOfWork.ContentRepository.Delete(id);
+                _unitOfWork.DeliverRepository.Delete(id);
                 await _unitOfWork.CommitAsync();
                 return NoContent();
 

@@ -56,7 +56,7 @@ namespace DSLearn.Migrations
                         });
                 });
 
-            modelBuilder.Entity("DSLearn.Entities.DeliverDTO", b =>
+            modelBuilder.Entity("DSLearn.Entities.Deliver", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -672,14 +672,14 @@ namespace DSLearn.Migrations
                         {
                             Id = "3b01910b-4e21-4cf3-a859-9a79261d0385",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2fb379ec-c882-44e4-a8b0-771245c4eb49",
+                            ConcurrencyStamp = "70fd45ed-d565-43b1-81e3-9e6e2f0d768a",
                             Email = "alex@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG",
                             PhoneNumberConfirmed = false,
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SecurityStamp = "9124b41b-5a49-4b2a-a017-45228ed2271c",
+                            SecurityStamp = "322ed1bb-4a92-4db4-bcf5-750c34965bca",
                             TwoFactorEnabled = false,
                             UserName = "Alex Brown"
                         },
@@ -687,14 +687,14 @@ namespace DSLearn.Migrations
                         {
                             Id = "fc8cf0a3-c3d2-49d2-8d20-1e22a6c4b8a7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0a52fb53-515f-42ee-8afd-a8331873213b",
+                            ConcurrencyStamp = "81a5c7a5-2e76-4aa3-b7ba-6a5dda53c91f",
                             Email = "bob@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG",
                             PhoneNumberConfirmed = false,
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SecurityStamp = "921d386b-c109-4054-b24b-3ce0d0f6bdb6",
+                            SecurityStamp = "a9535305-9b49-4678-9e9d-bad5e982cdc1",
                             TwoFactorEnabled = false,
                             UserName = "Bob Brown"
                         },
@@ -702,14 +702,14 @@ namespace DSLearn.Migrations
                         {
                             Id = "a1ff4f6c-5011-4b95-9bda-2bc33693fcac",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "163169ea-10bb-4fc3-ab49-3cd084bb5a7a",
+                            ConcurrencyStamp = "46903730-26fb-404f-bd8c-53e822cd5005",
                             Email = "maria@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG",
                             PhoneNumberConfirmed = false,
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SecurityStamp = "e91e8327-b6aa-494a-add3-6bbe51dde12d",
+                            SecurityStamp = "e480f9a3-5f20-4fd9-b0f0-f37eaeb1d327",
                             TwoFactorEnabled = false,
                             UserName = "Maria Green"
                         });
@@ -1012,7 +1012,7 @@ namespace DSLearn.Migrations
                         });
                 });
 
-            modelBuilder.Entity("DSLearn.Entities.DeliverDTO", b =>
+            modelBuilder.Entity("DSLearn.Entities.Deliver", b =>
                 {
                     b.HasOne("DSLearn.Entities.Lesson", "Lesson")
                         .WithMany("Deliveries")

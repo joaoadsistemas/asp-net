@@ -10,16 +10,9 @@ namespace DSLearn.Dtos
         public DateTime Moment { get; set; }
 
 
-        public int LessonId { get; set; }
-
-        public int OfferId { get; set; }
-
         public IEnumerable<UserDTO> Likes { get; set; }
 
-        public string AuthorId { get; set; }
-
-
-        public int? AnswerId { get; set; }
+        public ReplyDTO? Answer { get; set; }
 
 
         public IEnumerable<ReplyDTO> Replies { get; set; }
@@ -30,11 +23,9 @@ namespace DSLearn.Dtos
             this.Title = entity.Title;
             this.Body = entity.Body;
             this.Moment = entity.Moment;
-            this.LessonId = entity.LessonId;
-            this.OfferId = entity.OfferId;
             this.Likes = entity.Likes != null ? entity.Likes.AsEnumerable().Select(l => new UserDTO(l)) : null;
-            this.AnswerId = entity.AnswerId;
-            this.Replies = null;// implementar
+            this.Answer = entity.Answer != null ? new ReplyDTO(entity.Answer) : null;
+            this.Replies = entity.Replies != null ? entity.Replies.AsEnumerable().Select(r => new ReplyDTO(r)) : null; ;
         }
     }
 }

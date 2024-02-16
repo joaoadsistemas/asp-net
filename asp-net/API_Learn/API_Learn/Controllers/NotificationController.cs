@@ -55,6 +55,16 @@ namespace DSLearn.Controllers
         {
             try
             {
+
+                var userId = await _userManager.FindByIdAsync(id);
+
+                if (userId == null)
+                {
+                    return BadRequest($"Id {id} does not exists");
+                }
+
+
+
                 // Obter as reivindicações de identidade do usuário a partir do contexto HTTP
                 var claimsIdentity = (ClaimsIdentity)User.Identity;
 
@@ -63,6 +73,7 @@ namespace DSLearn.Controllers
 
                 // Buscar informações do usuário utilizando o UserManager
                 var userLogged = await _userManager.FindByIdAsync(userLoggedId);
+
 
                 // Obter as roles (funções) associadas ao usuário utilizando o UserManager
                 var rolesUserLogged = await _userManager.GetRolesAsync(userLogged);

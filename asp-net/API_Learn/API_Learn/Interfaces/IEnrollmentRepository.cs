@@ -9,6 +9,7 @@ namespace DSLearn.Interfaces
     public interface IEnrollmentRepository
     {
         Task<IEnumerable<EnrollmentDTO>> FindAllAsync(PageQueryParams pageQueryParams);
+        Task<IEnumerable<EnrollmentDTO>> FindBySelfEnrollmentAsync(string id);
         Task<EnrollmentDTO> FindByUserIdAsync(string id);
         Task<EnrollmentDTO> FindByOfferIdAsync(int id);
         EnrollmentDTO Insert(EnrollmentInsertDTO enrollmentInsertDTO);

@@ -41,6 +41,25 @@ namespace DSLearn.Services
             return new EnrollmentDTO(entity);
         }
 
+
+        public async Task<IEnumerable<EnrollmentDTO>> FindBySelfEnrollmentAsync(string id)
+        {
+
+            IEnumerable<Enrollment> result = await _dbContext.Enrollments
+                .Include(e => e.LessonsDone)
+                .Include(e => e.Deliveries)
+                .Where(e => e.User.Id == id)
+                .AsNoTracking()
+                .ToListAsync();
+
+            if (result == null)
+            {
+                throw new ArgumentException("Resource not found");
+            }
+
+            return result.AsEnumerable().Select(e => new EnrollmentDTO(e));
+        }
+
         public async Task<EnrollmentDTO> FindByOfferIdAsync(int id)
         {
             Enrollment entity = await _dbContext.Enrollments

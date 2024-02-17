@@ -17,10 +17,12 @@ namespace DSLearn.Controllers
     {
 
         private readonly IUnitOfWork _unitOfWork;
+        private readonly UserManager<User> _userManager;
 
-        public ReplyController(IUnitOfWork unitOfWork)
+        public ReplyController(IUnitOfWork unitOfWork, UserManager<User> userManager)
         {
             _unitOfWork = unitOfWork;
+            _userManager = userManager;
         }
 
 
@@ -44,7 +46,7 @@ namespace DSLearn.Controllers
 
 
         [HttpPost]
-        //[Authorize(Policy = "StudentOnly")]
+        [Authorize(Policy = "StudentOnly")]
         public async Task<ActionResult<dynamic>> Insert([FromBody] ReplyInsertDTO dto)
         {
 
@@ -55,7 +57,7 @@ namespace DSLearn.Controllers
         }
 
         [HttpPut("{id}")]
-       //[Authorize(Policy = "StudentOnly")]
+        [Authorize(Policy = "StudentOnly")]
         public async Task<ActionResult<dynamic>> Update([FromBody] ReplyInsertDTO dto, int id)
         {
             try
@@ -68,11 +70,31 @@ namespace DSLearn.Controllers
         }
 
         [HttpDelete("{id}")]
-        //[Authorize(Policy = "AdminOnly")]
+        [Authorize(Policy = "StudentOnly")]
         public async Task<ActionResult<dynamic>> Delete(int id)
         {
             try
             {
+                var claimsIdentity = (ClaimsIdentity)User.Identity;
+
+                // Obter o ID único do usuário a partir das reivindicações de identidade
+                var userLoggedId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+                // Buscar informações do usuário utilizando o UserManager
+                var userLogged = await _userManager.FindByIdAsync(userLoggedId);
+
+                // verifica as roles do usuário
+                var rolesUserLogged = await _userManager.GetRolesAsync(userLogged);
+
+                // pega a reply com base no id passado
+                ReplyDTO reply = await _unitOfWork.ReplyRepository.FindByIdAsync(id);
+
+                // verifica se o author da reply não é igual ao do usuário, ou se ele não tem role admin
+                if (!userLoggedId.Equals(reply.AuthorId, StringComparison.OrdinalIgnoreCase) && !rolesUserLogged.Contains("Admin"))
+                {
+                    return Unauthorized("This reply is not yours");
+                }
+
                 _unitOfWork.TopicRepository.Delete(id);
                 await _unitOfWork.CommitAsync();
                 return NoContent();

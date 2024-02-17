@@ -41,7 +41,7 @@ namespace DSLearn.Controllers
 
 
         [HttpPost]
-        //[Authorize(Policy = "AdminOnly")]
+        [Authorize(Policy = "AdminOnly")]
         public async Task<ActionResult<dynamic>> Insert([FromBody] DeliverInsertDTO dto)
         {
             DeliverDTO result = _unitOfWork.DeliverRepository.Insert(dto);
@@ -51,7 +51,7 @@ namespace DSLearn.Controllers
         }
 
         [HttpPut("{id}")]
-       // [Authorize(Policy = "AdminOnly")]
+        [Authorize(Policy = "AdminOnly")]
         public async Task<ActionResult<dynamic>> Update([FromBody] DeliverInsertDTO dto, int id)
         {
             try
@@ -64,7 +64,7 @@ namespace DSLearn.Controllers
         }
 
         [HttpDelete("{id}")]
-        //[Authorize(Policy = "AdminOnly")]
+        [Authorize(Policy = "AdminOnly")]
         public async Task<ActionResult<dynamic>> Delete(int id)
         {
             try

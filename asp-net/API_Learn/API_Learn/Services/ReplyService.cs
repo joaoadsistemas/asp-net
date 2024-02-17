@@ -20,6 +20,7 @@ namespace DSLearn.Services
         public async Task<IEnumerable<ReplyDTO>> FindAllAsync(PageQueryParams pageQueryParams)
         {
             IEnumerable<Reply> contents = await _dbContext.Replys
+                .Include(r => r.AuthorId)
                 .Include(r => r.Likes)
                 .Where(r => r.Body.Contains(pageQueryParams.Name))
                 .OrderBy(r => r.Body)
@@ -34,6 +35,7 @@ namespace DSLearn.Services
         public async Task<ReplyDTO> FindByIdAsync(int id)
         {
             Reply entity = await _dbContext.Replys
+                .Include(r => r.AuthorId)
                 .Include(t => t.Likes)
                 .AsNoTracking().FirstOrDefaultAsync(c => c.Id == id) ?? throw new ArgumentException("Resource not found");
 

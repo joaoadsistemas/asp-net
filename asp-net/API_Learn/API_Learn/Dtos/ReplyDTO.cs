@@ -11,12 +11,15 @@ namespace DSLearn.Dtos
 
         public IEnumerable<UserDTO> Likes { get; set; }
 
+        public string AuthorId { get; set; }
+
         public ReplyDTO(Reply entity)
         {
             this.Id = entity.Id;
             this.Body = entity.Body;
             this.Moment = entity.Moment;
-            this.Likes = entity.Likes != null ? entity.Likes.AsEnumerable().Select(l => new UserDTO(l)) : null; 
+            this.Likes = entity.Likes != null ? entity.Likes.AsEnumerable().Select(l => new UserDTO(l)) : null;
+            this.AuthorId = entity.AuthorId;
         }
 
     }

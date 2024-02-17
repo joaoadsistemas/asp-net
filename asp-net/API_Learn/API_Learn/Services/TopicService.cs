@@ -39,7 +39,7 @@ namespace DSLearn.Services
                .Include(t => t.Likes)
                .Include(t => t.Answer)
                .Include(t => t.Replies)
-               .AsNoTracking().FirstOrDefaultAsync(c => c.Id == id) ?? throw new ArgumentException("Resource not found");
+               .AsNoTracking().FirstOrDefaultAsync(t => t.Id == id) ?? throw new ArgumentException("Resource not found");
 
 
             return new TopicDTO(entity);
@@ -60,7 +60,7 @@ namespace DSLearn.Services
                .Include(t => t.Likes)
                .Include(t => t.Answer)
                .Include(t => t.Replies)
-               .FirstOrDefault(c => c.Id == id) ?? throw new ArgumentException("Resource not found");
+               .FirstOrDefault(t => t.Id == id) ?? throw new ArgumentException("Resource not found");
             copyDTOToEntity(topicInsertDTO, entity);
             return new TopicDTO(entity);
         }
@@ -71,7 +71,7 @@ namespace DSLearn.Services
                .Include(t => t.Likes)
                .Include(t => t.Answer)
                .Include(t => t.Replies)
-               .FirstOrDefault(c => c.Id == id) ?? throw new ArgumentException("Resource not found");
+               .FirstOrDefault(t => t.Id == id) ?? throw new ArgumentException("Resource not found");
             _dbContext.Topics.Remove(entity);
             return true;
         }

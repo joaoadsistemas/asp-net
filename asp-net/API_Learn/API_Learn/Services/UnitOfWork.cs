@@ -25,6 +25,7 @@ namespace ApiCatalogo.Repositories
         private IDeliverRepository _deliverRepository;
         private IEnrollmentRepository _enrollmentRepository;
         private ITopicRepository _topicRepository;
+        private IReplyRepository _replyRepository;
 
 
         public UnitOfWork(SystemDbContext dbContext, UserManager<User> userManager, IContentRepository contentRepository)
@@ -46,6 +47,7 @@ namespace ApiCatalogo.Repositories
         public IDeliverRepository DeliverRepository { get { return _deliverRepository = _deliverRepository ?? new DeliverService(_dbContext); } }
         public IEnrollmentRepository EnrollmentRepository{ get { return _enrollmentRepository = _enrollmentRepository ?? new EnrollmentService(_dbContext); } }
         public ITopicRepository TopicRepository { get { return _topicRepository = _topicRepository ?? new TopicService(_dbContext); } }
+        public IReplyRepository ReplyRepository { get { return _replyRepository = _replyRepository ?? new ReplyService(_dbContext); } }
 
         public async System.Threading.Tasks.Task CommitAsync()
         {

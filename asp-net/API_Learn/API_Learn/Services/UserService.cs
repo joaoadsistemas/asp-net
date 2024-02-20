@@ -73,6 +73,35 @@ namespace DSLearn.Services
             return new UserAllInformationsDTO(entity);
         }
 
+
+        public async void AddLikeToReply(int replyId, string userId)
+        {
+            var reply = await _dbContext.Replys.FindAsync(replyId);
+            var user = await _dbContext.Users.FindAsync(userId);
+
+            if (reply != null && user != null)
+            {
+                reply.Likes.Append(user);
+                await _dbContext.SaveChangesAsync();
+            }
+
+            throw new ArgumentException("Resource not found");
+        }
+
+        public async void AddLikeToTopic(int topicId, string userId)
+        {
+            var topic = await _dbContext.Topics.FindAsync(topicId);
+            var user = await _dbContext.Users.FindAsync(userId);
+
+            if (topic != null && user != null)
+            {
+                topic.Likes.Append(user);
+                await _dbContext.SaveChangesAsync();
+            }
+            throw new ArgumentException("Resource not found");
+        }
+
+
         public async Task<UserDTO> FindByIdAsync(string id)
         {
             User entity = await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Id == id)

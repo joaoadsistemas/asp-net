@@ -7,6 +7,7 @@ using DSLearn.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace DSLearn.Controllers
 {
@@ -62,6 +63,23 @@ namespace DSLearn.Controllers
                 return BadRequest($"Id {id} does not exists");
             }
         }
+
+        [HttpPost("add-like-to-reply/{replyId}")]
+        public async Task<ActionResult> AddLikeToReply(int replyId)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            _unitOfWork.UserRepository.AddLikeToReply(replyId, userId);
+            return Ok();
+        }
+
+        [HttpPost("add-like-to-topic/{topicId}")]
+        public async Task<IActionResult> AddLikeToTopic(int topicId)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            _unitOfWork.UserRepository.AddLikeToTopic(topicId, userId);
+            return Ok();
+        }
+
 
         [HttpGet("{id}")]
         [Authorize(Policy = "StudentOnly")]

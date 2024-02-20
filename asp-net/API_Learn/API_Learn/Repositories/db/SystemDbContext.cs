@@ -31,6 +31,25 @@ namespace DSLearn.Repositories.db
             base.OnModelCreating(builder);
 
             builder.Entity<Topic>()
+                .HasOne(t => t.Author)
+                .WithMany()
+                .HasForeignKey(t => t.AuthorId);
+
+
+            builder.Entity<Reply>()
+                .HasOne(r => r.Author)
+                .WithMany()
+                .HasForeignKey(t => t.AuthorId);
+
+            builder.Entity<Reply>()
+                .HasMany(r => r.Likes)
+                .WithMany(u => u.ReplyLikes);
+
+            builder.Entity<Topic>()
+                .HasMany(t => t.Likes)
+                .WithMany(u => u.TopicLikes);
+
+            builder.Entity<Topic>()
                 .HasOne(t => t.Answer)
                 .WithMany()
                 .HasForeignKey(t => t.AnswerId);

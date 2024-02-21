@@ -1,168 +1,138 @@
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Warning: 3 - Failed to determine the https port for redirect.
-Information: 20101 - Executed DbCommand (60ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (20ms) [Parameters=[@__name_0_rewritten='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
-SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Products] AS [p]
-WHERE [p].[Name] LIKE @__name_0_rewritten ESCAPE N'\'
-Information: 0 - Application is shutting down...
 Information: 14 - Now listening on: https://localhost:7258
 Information: 14 - Now listening on: http://localhost:5187
 Information: 0 - Application started. Press Ctrl+C to shut down.
 Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (27ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (19ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [c].[Id], [c].[ImgUrl], [c].[Name]
-FROM [Categories] AS [c]
-WHERE [c].[Id] = @__p_0
-Information: 20101 - Executed DbCommand (6ms) [Parameters=[@p2='?' (DbType = Int64), @p0='?' (Size = 4000), @p1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [Categories] SET [ImgUrl] = @p0, [Name] = @p1
-OUTPUT 1
-WHERE [Id] = @p2;
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (32ms) [Parameters=[@__id_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Products] AS [p]
-WHERE [p].[Id] = @__id_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Products] AS [p]
-WHERE [p].[Id] = @__p_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [c].[Id], [c].[ImgUrl], [c].[Name]
-FROM [Categories] AS [c]
-WHERE [c].[Id] = @__p_0
-Information: 20101 - Executed DbCommand (6ms) [Parameters=[@p2='?' (DbType = Int64), @p0='?' (DbType = Double), @p1='?' (DbType = DateTimeOffset)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [Products] SET [Price] = @p0, [RegisterData] = @p1
-OUTPUT 1
-WHERE [Id] = @p2;
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (19ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (17ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [c].[Id], [c].[ImgUrl], [c].[Name]
-FROM [Categories] AS [c]
-WHERE [c].[Id] = @__p_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int64), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = Double), @p5='?' (DbType = DateTimeOffset), @p6='?' (DbType = Double)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-INSERT INTO [Products] ([CategoryId], [Description], [ImgUrl], [Name], [Price], [RegisterData], [Stock])
-OUTPUT INSERTED.[Id]
-VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
-Information: 20101 - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (28ms) [Parameters=[@__pageQueryParams_Name_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
-SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Products] AS [p]
-WHERE [p].[Name] LIKE @__pageQueryParams_Name_0_rewritten ESCAPE N'\'
-ORDER BY [p].[Name]
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (44ms) [Parameters=[@__pageQueryParams_Name_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
-SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Products] AS [p]
-WHERE [p].[Name] LIKE @__pageQueryParams_Name_0_rewritten ESCAPE N'\'
-ORDER BY [p].[Name]
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__pageQueryParams_Name_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
-SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Products] AS [p]
-WHERE [p].[Name] LIKE @__pageQueryParams_Name_0_rewritten ESCAPE N'\'
-ORDER BY [p].[Name]
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 0 - Content root path: C:\Users\jones\OneDrive\Documentos\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
+Information: 20101 - Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 SELECT 1
-Information: 20101 - Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
 Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 SELECT 1
+Information: 20101 - Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
 Information: 20101 - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 SELECT [MigrationId], [ProductVersion]
 FROM [__EFMigrationsHistory]
 ORDER BY [MigrationId];
-Information: 20402 - Applying migration '20240205165704_TablesIdentity'.
-Information: 20101 - Executed DbCommand (69ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20402 - Applying migration '20240131234807_Initial'.
+Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Categories] (
+    [Id] bigint NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    [ImgUrl] nvarchar(max) NULL,
+    CONSTRAINT [PK_Categories] PRIMARY KEY ([Id])
+);
+Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Products] (
+    [Id] bigint NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    [Description] nvarchar(max) NULL,
+    [Price] float NOT NULL,
+    [ImgUrl] nvarchar(max) NULL,
+    [Stock] float NOT NULL,
+    [RegisterData] datetime2 NOT NULL,
+    [CategoryId] bigint NOT NULL,
+    CONSTRAINT [PK_Products] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Products_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([Id]) ON DELETE CASCADE
+);
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_Products_CategoryId] ON [Products] ([CategoryId]);
+Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240131234807_Initial', N'8.0.1');
+Information: 20402 - Applying migration '20240201165501_CategorySeed'.
+Information: 20101 - Executed DbCommand (21ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ImgUrl', N'Name') AND [object_id] = OBJECT_ID(N'[Categories]'))
+    SET IDENTITY_INSERT [Categories] ON;
+INSERT INTO [Categories] ([Id], [ImgUrl], [Name])
+VALUES (CAST(1 AS bigint), N'https://img.com.br', N'Cars'),
+(CAST(2 AS bigint), N'https://img.com.br', N'Electronics'),
+(CAST(3 AS bigint), N'https://img.com.br', N'Smartphones'),
+(CAST(4 AS bigint), N'https://img.com.br', N'Books'),
+(CAST(5 AS bigint), N'https://img.com.br', N'Clothes');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'ImgUrl', N'Name') AND [object_id] = OBJECT_ID(N'[Categories]'))
+    SET IDENTITY_INSERT [Categories] OFF;
+Information: 20101 - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240201165501_CategorySeed', N'8.0.1');
+Information: 20402 - Applying migration '20240202210119_ProductSeed'.
+Information: 20101 - Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'CategoryId', N'Description', N'ImgUrl', N'Name', N'Price', N'RegisterData', N'Stock') AND [object_id] = OBJECT_ID(N'[Products]'))
+    SET IDENTITY_INSERT [Products] ON;
+INSERT INTO [Products] ([Id], [CategoryId], [Description], [ImgUrl], [Name], [Price], [RegisterData], [Stock])
+VALUES (CAST(1 AS bigint), CAST(1 AS bigint), N'Fiat Punto', N'https://img.com.br', N'Punto', 25000.0E0, '2024-02-02T18:01:19.0672490-03:00', 2.0E0),
+(CAST(2 AS bigint), CAST(1 AS bigint), N'Ford Fiesta', N'https://img.com.br', N'Fiesta', 15000.0E0, '2024-02-02T18:01:19.0672506-03:00', 1.0E0),
+(CAST(3 AS bigint), CAST(2 AS bigint), N'Apple MacBook PRO', N'https://img.com.br', N'MacBook', 5000.0E0, '2024-02-02T18:01:19.0672508-03:00', 10.0E0),
+(CAST(4 AS bigint), CAST(3 AS bigint), N'Apple Iphone 12', N'https://img.com.br', N'Iphone 12', 3000.0E0, '2024-02-02T18:01:19.0672509-03:00', 5.0E0),
+(CAST(5 AS bigint), CAST(3 AS bigint), N'Galaxy S23 Ultra', N'https://img.com.br', N'Galaxy s23 ultra', 3000.0E0, '2024-02-02T18:01:19.0672511-03:00', 3.0E0);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'CategoryId', N'Description', N'ImgUrl', N'Name', N'Price', N'RegisterData', N'Stock') AND [object_id] = OBJECT_ID(N'[Products]'))
+    SET IDENTITY_INSERT [Products] OFF;
+Information: 20101 - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240202210119_ProductSeed', N'8.0.1');
+Information: 20402 - Applying migration '20240202215842_ActualizationData'.
+Information: 20101 - Executed DbCommand (34ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 DECLARE @var0 sysname;
 SELECT @var0 = [d].[name]
 FROM [sys].[default_constraints] [d]
 INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
-WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Products]') AND [c].[name] = N'Name');
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Products]') AND [c].[name] = N'RegisterData');
 IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [Products] DROP CONSTRAINT [' + @var0 + '];');
-UPDATE [Products] SET [Name] = N'' WHERE [Name] IS NULL;
-ALTER TABLE [Products] ALTER COLUMN [Name] nvarchar(max) NOT NULL;
-ALTER TABLE [Products] ADD DEFAULT N'' FOR [Name];
-Information: 20101 - Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [Products] ALTER COLUMN [RegisterData] datetimeoffset NOT NULL;
+Information: 20101 - Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE [Products] SET [RegisterData] = '2024-02-02T18:58:41.5503754-03:00'
+WHERE [Id] = CAST(1 AS bigint);
+SELECT @@ROWCOUNT;
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE [Products] SET [RegisterData] = '2024-02-02T18:58:41.5503797-03:00'
+WHERE [Id] = CAST(2 AS bigint);
+SELECT @@ROWCOUNT;
+Information: 20101 - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE [Products] SET [RegisterData] = '2024-02-02T18:58:41.5503801-03:00'
+WHERE [Id] = CAST(3 AS bigint);
+SELECT @@ROWCOUNT;
+Information: 20101 - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE [Products] SET [RegisterData] = '2024-02-02T18:58:41.5503803-03:00'
+WHERE [Id] = CAST(4 AS bigint);
+SELECT @@ROWCOUNT;
+Information: 20101 - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE [Products] SET [RegisterData] = '2024-02-02T18:58:41.5503807-03:00'
+WHERE [Id] = CAST(5 AS bigint);
+SELECT @@ROWCOUNT;
+Information: 20101 - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240202215842_ActualizationData', N'8.0.1');
+Information: 20402 - Applying migration '20240205165704_TablesIdentity'.
+Information: 20101 - Executed DbCommand (21ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 DECLARE @var1 sysname;
 SELECT @var1 = [d].[name]
 FROM [sys].[default_constraints] [d]
 INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Products]') AND [c].[name] = N'Name');
+IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [Products] DROP CONSTRAINT [' + @var1 + '];');
+UPDATE [Products] SET [Name] = N'' WHERE [Name] IS NULL;
+ALTER TABLE [Products] ALTER COLUMN [Name] nvarchar(max) NOT NULL;
+ALTER TABLE [Products] ADD DEFAULT N'' FOR [Name];
+Information: 20101 - Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @var2 sysname;
+SELECT @var2 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
 WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Categories]') AND [c].[name] = N'Name');
-IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [Categories] DROP CONSTRAINT [' + @var1 + '];');
+IF @var2 IS NOT NULL EXEC(N'ALTER TABLE [Categories] DROP CONSTRAINT [' + @var2 + '];');
 UPDATE [Categories] SET [Name] = N'' WHERE [Name] IS NULL;
 ALTER TABLE [Categories] ALTER COLUMN [Name] nvarchar(max) NOT NULL;
 ALTER TABLE [Categories] ADD DEFAULT N'' FOR [Name];
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 CREATE TABLE [AspNetRoles] (
     [Id] nvarchar(450) NOT NULL,
     [Name] nvarchar(256) NULL,
@@ -170,7 +140,7 @@ CREATE TABLE [AspNetRoles] (
     [ConcurrencyStamp] nvarchar(max) NULL,
     CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
 );
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 CREATE TABLE [AspNetUsers] (
     [Id] nvarchar(450) NOT NULL,
     [UserName] nvarchar(256) NULL,
@@ -189,7 +159,7 @@ CREATE TABLE [AspNetUsers] (
     [AccessFailedCount] int NOT NULL,
     CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
 );
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 CREATE TABLE [AspNetRoleClaims] (
     [Id] int NOT NULL IDENTITY,
     [RoleId] nvarchar(450) NOT NULL,
@@ -198,7 +168,7 @@ CREATE TABLE [AspNetRoleClaims] (
     CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
 );
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 CREATE TABLE [AspNetUserClaims] (
     [Id] int NOT NULL IDENTITY,
     [UserId] nvarchar(450) NOT NULL,
@@ -207,7 +177,7 @@ CREATE TABLE [AspNetUserClaims] (
     CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
 );
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 CREATE TABLE [AspNetUserLogins] (
     [LoginProvider] nvarchar(450) NOT NULL,
     [ProviderKey] nvarchar(450) NOT NULL,
@@ -224,7 +194,7 @@ CREATE TABLE [AspNetUserRoles] (
     CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
     CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
 );
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 CREATE TABLE [AspNetUserTokens] (
     [UserId] nvarchar(450) NOT NULL,
     [LoginProvider] nvarchar(450) NOT NULL,
@@ -233,7 +203,7 @@ CREATE TABLE [AspNetUserTokens] (
     CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
     CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
 );
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 UPDATE [Products] SET [RegisterData] = '2024-02-05T13:57:03.1515104-03:00'
 WHERE [Id] = CAST(1 AS bigint);
 SELECT @@ROWCOUNT;
@@ -241,21 +211,21 @@ Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text'
 UPDATE [Products] SET [RegisterData] = '2024-02-05T13:57:03.1515141-03:00'
 WHERE [Id] = CAST(2 AS bigint);
 SELECT @@ROWCOUNT;
-Information: 20101 - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 UPDATE [Products] SET [RegisterData] = '2024-02-05T13:57:03.1515144-03:00'
 WHERE [Id] = CAST(3 AS bigint);
 SELECT @@ROWCOUNT;
-Information: 20101 - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 UPDATE [Products] SET [RegisterData] = '2024-02-05T13:57:03.1515146-03:00'
 WHERE [Id] = CAST(4 AS bigint);
 SELECT @@ROWCOUNT;
-Information: 20101 - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 UPDATE [Products] SET [RegisterData] = '2024-02-05T13:57:03.1515148-03:00'
 WHERE [Id] = CAST(5 AS bigint);
 SELECT @@ROWCOUNT;
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;
 Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);
@@ -270,24 +240,12 @@ CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHER
 Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
 VALUES (N'20240205165704_TablesIdentity', N'8.0.1');
-Information: 20101 - Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT 1
-Information: 20101 - Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT 1
-Information: 20101 - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [MigrationId], [ProductVersion]
-FROM [__EFMigrationsHistory]
-ORDER BY [MigrationId];
 Information: 20402 - Applying migration '20240206000902_ApplicationUserWithRefreshToken'.
-Information: 20101 - Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 ALTER TABLE [AspNetUsers] ADD [RefreshToken] nvarchar(max) NULL;
 Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 ALTER TABLE [AspNetUsers] ADD [RefreshTokenExpiryTime] datetime2 NOT NULL DEFAULT '0001-01-01T00:00:00.0000000';
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 UPDATE [Products] SET [RegisterData] = '2024-02-05T21:09:01.2658247-03:00'
 WHERE [Id] = CAST(1 AS bigint);
 SELECT @@ROWCOUNT;
@@ -299,7 +257,7 @@ Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text'
 UPDATE [Products] SET [RegisterData] = '2024-02-05T21:09:01.2658287-03:00'
 WHERE [Id] = CAST(3 AS bigint);
 SELECT @@ROWCOUNT;
-Information: 20101 - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 UPDATE [Products] SET [RegisterData] = '2024-02-05T21:09:01.2658289-03:00'
 WHERE [Id] = CAST(4 AS bigint);
 SELECT @@ROWCOUNT;
@@ -307,1228 +265,15 @@ Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text'
 UPDATE [Products] SET [RegisterData] = '2024-02-05T21:09:01.2658291-03:00'
 WHERE [Id] = CAST(5 AS bigint);
 SELECT @@ROWCOUNT;
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+Information: 20101 - Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
 VALUES (N'20240206000902_ApplicationUserWithRefreshToken', N'8.0.1');
-Critical: 6 - Application startup exception
-Error: 11 - Hosting failed to start
-Critical: 6 - Application startup exception
-Error: 11 - Hosting failed to start
 Information: 14 - Now listening on: https://localhost:7258
 Information: 14 - Now listening on: http://localhost:5187
 Information: 0 - Application started. Press Ctrl+C to shut down.
 Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (65ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (41ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (5ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (19ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 256), @p8='?' (Size = 256), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = DateTime2), @p14='?' (Size = 4000), @p15='?' (DbType = Boolean), @p16='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [RefreshToken], [RefreshTokenExpiryTime], [SecurityStamp], [TwoFactorEnabled], [UserName])
-VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
-Information: 20101 - Executed DbCommand (17ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Error: 1 - An unhandled exception has occurred while executing the request.
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (39ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (6ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 256), @p8='?' (Size = 256), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = DateTime2), @p14='?' (Size = 4000), @p15='?' (DbType = Boolean), @p16='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [RefreshToken], [RefreshTokenExpiryTime], [SecurityStamp], [TwoFactorEnabled], [UserName])
-VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Error: 1 - An unhandled exception has occurred while executing the request.
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (41ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Error: 1 - An unhandled exception has occurred while executing the request.
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (33ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (7ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (34ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (38ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (53ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (46ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (5ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (48ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (49ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (6ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 20101 - Executed DbCommand (8ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (6ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (42ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (5ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (44ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (45ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (38ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (12ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 256), @p8='?' (Size = 256), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = DateTime2), @p14='?' (Size = 4000), @p15='?' (DbType = Boolean), @p16='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [RefreshToken], [RefreshTokenExpiryTime], [SecurityStamp], [TwoFactorEnabled], [UserName])
-VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (46ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (6ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (43ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (5ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (7ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 0 - Token revogado para o usuário com e-mail: ApiCatalogo.Dtos.RevokeDTO
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (49ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 256), @p8='?' (Size = 256), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = DateTime2), @p14='?' (Size = 4000), @p15='?' (DbType = Boolean), @p16='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [RefreshToken], [RefreshTokenExpiryTime], [SecurityStamp], [TwoFactorEnabled], [UserName])
-VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (54ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (38ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (36ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
-FROM [AspNetRoles] AS [a]
-WHERE [a].[NormalizedName] = @__normalizedName_0
-Information: 20101 - Executed DbCommand (5ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
-FROM [AspNetRoles] AS [a]
-WHERE [a].[NormalizedName] = @__normalizedName_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-INSERT INTO [AspNetRoles] ([Id], [ConcurrencyStamp], [Name], [NormalizedName])
-VALUES (@p0, @p1, @p2, @p3);
-Information: 1 - Roles Added
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (5ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (39ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (8ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
-FROM [AspNetRoles] AS [a]
-WHERE [a].[NormalizedName] = @__normalizedRoleName_0
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[UserId], [a].[RoleId]
-FROM [AspNetUserRoles] AS [a]
-WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
-FROM [AspNetRoles] AS [a]
-WHERE [a].[NormalizedName] = @__normalizedRoleName_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 450), @p18='?' (Size = 450), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p19='?' (Size = 4000), @p4='?' (Size = 256), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = DateTime2), @p15='?' (Size = 4000), @p16='?' (DbType = Boolean), @p17='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET NOCOUNT ON;
-INSERT INTO [AspNetUserRoles] ([RoleId], [UserId])
-VALUES (@p0, @p1);
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p2, [ConcurrencyStamp] = @p3, [Email] = @p4, [EmailConfirmed] = @p5, [LockoutEnabled] = @p6, [LockoutEnd] = @p7, [NormalizedEmail] = @p8, [NormalizedUserName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [PhoneNumberConfirmed] = @p12, [RefreshToken] = @p13, [RefreshTokenExpiryTime] = @p14, [SecurityStamp] = @p15, [TwoFactorEnabled] = @p16, [UserName] = @p17
-OUTPUT 1
-WHERE [Id] = @p18 AND [ConcurrencyStamp] = @p19;
-Information: 1 - User joao@gmail.com added to the Admin role
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
-FROM [AspNetRoles] AS [a]
-WHERE [a].[NormalizedName] = @__normalizedRoleName_0
-Information: 20101 - Executed DbCommand (0ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
-FROM [AspNetRoles] AS [a]
-WHERE [a].[NormalizedName] = @__normalizedRoleName_0
-Error: 1 - An unhandled exception has occurred while executing the request.
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
-FROM [AspNetRoles] AS [a]
-WHERE [a].[NormalizedName] = @__normalizedName_0
-Information: 20101 - Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
-FROM [AspNetRoles] AS [a]
-WHERE [a].[NormalizedName] = @__normalizedName_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-INSERT INTO [AspNetRoles] ([Id], [ConcurrencyStamp], [Name], [NormalizedName])
-VALUES (@p0, @p1, @p2, @p3);
-Information: 1 - Roles Added
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (34ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (6ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
-FROM [AspNetRoles] AS [a]
-WHERE [a].[NormalizedName] = @__normalizedRoleName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[UserId], [a].[RoleId]
-FROM [AspNetUserRoles] AS [a]
-WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
-FROM [AspNetRoles] AS [a]
-WHERE [a].[NormalizedName] = @__normalizedRoleName_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 450), @p18='?' (Size = 450), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p19='?' (Size = 4000), @p4='?' (Size = 256), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = DateTime2), @p15='?' (Size = 4000), @p16='?' (DbType = Boolean), @p17='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET NOCOUNT ON;
-INSERT INTO [AspNetUserRoles] ([RoleId], [UserId])
-VALUES (@p0, @p1);
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p2, [ConcurrencyStamp] = @p3, [Email] = @p4, [EmailConfirmed] = @p5, [LockoutEnabled] = @p6, [LockoutEnd] = @p7, [NormalizedEmail] = @p8, [NormalizedUserName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [PhoneNumberConfirmed] = @p12, [RefreshToken] = @p13, [RefreshTokenExpiryTime] = @p14, [SecurityStamp] = @p15, [TwoFactorEnabled] = @p16, [UserName] = @p17
-OUTPUT 1
-WHERE [Id] = @p18 AND [ConcurrencyStamp] = @p19;
-Information: 1 - User bob@gmail.com added to the Client role
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (38ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (39ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (39ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (39ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (36ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (8ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (6ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (37ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (71ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (36ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (40ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (5ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 20101 - Executed DbCommand (6ms) [Parameters=[@__pageQueryParams_Name_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
-SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
+Information: 0 - Content root path: C:\Users\jones\OneDrive\Documentos\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
+Information: 20101 - Executed DbCommand (55ms) [Parameters=[@__id_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
 FROM [Products] AS [p]
-WHERE [p].[Name] LIKE @__pageQueryParams_Name_0_rewritten ESCAPE N'\'
-ORDER BY [p].[Name]
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 4 - Token revogado para o usuário com e-mail: ApiCatalogo.Dtos.RevokeDTO
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (44ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (17ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (34ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [c].[Id], [c].[ImgUrl], [c].[Name], [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Categories] AS [c]
-LEFT JOIN [Products] AS [p] ON [c].[Id] = [p].[CategoryId]
-ORDER BY [c].[Id]
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Error: 1 - An unhandled exception has occurred while executing the request.
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (60ms) [Parameters=[@__pageQueryParams_Name_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
-SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Products] AS [p]
-WHERE [p].[Name] LIKE @__pageQueryParams_Name_0_rewritten ESCAPE N'\'
-ORDER BY [p].[Name]
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__pageQueryParams_Name_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
-SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Products] AS [p]
-WHERE [p].[Name] LIKE @__pageQueryParams_Name_0_rewritten ESCAPE N'\'
-ORDER BY [p].[Name]
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[@__pageQueryParams_Name_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
-SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Products] AS [p]
-WHERE [p].[Name] LIKE @__pageQueryParams_Name_0_rewritten ESCAPE N'\'
-ORDER BY [p].[Name]
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__pageQueryParams_Name_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
-SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Products] AS [p]
-WHERE [p].[Name] LIKE @__pageQueryParams_Name_0_rewritten ESCAPE N'\'
-ORDER BY [p].[Name]
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-Information: 20101 - Executed DbCommand (14ms) [Parameters=[@__pageQueryParams_Name_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
-SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Products] AS [p]
-WHERE [p].[Name] LIKE @__pageQueryParams_Name_0_rewritten ESCAPE N'\'
-ORDER BY [p].[Name]
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-Information: 20101 - Executed DbCommand (1ms) [Parameters=[@__pageQueryParams_Name_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
-SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Products] AS [p]
-WHERE [p].[Name] LIKE @__pageQueryParams_Name_0_rewritten ESCAPE N'\'
-ORDER BY [p].[Name]
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-Information: 20101 - Executed DbCommand (6ms) [Parameters=[@__pageQueryParams_Name_0_rewritten='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
-SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImgUrl], [p].[Name], [p].[Price], [p].[RegisterData], [p].[Stock]
-FROM [Products] AS [p]
-WHERE [p].[Name] LIKE @__pageQueryParams_Name_0_rewritten ESCAPE N'\'
-ORDER BY [p].[Name]
-OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (55ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (8ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (7ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 14 - Now listening on: https://localhost:7258
-Information: 14 - Now listening on: http://localhost:5187
-Information: 0 - Application started. Press Ctrl+C to shut down.
-Information: 0 - Hosting environment: Development
-Information: 0 - Content root path: C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogo
-Information: 20101 - Executed DbCommand (149ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
-Information: 20101 - Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
-SELECT [a0].[Name]
-FROM [AspNetUserRoles] AS [a]
-INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
-WHERE [a].[UserId] = @__userId_0
-Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
-FROM [AspNetUsers] AS [a]
-WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
-Information: 20101 - Executed DbCommand (6ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
-SET IMPLICIT_TRANSACTIONS OFF;
-SET NOCOUNT ON;
-UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
-OUTPUT 1
-WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
+WHERE [p].[Id] = @__id_0

@@ -42,7 +42,8 @@
         private void EscreverTextoNoArquivo(string msg)
         {
             // Caminho do arquivo de log
-            string caminhoArquivo = @"C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogoLog.txt";
+            // string caminhoArquivo = @"C:\Users\Jones\Documents\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogoLog.txt"; // PC
+            string caminhoArquivo = @"C:\Users\jones\OneDrive\Documentos\GitHub\asp-net\asp-net\ApiCatalogo\ApiCatalogoLog.txt"; // NOTEBOOK
 
             // Utiliza StreamWriter para escrever no arquivo
             using (StreamWriter streamWriter = new StreamWriter(caminhoArquivo, true))

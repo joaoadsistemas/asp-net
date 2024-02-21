@@ -26,6 +26,12 @@ public class ProductService : IProductRepository
             .Skip((pageQueryParams.PageNumber - 1) * pageQueryParams.PageSize)
             .Take(pageQueryParams.PageSize)
             .AsNoTracking().ToListAsync();
+
+        if (result.Count == 0)
+        {
+            throw new Exception("Resource not found");
+        }
+
         return result.AsEnumerable().Select(p => new ProductDTO(p)).ToList();
 
     }

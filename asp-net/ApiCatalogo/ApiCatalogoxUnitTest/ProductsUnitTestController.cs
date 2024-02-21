@@ -7,23 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiCatalogoxUnitTest.UnitTests
+namespace ApiCatalogoxUnitTest
 {
-    public class ProdutosUnitTestController
+    public class ProductsUnitTestController
     {
 
         public IUnitOfWork repository;
 
         public static DbContextOptions<SystemDbContext> dbContext { get; }
 
-        public static string connectionString = "Server=DESKTOP-ESPF03F; Database=ApiCatalagoDb; trustServerCertificate=true; Integrated Security=true";
+        // public static string connectionString = "Server=DESKTOP-ESPF03F; Database=ApiCatalagoDb; trustServerCertificate=true; Integrated Security=true"; // PC
+        public static string connectionString = "Server=DESKTOP-7HAELNV; Database=ApiCatalagoDb; trustServerCertificate=true; Integrated Security=true"; // NOTEBOOK
 
-        static ProdutosUnitTestController()
+
+        static ProductsUnitTestController()
         {
             dbContext = new DbContextOptionsBuilder<SystemDbContext>().UseSqlServer(connectionString).Options;
         }
 
-        public ProdutosUnitTestController()
+        public ProductsUnitTestController()
         {
             var context = new SystemDbContext(dbContext);
             repository = new UnitOfWork(context);

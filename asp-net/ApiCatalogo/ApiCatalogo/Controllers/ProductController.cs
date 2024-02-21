@@ -25,10 +25,20 @@ namespace ApiCatalogo.Controllers
 
         
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         // utlizando queryparams, para passar dados de paginação e busca por nome
         public async Task<ActionResult<IEnumerable<ProductDTO>>> FindAll([FromQuery] PageQueryParams pageQueryParams)
         {
-            return Ok(await _unitOfWork.ProductRepository.FindAllProductsAsync(pageQueryParams));
+            try
+            {
+                return Ok(await _unitOfWork.ProductRepository.FindAllProductsAsync(pageQueryParams));
+            }
+            catch (Exception e)
+            {
+                return NotFound("Resource not found");
+            }
         }
 
 

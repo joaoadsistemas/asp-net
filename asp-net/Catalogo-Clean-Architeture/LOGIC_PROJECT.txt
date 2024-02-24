@@ -1,0 +1,10 @@
+- Cria uma solução em branco
+- Adiciona quantas classLibraries forem precisos
+- Cria uma WebApi
+
+===== DEPENDENCIAS DE PROJETOS ========
+- Entities (ninguem)
+- Infrastructure (entities)
+- Application (entities)
+- CrossCuttiing (entities, application, infrastructure)
+- API (crosscutting)

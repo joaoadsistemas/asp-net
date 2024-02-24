@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ApiCatalogo.Dtos;
 using ApiCatalogo.Pagination;
 using Microsoft.AspNetCore.Mvc;
+using Xunit;
 
 namespace ApiCatalogoxUnitTest.UnitTests
 {

@@ -62,13 +62,20 @@ namespace ApiCatalogo.Controllers
         [Authorize(Policy = "UserOnly")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
         public async Task<ActionResult<ProductDTO>> InsertProduct([FromBody] ProductInsertDTO dto)
         {
-            ProductDTO result = _unitOfWork.ProductRepository.InsertProduct(dto);
-            await _unitOfWork.CommitAsync();
+            try
+            {
+                ProductDTO result = _unitOfWork.ProductRepository.InsertProduct(dto);
+                await _unitOfWork.CommitAsync();
 
-            return CreatedAtAction(nameof(FindById), new { id = result.Id }, result);
+                return CreatedAtAction(nameof(FindById), new { id = result.Id }, result);
+            } catch (Exception e)
+            {
+                return BadRequest("Not a possible created");
+            }
         }
 
         [Authorize(Policy = "UserOnly")]

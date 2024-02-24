@@ -16,8 +16,8 @@ namespace ApiCatalogoxUnitTest
 
         public static DbContextOptions<SystemDbContext> dbContext { get; }
 
-        // public static string connectionString = "Server=DESKTOP-ESPF03F; Database=ApiCatalagoDb; trustServerCertificate=true; Integrated Security=true"; // PC
-        public static string connectionString = "Server=DESKTOP-7HAELNV; Database=ApiCatalagoDb; trustServerCertificate=true; Integrated Security=true"; // NOTEBOOK
+        public static string connectionString = "Server=DESKTOP-ESPF03F; Database=ApiCatalagoDb; trustServerCertificate=true; Integrated Security=true"; // PC
+        //public static string connectionString = "Server=DESKTOP-7HAELNV; Database=ApiCatalagoDb; trustServerCertificate=true; Integrated Security=true"; // NOTEBOOK
 
 
         static ProductsUnitTestController()

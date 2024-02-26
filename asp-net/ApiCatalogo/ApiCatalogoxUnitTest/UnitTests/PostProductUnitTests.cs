@@ -5,69 +5,102 @@ using System.Text;
 using System.Threading.Tasks;
 using ApiCatalogo.Controllers;
 using ApiCatalogo.Dtos;
+using ApiCatalogo.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using NSubstitute;
+using NSubstitute.ExceptionExtensions;
 using Xunit;
 
 namespace ApiCatalogoxUnitTest.UnitTests
 {
-    public class PostProductUnitTests : IClassFixture<ProductsUnitTestController>
+    public class PostProductUnitTests
     {
 
-        private readonly ProductController _controller;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public PostProductUnitTests(ProductsUnitTestController controller)
+        public PostProductUnitTests()
         {
-            _controller = new ProductController(controller.repository);
+            // Substituto para a interface IUnitOfWork
+            _unitOfWork = Substitute.For<IUnitOfWork>();
         }
 
 
         [Fact]
-        public async Task PostProductShouldReturnCreated()
+        public async void InsertProductShouldReturnProductDTO()
         {
-            //Arrange
-            ProductInsertDTO productDTO = new ProductInsertDTO();
-            productDTO.Price = 10;
-            productDTO.Stock = 20;
-            productDTO.Name = "Test";
-            productDTO.Description = "Test";
-            productDTO.ImgUrl = string.Empty;
-            productDTO.CategoryId = 1;
+            // Arrange
+            // Criação do controlador e definição do objeto a ser inserido
+            var productController = new ProductController(_unitOfWork);
+            var insertProduct = new ProductInsertDTO
+            {
+                Name = "name",
+                Description = "description",
+                ImgUrl = "img.com.br",
+                Price = 1
+            };
+
+            // Definição do produto esperado como resultado da inserção
+            var expectedProduct = new ProductDTO
+            {
+                Id = 1,
+                Name = "name",
+                Description = "description",
+                ImgUrl = "img.com.br",
+                Price = 1,
+                RegisterData = DateTimeOffset.Now,
+                Stock = 0
+            };
+
+            // Configuração do comportamento do repositório ao chamar o método InsertProduct
+            _unitOfWork.ProductRepository.InsertProduct(Arg.Any<ProductInsertDTO>()).Returns(expectedProduct);
 
             // Act
-            var data = await _controller.InsertProduct(productDTO);
+            // Chama o método de inserção no controlador
+            var result = await productController.InsertProduct(insertProduct);
 
+            // Assert
+            // Verifica se o resultado é do tipo CreatedAtActionResult
+            var createdResult = Assert.IsType<CreatedAtActionResult>(result.Result);
 
-            //Assert
-            CreatedAtActionResult createdResult = Assert.IsType<CreatedAtActionResult>(data.Result);
-            Assert.Equal(201, createdResult.StatusCode);
+            // Verifica se o objeto retornado é do tipo ProductDTO
+            var actualProduct = Assert.IsAssignableFrom<ProductDTO>(createdResult.Value);
 
-            var product = Assert.IsAssignableFrom<ProductDTO>(createdResult.Value);
-
-
-
+            // Verifica se o produto retornado é igual ao produto esperado
+            Assert.Equal(expectedProduct, actualProduct);
         }
 
 
         [Fact]
-        public async Task PostProductShouldReturnBadRequest()
+        public async Task InsertProductShouldThrowBadRequest()
         {
-            //Arrange
-            ProductInsertDTO productDTO = new ProductInsertDTO();
-            productDTO.Price = 10;
-            productDTO.Stock = 20;
-            productDTO.Name = "Test";
-            productDTO.Description = "Test";
-            productDTO.ImgUrl = string.Empty;
+            // Arrange
+            // Criação do controlador e definição do objeto a ser inserido
+            var productController = new ProductController(_unitOfWork);
+            var insertProduct = new ProductInsertDTO
+            {
+                Name = "name",
+                Description = "description",
+                ImgUrl = "img.com.br",
+                Price = 1
+            };
+
+            // Configuração do comportamento do repositório ao lançar uma exceção ao chamar o método InsertProduct
+            _unitOfWork.ProductRepository.InsertProduct(Arg.Any<ProductInsertDTO>()).Throws(new Exception("Not a possible created"));
 
             // Act
-            var data = await _controller.InsertProduct(productDTO);
+            // Chama o método de inserção no controlador
+            var result = await productController.InsertProduct(insertProduct);
 
+            // Assert
+            // Verifica se o resultado é do tipo BadRequestObjectResult
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result.Result);
 
-            //Assert
-            BadRequestObjectResult badResult = Assert.IsType<BadRequestObjectResult>(data.Result);
-            Assert.Equal(400, badResult.StatusCode);
+            // Verifica o StatusCode retornado (deve ser 400)
+            Assert.Equal(400, badRequestResult.StatusCode);
 
+            // Verifica o Valor retornado (mensagem de erro)
+            var errorMessage = Assert.IsType<string>(badRequestResult.Value);
+            Assert.Equal("Not a possible created", errorMessage);
         }
-
     }
 }

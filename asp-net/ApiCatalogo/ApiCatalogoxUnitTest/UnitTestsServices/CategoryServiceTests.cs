@@ -17,6 +17,7 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
 
         private async Task<SystemDbContext> GetDatabaseContext()
         {
+            // Configuração de um contexto de banco de dados em memória para testes
             var options = new DbContextOptionsBuilder<SystemDbContext>()
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
@@ -25,10 +26,10 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
             databaseContext.Database.EnsureCreated();
             if (await databaseContext.Categories.CountAsync() <= 0)
             {
+                // Adição de dados de teste ao banco de dados em memória
                 for (int i = 0; i < 10; i++)
                 {
                     databaseContext.Categories.Add(
-                        
                         new Category()
                         {
                             Name = "CategoryTest" + i,
@@ -54,15 +55,14 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
         [Fact]
         public async void GetAllCategoriesShouldReturnListOfCategories()
         {
-            //Arrange
+            // Arrange
             var dbContext = await GetDatabaseContext();
             var categoryService = new CategoryService(dbContext);
 
-            //Act
+            // Act
             var result = categoryService.FindAllCategoriesAsync();
 
-
-            //Assert
+            // Assert
             Assert.NotNull(result);
             await Assert.IsType<Task<IEnumerable<CategoryDTO>>>(result);
         }
@@ -71,16 +71,15 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
         [Fact]
         public async void GetCategoryByIdShouldReturnCategoryWhenExistsId()
         {
-            //Arrange
+            // Arrange
             var dbContext = await GetDatabaseContext();
             var categoryService = new CategoryService(dbContext);
             var existsId = 1;
 
-            //Act
+            // Act
             var result = categoryService.FindCategoryByIdAsync(existsId);
 
-
-            //Assert
+            // Assert
             Assert.NotNull(result);
             await Assert.IsType<Task<CategoryDTO>>(result);
             Assert.Equal(existsId, result.Id);
@@ -91,23 +90,18 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
         public async void GetCategoryByIdShouldThrowExceptionWhenIdDoesNotExists()
         {
 
-            //Arrange
+            // Arrange
             var dbContext = await GetDatabaseContext();
             var categoryService = new CategoryService(dbContext);
             var nonExistsId = 1000;
             var expectedErrorMessage = "Resource not found";
 
-
-
             // Act & Assert
-            var exception = await Assert.ThrowsAsync<Exception>(async () => 
-            await categoryService.FindCategoryByIdAsync(nonExistsId));
-
-
+            var exception = await Assert.ThrowsAsync<Exception>(async () =>
+                await categoryService.FindCategoryByIdAsync(nonExistsId));
 
             // Assert the message
             Assert.Equal(expectedErrorMessage, exception.Message);
-
         }
 
 
@@ -116,7 +110,7 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
         public async void UpdateCategoryShouldReturnCategoryDTOWhenIdExists()
         {
 
-            //Arrange
+            // Arrange
             var dbContext = await GetDatabaseContext();
             var categoryService = new CategoryService(dbContext);
             var existsId = 1;
@@ -126,18 +120,14 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
                 ImgUrl = "img.com.br"
             };
 
-
-
-            //Act
+            // Act
             var result = categoryService.UpdateCategory(updateCategory, existsId);
 
-
-            //Assert
+            // Assert
             Assert.NotNull(result);
             Assert.IsType<CategoryDTO>(result);
             Assert.Equal(existsId, result.Id);
             Assert.Equal(updateCategory.Name, result.Name);
-
         }
 
 
@@ -145,7 +135,7 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
         public async void UpdateCategoryShouldThrowExceptionWhenIdDoesNotExists()
         {
 
-            //Arrange
+            // Arrange
             var dbContext = await GetDatabaseContext();
             var categoryService = new CategoryService(dbContext);
             var nonExistsId = 1000;
@@ -156,11 +146,9 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
                 ImgUrl = "img.com.br"
             };
 
-
-            //Act //Assert
+            // Act & Assert
             var exception = await Assert.ThrowsAsync<Exception>(async () =>
-            categoryService.UpdateCategory(updateCategory,nonExistsId));
-
+                categoryService.UpdateCategory(updateCategory, nonExistsId));
 
             Assert.Equal(expectedErrorMessage, exception.Message);
         }
@@ -169,19 +157,18 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
 
 
         [Fact]
-        public async void deleteCategoryShouldReturnTrueWhenIdExists()
+        public async void DeleteCategoryShouldReturnTrueWhenIdExists()
         {
 
-            //Arrange
+            // Arrange
             var dbContext = await GetDatabaseContext();
             var categoryService = new CategoryService(dbContext);
             var existsId = 1;
 
-            //Act
+            // Act
             var result = categoryService.DeleteCategory(existsId);
-            
 
-            //Assert
+            // Assert
             Assert.NotNull(result);
             Assert.IsType<bool>(result);
             Assert.True(result);
@@ -189,23 +176,20 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
 
 
         [Fact]
-        public async void deleteCategoryShouldThrowExceptionWhenIdDoesNotExists()
+        public async void DeleteCategoryShouldThrowExceptionWhenIdDoesNotExists()
         {
 
-            //Arrange
+            // Arrange
             var dbContext = await GetDatabaseContext();
             var categoryService = new CategoryService(dbContext);
             var nonExistsId = 1000;
             var expectedErrorMessage = "Resource not found";
 
-
-            //Act //Assert
+            // Act & Assert
             var exception = await Assert.ThrowsAsync<Exception>(async () =>
-            categoryService.DeleteCategory(nonExistsId));
-
+                categoryService.DeleteCategory(nonExistsId));
 
             Assert.Equal(expectedErrorMessage, exception.Message);
-
         }
 
     }

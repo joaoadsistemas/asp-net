@@ -47,7 +47,7 @@ public class CategoryService : ICategoryRepository
         _dbContext.Add(entity);
         return new CategoryDTO(entity);
     }
-
+        
 
     public CategoryDTO UpdateCategory(CategoryInsertDTO dto, long id)
     {

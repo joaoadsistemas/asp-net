@@ -73,7 +73,7 @@ public class ProductService : IProductRepository
         entity.Stock = dto.Stock;
         entity.RegisterData = DateTimeOffset.Now;
 
-        Category category = _dbContext.Categories.Find(dto.CategoryId) ?? throw new Exception();
+        Category category = _dbContext.Categories.Find(dto.CategoryId) ?? throw new Exception("Resource not found");
         entity.CategoryId = category.Id;
     }
 }

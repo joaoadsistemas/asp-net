@@ -3,6 +3,7 @@ using ApiCatalogo.Pagination;
 using ApiCatalogo.Repositories.db;
 using ApiCatalogo.Services;
 using Microsoft.EntityFrameworkCore;
+using NSubstitute;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +56,7 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
             var productService = new ProductService(dbContext);
 
 
-            var productNameToSearch = "ProductTest5";
+            var productNameToSearch = "ProductTest1";
 
             var pagedQuery = new PageQueryParams
             {
@@ -79,7 +80,7 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
             //Arrange
             var dbContext = await GetDatabaseContext();
             var productService = new ProductService(dbContext);
-            var existsId = 2;
+            var existsId = 1;
 
             //Act
             var result = await productService.FindProductByIdAsync(existsId);
@@ -90,5 +91,205 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
             Assert.IsType<ProductDTO>(result);
             Assert.Equal(existsId, result.Id);
         }
+
+
+
+
+        [Fact]
+        public async void InsertShouldReturnProductDTO()
+        {
+            //Arrange
+            var dbContext = await GetDatabaseContext();
+            var productService = new ProductService(dbContext);
+            var productInsertDTO = new ProductInsertDTO()
+            {
+                Name = "ProductInsert",
+                Description = "DescriptionInsert",
+                ImgUrl = "https://imgteste.com",
+                Price = 1,
+                Stock = 1,
+                CategoryId = 1
+            };
+
+
+            //Act
+            var result = productService.InsertProduct(productInsertDTO);
+
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.IsType<ProductDTO>(result);
+            Assert.Equal(productInsertDTO.Name, result.Name);
+
+        }
+
+
+
+        [Fact]
+        public async void InsertShouldThrowExceptionWhenCategoryIdDoesNotExists()
+        {
+
+            //Arrange
+            var dbContext = await GetDatabaseContext();
+            var productService = new ProductService(dbContext);
+            var expectedErrorMessage = "Resource not found";
+            var productInsertDTO = new ProductInsertDTO()
+            {
+                Name = "ProductInsert",
+                Description = "DescriptionInsert",
+                ImgUrl = "https://imgteste.com",
+                Price = 1,
+                Stock = 1,
+                CategoryId = 1000
+            };
+
+
+
+            //Act //Assert
+            var exception = await Assert.ThrowsAsync<Exception>(async () =>
+                productService.InsertProduct(productInsertDTO));
+
+
+            Assert.Equal(expectedErrorMessage, exception.Message); ;
+        }
+
+
+
+        [Fact]
+        public async void UpdateShouldReturnProductDTOWhenIdExists()
+        {
+            //Arrange
+            var dbContext = await GetDatabaseContext();
+            var productService = new ProductService(dbContext);
+            var existsId = 1;
+            var productInsertDTO = new ProductInsertDTO()
+            {
+                Name = "ProductInsert",
+                Description = "DescriptionInsert",
+                ImgUrl = "https://imgteste.com",
+                Price = 1,
+                Stock = 1,
+                CategoryId = 1
+            };
+
+            //Act
+            var result = productService.UpdateProduct(productInsertDTO,existsId);
+
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.IsType<ProductDTO> (result);
+            Assert.Equal(productInsertDTO.Name, result.Name);
+        }
+
+
+        [Fact]
+        public async void UpdateShouldThrowExceptionWhenIdDoesNotExists()
+        {
+
+            //Arrange
+            var dbContext = await GetDatabaseContext();
+            var productService = new ProductService (dbContext);
+            var nonExistsId = 1000;
+            var expectedErrorMessage = "Resource not found";
+            var productInsertDTO = new ProductInsertDTO()
+            {
+                Name = "ProductInsert",
+                Description = "DescriptionInsert",
+                ImgUrl = "https://imgteste.com",
+                Price = 1,
+                Stock = 1,
+                CategoryId = 1
+            };
+
+
+
+            //Act //Assert
+            var exception = await Assert.ThrowsAsync<Exception>(async () =>
+                productService.UpdateProduct(productInsertDTO, nonExistsId));
+
+
+            Assert.Equal(expectedErrorMessage, exception.Message);
+
+
+        }
+
+
+        [Fact]
+        public async void UpdateShouldThrowExceptionWhenCategoryIdDoesNotExists()
+        {
+
+
+            //Arrange
+            var dbContext = await GetDatabaseContext();
+            var productService = new ProductService(dbContext);
+            var existsId = 1;
+            var expectedErrorMessage = "Resource not found";
+            var productInsertDTO = new ProductInsertDTO()
+            {
+                Name = "ProductInsert",
+                Description = "DescriptionInsert",
+                ImgUrl = "https://imgteste.com",
+                Price = 1,
+                Stock = 1,
+                CategoryId = 100
+            };
+
+
+            //Act //Assert
+            var exception = await Assert.ThrowsAsync<Exception>(async () =>
+                productService.UpdateProduct(productInsertDTO,existsId));
+
+
+            Assert.Equal(expectedErrorMessage, exception.Message);
+        }
+
+
+
+        [Fact]
+        public async void DeleteProductShouldReturnTrueWhenExistsId()
+        {
+
+            //Arrange
+            var dbContext = await GetDatabaseContext();
+            var productService = new ProductService(dbContext);
+            var existsId = 1;
+
+
+
+            //Act
+            var result = productService.DeleteProduct(existsId);
+
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.IsType<bool>(result);
+            Assert.True(result);
+
+        }
+
+
+
+        [Fact]
+        public async void DeleteProductShouldThrowExceptionWhenIdDoesNotExists()
+        {
+
+            //Arrange
+            var dbContext = await GetDatabaseContext();
+            var productService = new ProductService(dbContext);
+            var expectedErrorMessage = "Resource not found";
+            var nonExistsId = 1000;
+
+
+            //Act & Assert
+            var exception = await Assert.ThrowsAsync<Exception>(async () => 
+                productService.DeleteProduct(nonExistsId));
+
+
+            Assert.Equal(expectedErrorMessage, exception.Message);
+
+        }
+
+
     }
 }

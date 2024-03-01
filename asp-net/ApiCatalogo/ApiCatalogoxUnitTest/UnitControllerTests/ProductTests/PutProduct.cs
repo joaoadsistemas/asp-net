@@ -12,16 +12,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ApiCatalogoxUnitTest.UnitTests
+namespace ApiCatalogoxUnitTest.UnitControllerTests.ProductTests
 {
     // Classe que contém os testes unitários para a atualização de produtos
-    public class PutProductUnitTests
+    public class PutProduct
     {
         // Instância de substituto para a interface IUnitOfWork
         private readonly IUnitOfWork _unitOfWork;
 
         // Construtor que inicializa a instância de IUnitOfWork como um substituto
-        public PutProductUnitTests()
+        public PutProduct()
         {
             _unitOfWork = Substitute.For<IUnitOfWork>();
         }
@@ -53,7 +53,7 @@ namespace ApiCatalogoxUnitTest.UnitTests
 
             // Assert: Verificação se o resultado é do tipo NoContentResult
             Assert.NotNull(result);
-            var noContentResult = Assert.IsType<NoContentResult>(result.Result);
+            Assert.IsType<NoContentResult>(result.Result);
         }
 
         // Teste que verifica se a atualização de um produto com um ID inexistente lança NotFound

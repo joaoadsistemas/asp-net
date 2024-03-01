@@ -11,16 +11,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ApiCatalogoxUnitTest.UnitTests
+namespace ApiCatalogoxUnitTest.UnitControllerTests.ProductTests
 {
     // Classe que contém os testes unitários para a remoção de produtos
-    public class DeleteProductUnitTests
+    public class DeleteProduct
     {
         // Instância de substituto para a interface IUnitOfWork
         private readonly IUnitOfWork _unitOfWork;
 
         // Construtor que inicializa a instância de IUnitOfWork como um substituto
-        public DeleteProductUnitTests()
+        public DeleteProduct()
         {
             _unitOfWork = Substitute.For<IUnitOfWork>();
         }

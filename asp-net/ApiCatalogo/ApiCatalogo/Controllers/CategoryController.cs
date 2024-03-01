@@ -46,9 +46,16 @@ namespace ApiCatalogo.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult<CategoryDTO>> InsertCategory([FromBody] CategoryInsertDTO dto)
         {
-            CategoryDTO result = _unitOfWork.CategoryRepository.InsertCategory(dto);
-            await _unitOfWork.CommitAsync();
-            return CreatedAtAction(nameof(FindCategoryById), new { id = result.Id }, result);
+            try
+            {
+                CategoryDTO result = _unitOfWork.CategoryRepository.InsertCategory(dto);
+                await _unitOfWork.CommitAsync();
+                return CreatedAtAction(nameof(FindCategoryById), new { id = result.Id }, result);
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Not a possible created");
+            }
         }
 
         [Authorize(Policy = "AdminOnly")]

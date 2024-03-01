@@ -12,14 +12,14 @@ using ApiCatalogo.Repositories;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
 
-namespace ApiCatalogoxUnitTest.UnitTests
+namespace ApiCatalogoxUnitTest.UnitControllerTests.ProductTests
 {
-    public class GetProductUnitTests
+    public class GetProduct
     {
 
         private readonly IUnitOfWork _unitOfWork;
 
-        public GetProductUnitTests()
+        public GetProduct()
         {
             // Substituto para a interface IUnitOfWork
             _unitOfWork = Substitute.For<IUnitOfWork>();

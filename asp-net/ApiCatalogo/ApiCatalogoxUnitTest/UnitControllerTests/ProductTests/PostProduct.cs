@@ -11,14 +11,14 @@ using NSubstitute;
 using NSubstitute.ExceptionExtensions;
 using Xunit;
 
-namespace ApiCatalogoxUnitTest.UnitTests
+namespace ApiCatalogoxUnitTest.UnitControllerTests.ProductTests
 {
-    public class PostProductUnitTests
+    public class PostProduct
     {
 
         private readonly IUnitOfWork _unitOfWork;
 
-        public PostProductUnitTests()
+        public PostProduct()
         {
             // Substituto para a interface IUnitOfWork
             _unitOfWork = Substitute.For<IUnitOfWork>();

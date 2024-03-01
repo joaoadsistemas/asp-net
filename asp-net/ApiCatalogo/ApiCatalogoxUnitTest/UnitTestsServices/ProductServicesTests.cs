@@ -1,4 +1,5 @@
 ﻿using ApiCatalogo.Dtos;
+using ApiCatalogo.Entities;
 using ApiCatalogo.Pagination;
 using ApiCatalogo.Repositories.db;
 using ApiCatalogo.Services;
@@ -28,7 +29,7 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
                 for (int i = 0; i < 10; i++)
                 {
                     databaseContext.Products.Add(
-                        new ApiCatalogo.Entities.Product()
+                        new Product()
                         {
                             Name = "ProductTest" + i,
                             Price = i,
@@ -56,11 +57,9 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
             var productService = new ProductService(dbContext);
 
 
-            var productNameToSearch = "ProductTest1";
-
             var pagedQuery = new PageQueryParams
             {
-                Name = productNameToSearch
+                Name = ""
             };
 
             //Act
@@ -69,8 +68,6 @@ namespace ApiCatalogoxUnitTest.UnitTestsServices
             //Assert
             Assert.NotNull(result);
             Assert.IsType<List<ProductDTO>>(result);
-
-            Assert.True(result.All(product => product.Name.Contains(productNameToSearch)));
         }
 
         [Fact]

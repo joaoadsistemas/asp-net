@@ -13,6 +13,11 @@ namespace DSLearn.Dtos
         public IEnumerable<string> Roles { get; set; } = new List<string>();
 
 
+        public UserRolesDTO()
+        {
+            
+        }
+
         public UserRolesDTO(User entity, UserManager<User> userManager)
         {
             this.Id = entity.Id;

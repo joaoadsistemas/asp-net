@@ -24,13 +24,12 @@ namespace ApiCatalogo.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
 
-        public AuthController(ITokenService tokenService, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, ILogger<AuthController> logger = null)
+        public AuthController(ITokenService tokenService, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
         {
             _tokenService = tokenService;
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
-            _logger = logger;
         }
 
 
@@ -51,14 +50,12 @@ namespace ApiCatalogo.Controllers
 
                 if (roleResult.Succeeded)
                 {
-                    _logger.LogInformation(1, "Roles Added");
                     // Retorna uma resposta de sucesso
                     return StatusCode(StatusCodes.Status200OK,
                         new ResponseDTO { Status = "Success", Message = $"Role {roleName} added successfully!" }
                     );
                 }
 
-                _logger.LogInformation(2, "Error");
                 // Retorna uma resposta de erro se houver problemas ao adicionar a nova role
                 return StatusCode(StatusCodes.Status400BadRequest,
                     new ResponseDTO { Status = "Error", Message = $"Issue adding the new {roleName} role" }

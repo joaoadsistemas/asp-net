@@ -22,7 +22,7 @@ namespace ApiCatalogoxUnitTest.UnitControllerTests.CategoryTests
             // Cria uma substituição para a interface IUnitOfWork
             _unitOfWork = Substitute.For<IUnitOfWork>();
         }
-
+                        
         [Fact]
         public async void GetAllCategoriesShouldReturnIEnumerableOfCategoryDTO()
         {
@@ -46,7 +46,7 @@ namespace ApiCatalogoxUnitTest.UnitControllerTests.CategoryTests
             // Act
             var result = await categoryController.FindAllCategories();
 
-            // Assert
+            // Assert   
             // Verifica se o resultado é do tipo OkObjectResult
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
 

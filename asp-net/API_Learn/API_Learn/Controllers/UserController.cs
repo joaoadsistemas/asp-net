@@ -34,7 +34,7 @@ namespace DSLearn.Controllers
 
         [HttpGet("user-roles")]
         [Authorize(Policy = "AdminOnly")]
-        public async Task<ActionResult<IEnumerable<UserDTO>>> FindAllUserRoles ([FromQuery] PageQueryParams pageQueryParams)
+        public async Task<ActionResult<IEnumerable<UserRolesDTO>>> FindAllUserRoles ([FromQuery] PageQueryParams pageQueryParams)
         {
             return Ok(await _unitOfWork.UserRepository.FindAllUserRolesAsync(pageQueryParams));
 

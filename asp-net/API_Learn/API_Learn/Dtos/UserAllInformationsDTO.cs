@@ -15,6 +15,10 @@ namespace DSLearn.Dtos
         public IEnumerable<NotificationDTO> Notifications { get; set; } = new List<NotificationDTO>();
 
 
+        public UserAllInformationsDTO()
+        {
+            
+        }
 
         public UserAllInformationsDTO(User entity)
         {

@@ -12,6 +12,11 @@ namespace DSLearn.Dtos
         public bool PhoneNumberIsConfirmed { get; set; }
 
 
+        public UserDTO()
+        {
+            
+        }
+
         public  UserDTO(User entity)
         {
             this.Id = entity.Id;

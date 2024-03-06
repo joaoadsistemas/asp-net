@@ -64,20 +64,39 @@ namespace DSLearn.Controllers
             }
         }
 
+        [Authorize(Policy = "StudentOnly")]
         [HttpPost("add-like-to-reply/{replyId}")]
         public async Task<ActionResult> AddLikeToReply(int replyId)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            _unitOfWork.UserRepository.AddLikeToReply(replyId, userId);
-            return Ok();
+            try
+            {
+                // pega o usuário logado no sistema
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                _unitOfWork.UserRepository.AddLikeToReply(replyId, userId);
+                return Ok();
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
+        [Authorize(Policy = "StudentOnly")]
         [HttpPost("add-like-to-topic/{topicId}")]
         public async Task<IActionResult> AddLikeToTopic(int topicId)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            _unitOfWork.UserRepository.AddLikeToTopic(topicId, userId);
-            return Ok();
+            try
+            {
+                // pega o usuário logado no sistema
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                _unitOfWork.UserRepository.AddLikeToTopic(topicId, userId);
+                return Ok();
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
@@ -92,7 +111,7 @@ namespace DSLearn.Controllers
 
             } catch (ArgumentException ex) 
             {
-                return BadRequest($"Id {id} does not exists");
+                return BadRequest(ex.Message);
             }
         }
 

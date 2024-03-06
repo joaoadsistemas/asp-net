@@ -85,7 +85,7 @@ namespace DSLearn.Services
                 await _dbContext.SaveChangesAsync();
             }
 
-            throw new ArgumentException("Resource not found");
+            throw new ArgumentException($"Id {replyId} does not exists");
         }
 
         public async void AddLikeToTopic(int topicId, string userId)
@@ -98,7 +98,7 @@ namespace DSLearn.Services
                 topic.Likes.Append(user);
                 await _dbContext.SaveChangesAsync();
             }
-            throw new ArgumentException("Resource not found");
+            throw new ArgumentException($"Id {topicId} does not exists");
         }
 
 

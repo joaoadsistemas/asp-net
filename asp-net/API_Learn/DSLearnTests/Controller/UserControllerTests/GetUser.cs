@@ -218,6 +218,47 @@ namespace DSLearnTests.Controller.AuthControllerTests
         }
 
 
+        [Fact]
+        public async void FindUserBydIdShouldReturnUserDTOWhenIdExists()
+        {
+
+            var existsId = Guid.NewGuid().ToString();
+
+            var expectedResponse = new UserDTO()
+            {
+                Id = existsId,
+                Email = "teste@gmail.com",
+                PhoneNumber = "3127312312",
+                PhoneNumberIsConfirmed = false,
+                UserName = "Teste"
+            };
+
+
+            _unitOfWork.UserRepository.FindByIdAsync(existsId).Returns(expectedResponse);
+
+            var actionResult = await _userController.FindById(existsId);
+
+            Assert.IsAssignableFrom<ActionResult<UserDTO>>(actionResult);
+            var okObjectResult = Assert.IsAssignableFrom<OkObjectResult>(actionResult.Result);
+            Assert.IsAssignableFrom<UserDTO>(okObjectResult.Value);
+
+        }
+
+        [Fact]
+        public async void FindUserBydIdShouldReturnBadRequestWhenIdDoesNotExists()
+        {
+
+            var nonExistsId = Guid.NewGuid().ToString();
+            
+
+            _unitOfWork.UserRepository.FindByIdAsync(nonExistsId).Throws(new ArgumentException("Resource not found"));
+
+            var actionResult = await _userController.FindById(nonExistsId);
+
+            Assert.IsAssignableFrom<ActionResult<UserDTO>>(actionResult);
+            Assert.IsAssignableFrom<BadRequestObjectResult>(actionResult.Result);
+        }
+
     }
 
 

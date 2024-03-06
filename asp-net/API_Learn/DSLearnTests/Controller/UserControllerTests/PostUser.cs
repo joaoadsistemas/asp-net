@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Claims;
+
 using ApiCatalogo.Repositories;
 using DSLearn.Controllers;
-using DSLearn.Entities;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
 using Xunit;
+using Task = System.Threading.Tasks.Task;
 
 namespace DSLearnTests.Controller.UserControllerTests
 {

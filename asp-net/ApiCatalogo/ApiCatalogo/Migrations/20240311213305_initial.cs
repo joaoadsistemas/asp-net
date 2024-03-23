@@ -3,34 +3,16 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace ApiCatalogo.Migrations
 {
     /// <inheritdoc />
-    public partial class TablesIdentity : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Products",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "",
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
-                oldNullable: true);
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Categories",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "",
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
-                oldNullable: true);
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -50,6 +32,8 @@ namespace ApiCatalogo.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RefreshTokenExpiryTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -68,6 +52,20 @@ namespace ApiCatalogo.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -176,40 +174,54 @@ namespace ApiCatalogo.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 1L,
-                column: "RegisterData",
-                value: new DateTimeOffset(new DateTime(2024, 2, 5, 13, 57, 3, 151, DateTimeKind.Unspecified).AddTicks(5104), new TimeSpan(0, -3, 0, 0, 0)));
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<double>(type: "float", nullable: false),
+                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Stock = table.Column<double>(type: "float", nullable: false),
+                    RegisterData = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    CategoryId = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 2L,
-                column: "RegisterData",
-                value: new DateTimeOffset(new DateTime(2024, 2, 5, 13, 57, 3, 151, DateTimeKind.Unspecified).AddTicks(5141), new TimeSpan(0, -3, 0, 0, 0)));
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "ImgUrl", "Name" },
+                values: new object[,]
+                {
+                    { 1L, "https://img.com.br", "Cars" },
+                    { 2L, "https://img.com.br", "Electronics" },
+                    { 3L, "https://img.com.br", "Smartphones" },
+                    { 4L, "https://img.com.br", "Books" },
+                    { 5L, "https://img.com.br", "Clothes" }
+                });
 
-            migrationBuilder.UpdateData(
+            migrationBuilder.InsertData(
                 table: "Products",
-                keyColumn: "Id",
-                keyValue: 3L,
-                column: "RegisterData",
-                value: new DateTimeOffset(new DateTime(2024, 2, 5, 13, 57, 3, 151, DateTimeKind.Unspecified).AddTicks(5144), new TimeSpan(0, -3, 0, 0, 0)));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 4L,
-                column: "RegisterData",
-                value: new DateTimeOffset(new DateTime(2024, 2, 5, 13, 57, 3, 151, DateTimeKind.Unspecified).AddTicks(5146), new TimeSpan(0, -3, 0, 0, 0)));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 5L,
-                column: "RegisterData",
-                value: new DateTimeOffset(new DateTime(2024, 2, 5, 13, 57, 3, 151, DateTimeKind.Unspecified).AddTicks(5148), new TimeSpan(0, -3, 0, 0, 0)));
+                columns: new[] { "Id", "CategoryId", "Description", "ImgUrl", "Name", "Price", "RegisterData", "Stock" },
+                values: new object[,]
+                {
+                    { 1L, 1L, "Fiat Punto", "https://img.com.br", "Punto", 25000.0, new DateTimeOffset(new DateTime(2024, 3, 11, 18, 33, 4, 655, DateTimeKind.Unspecified).AddTicks(1885), new TimeSpan(0, -3, 0, 0, 0)), 2.0 },
+                    { 2L, 1L, "Ford Fiesta", "https://img.com.br", "Fiesta", 15000.0, new DateTimeOffset(new DateTime(2024, 3, 11, 18, 33, 4, 655, DateTimeKind.Unspecified).AddTicks(1921), new TimeSpan(0, -3, 0, 0, 0)), 1.0 },
+                    { 3L, 2L, "Apple MacBook PRO", "https://img.com.br", "MacBook", 5000.0, new DateTimeOffset(new DateTime(2024, 3, 11, 18, 33, 4, 655, DateTimeKind.Unspecified).AddTicks(1924), new TimeSpan(0, -3, 0, 0, 0)), 10.0 },
+                    { 4L, 3L, "Apple Iphone 12", "https://img.com.br", "Iphone 12", 3000.0, new DateTimeOffset(new DateTime(2024, 3, 11, 18, 33, 4, 655, DateTimeKind.Unspecified).AddTicks(1926), new TimeSpan(0, -3, 0, 0, 0)), 5.0 },
+                    { 5L, 3L, "Galaxy S23 Ultra", "https://img.com.br", "Galaxy s23 ultra", 3000.0, new DateTimeOffset(new DateTime(2024, 3, 11, 18, 33, 4, 655, DateTimeKind.Unspecified).AddTicks(1928), new TimeSpan(0, -3, 0, 0, 0)), 3.0 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -249,6 +261,11 @@ namespace ApiCatalogo.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_CategoryId",
+                table: "Products",
+                column: "CategoryId");
         }
 
         /// <inheritdoc />
@@ -270,61 +287,16 @@ namespace ApiCatalogo.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Products");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
-            migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Products",
-                type: "nvarchar(max)",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Categories",
-                type: "nvarchar(max)",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)");
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 1L,
-                column: "RegisterData",
-                value: new DateTimeOffset(new DateTime(2024, 2, 2, 18, 58, 41, 550, DateTimeKind.Unspecified).AddTicks(3754), new TimeSpan(0, -3, 0, 0, 0)));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 2L,
-                column: "RegisterData",
-                value: new DateTimeOffset(new DateTime(2024, 2, 2, 18, 58, 41, 550, DateTimeKind.Unspecified).AddTicks(3797), new TimeSpan(0, -3, 0, 0, 0)));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 3L,
-                column: "RegisterData",
-                value: new DateTimeOffset(new DateTime(2024, 2, 2, 18, 58, 41, 550, DateTimeKind.Unspecified).AddTicks(3801), new TimeSpan(0, -3, 0, 0, 0)));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 4L,
-                column: "RegisterData",
-                value: new DateTimeOffset(new DateTime(2024, 2, 2, 18, 58, 41, 550, DateTimeKind.Unspecified).AddTicks(3803), new TimeSpan(0, -3, 0, 0, 0)));
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 5L,
-                column: "RegisterData",
-                value: new DateTimeOffset(new DateTime(2024, 2, 2, 18, 58, 41, 550, DateTimeKind.Unspecified).AddTicks(3807), new TimeSpan(0, -3, 0, 0, 0)));
+            migrationBuilder.DropTable(
+                name: "Categories");
         }
     }
 }

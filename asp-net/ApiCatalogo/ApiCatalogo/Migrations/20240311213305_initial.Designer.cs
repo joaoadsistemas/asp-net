@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiCatalogo.Migrations
 {
     [DbContext(typeof(SystemDbContext))]
-    [Migration("20240206000902_ApplicationUserWithRefreshToken")]
-    partial class ApplicationUserWithRefreshToken
+    [Migration("20240311213305_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -193,7 +193,7 @@ namespace ApiCatalogo.Migrations
                             ImgUrl = "https://img.com.br",
                             Name = "Punto",
                             Price = 25000.0,
-                            RegisterData = new DateTimeOffset(new DateTime(2024, 2, 5, 21, 9, 1, 265, DateTimeKind.Unspecified).AddTicks(8247), new TimeSpan(0, -3, 0, 0, 0)),
+                            RegisterData = new DateTimeOffset(new DateTime(2024, 3, 11, 18, 33, 4, 655, DateTimeKind.Unspecified).AddTicks(1885), new TimeSpan(0, -3, 0, 0, 0)),
                             Stock = 2.0
                         },
                         new
@@ -204,7 +204,7 @@ namespace ApiCatalogo.Migrations
                             ImgUrl = "https://img.com.br",
                             Name = "Fiesta",
                             Price = 15000.0,
-                            RegisterData = new DateTimeOffset(new DateTime(2024, 2, 5, 21, 9, 1, 265, DateTimeKind.Unspecified).AddTicks(8284), new TimeSpan(0, -3, 0, 0, 0)),
+                            RegisterData = new DateTimeOffset(new DateTime(2024, 3, 11, 18, 33, 4, 655, DateTimeKind.Unspecified).AddTicks(1921), new TimeSpan(0, -3, 0, 0, 0)),
                             Stock = 1.0
                         },
                         new
@@ -215,7 +215,7 @@ namespace ApiCatalogo.Migrations
                             ImgUrl = "https://img.com.br",
                             Name = "MacBook",
                             Price = 5000.0,
-                            RegisterData = new DateTimeOffset(new DateTime(2024, 2, 5, 21, 9, 1, 265, DateTimeKind.Unspecified).AddTicks(8287), new TimeSpan(0, -3, 0, 0, 0)),
+                            RegisterData = new DateTimeOffset(new DateTime(2024, 3, 11, 18, 33, 4, 655, DateTimeKind.Unspecified).AddTicks(1924), new TimeSpan(0, -3, 0, 0, 0)),
                             Stock = 10.0
                         },
                         new
@@ -226,7 +226,7 @@ namespace ApiCatalogo.Migrations
                             ImgUrl = "https://img.com.br",
                             Name = "Iphone 12",
                             Price = 3000.0,
-                            RegisterData = new DateTimeOffset(new DateTime(2024, 2, 5, 21, 9, 1, 265, DateTimeKind.Unspecified).AddTicks(8289), new TimeSpan(0, -3, 0, 0, 0)),
+                            RegisterData = new DateTimeOffset(new DateTime(2024, 3, 11, 18, 33, 4, 655, DateTimeKind.Unspecified).AddTicks(1926), new TimeSpan(0, -3, 0, 0, 0)),
                             Stock = 5.0
                         },
                         new
@@ -237,7 +237,7 @@ namespace ApiCatalogo.Migrations
                             ImgUrl = "https://img.com.br",
                             Name = "Galaxy s23 ultra",
                             Price = 3000.0,
-                            RegisterData = new DateTimeOffset(new DateTime(2024, 2, 5, 21, 9, 1, 265, DateTimeKind.Unspecified).AddTicks(8291), new TimeSpan(0, -3, 0, 0, 0)),
+                            RegisterData = new DateTimeOffset(new DateTime(2024, 3, 11, 18, 33, 4, 655, DateTimeKind.Unspecified).AddTicks(1928), new TimeSpan(0, -3, 0, 0, 0)),
                             Stock = 3.0
                         });
                 });

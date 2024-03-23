@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DSLearn.Interfaces
 {
-    public interface IReplyRepository
+    public interface IContentRepository
     {
-        Task<IEnumerable<ReplyDTO>> FindAllAsync(PageQueryParams pageQueryParams);
-        Task<ReplyDTO> FindByIdAsync(int id);
-        ReplyDTO Insert(ReplyInsertDTO replyInsertDto);
-        ReplyDTO Update(ReplyInsertDTO replyInsertDto, int id);
+        Task<IEnumerable<ContentDTO>> FindAllAsync(PageQueryParams pageQueryParams);
+        Task<ContentDTO> FindByIdAsync(int id);
+        ContentDTO Insert(ContentInsertDTO contentInsertDTO);
+        ContentDTO Update(ContentInsertDTO contentInsertDTO, int id);
         bool Delete(int id);
     }
 }

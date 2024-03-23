@@ -227,7 +227,7 @@ namespace DSCommerce
 
 
             // essa ordem importa
-            app.UseAuthentication();
+                
             app.UseAuthorization();
 
             app.MapControllers();

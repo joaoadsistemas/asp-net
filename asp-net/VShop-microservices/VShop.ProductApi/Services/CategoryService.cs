@@ -1,5 +1,7 @@
-﻿using VShop.ProductApi.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using VShop.ProductApi.Context;
 using VShop.ProductApi.DTOs.CategoryDTOs;
+using VShop.ProductApi.Entities;
 using VShop.ProductApi.Interfaces;
 
 namespace VShop.ProductApi.Services
@@ -13,34 +15,60 @@ namespace VShop.ProductApi.Services
             _dbContext = dbContext;
         }
 
-        public Task<IEnumerable<CategoryDTO>> FindAll()
+        public async Task<IEnumerable<CategoryDTO>> FindAll()
         {
-            throw new NotImplementedException();
+            List<Category> entities = await _dbContext.Categories
+                .ToListAsync();
+            return entities.Select(c => new CategoryDTO(c));
         }
 
-        public Task<IEnumerable<CategoryDTO>> FindAllCategoriesWithProducts()
+        public async Task<IEnumerable<CategoryDTO>> FindAllCategoriesWithProducts()
         {
-            throw new NotImplementedException();
+            List<Category> entities = await _dbContext.Categories.Include(c => c.Products)
+                .ToListAsync();
+            return entities.Select(c => new CategoryDTO(c));
         }
 
-        public Task<CategoryDTO> FindById(int id)
+        public async Task<CategoryDTO> FindById(int Id)
         {
-            throw new NotImplementedException();
+            Category entity = await _dbContext.Categories.Include(c => c.Products)
+                .FirstOrDefaultAsync(c => c.Id == Id) ?? throw new ArgumentException("Resource not found");
+            return new CategoryDTO(entity);
         }
 
-        public Task<CategoryDTO> Insert(CategoryInsertDTO categoryInsertDTO)
+        public async Task<CategoryDTO> Insert(CategoryInsertDTO categoryInsertDTO)
         {
-            throw new NotImplementedException();
+            
+            Category entity = new Category();
+            copyDTOToEntity(categoryInsertDTO, entity);
+            await _dbContext.Categories.AddAsync(entity);
+            return new CategoryDTO(entity);
         }
 
-        public Task<CategoryDTO> Update(CategoryInsertDTO categoryInsertDTO, int id)
+       
+
+        public async Task<CategoryDTO> Update(CategoryInsertDTO categoryInsertDTO, int Id)
         {
-            throw new NotImplementedException();
+            Category entity = await _dbContext.Categories.Include(c => c.Products)
+                .FirstOrDefaultAsync(c => c.Id == Id) ?? throw new ArgumentException("Resource not found");
+            copyDTOToEntity(categoryInsertDTO, entity);
+            _dbContext.Categories.Update(entity);
+            return new CategoryDTO(entity);
         }
 
-        public Task<CategoryDTO> DeleteById(int id)
+        public async Task<CategoryDTO> DeleteById(int Id)
         {
-            throw new NotImplementedException();
+            Category entity = await _dbContext.Categories.Include(c => c.Products)
+                .FirstOrDefaultAsync(c => c.Id == Id) ?? throw new ArgumentException("Resource not found");
+            _dbContext.Categories.Remove(entity);
+            return new CategoryDTO(entity);
+        }
+
+
+
+        private void copyDTOToEntity(CategoryInsertDTO categoryInsertDTO, Category entity)
+        {
+            entity.Name = categoryInsertDTO.Name;
         }
     }
 }

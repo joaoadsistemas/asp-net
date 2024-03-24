@@ -13,7 +13,7 @@ namespace VShop.ProductApi.Entities
         public Byte[] Img { get; set; }
 
         public int CategoryId { get; set; }
-        public CategoryDTO Category { get; set; }
+        public Category Category { get; set; }
 
         public ICollection<User> Users { get; set; } = new List<User>();
 

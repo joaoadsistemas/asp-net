@@ -18,7 +18,7 @@ public class UnitOfWork : IUnitOfWorkRepository
     public IUserRepository UserRepository
     { get { return _userRepository = _userRepository ?? new UserService(_dbContext); } }
 
-    public ICategoryRepository CategoryRepository { get { return _categoryRepository = _categoryRepository ?? new CategoryService(_dbContext)} }
+    public ICategoryRepository CategoryRepository { get { return _categoryRepository = _categoryRepository ?? new CategoryService(_dbContext); } }
 
     public async Task CommitAsync()
     {

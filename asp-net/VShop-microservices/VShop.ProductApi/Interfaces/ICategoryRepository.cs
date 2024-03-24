@@ -7,10 +7,10 @@ namespace VShop.ProductApi.Interfaces
 
         Task<IEnumerable<CategoryDTO>> FindAll();
         Task<IEnumerable<CategoryDTO>> FindAllCategoriesWithProducts();
-        Task<CategoryDTO> FindById(int id);
+        Task<CategoryDTO> FindById(int Id);
         Task<CategoryDTO> Insert(CategoryInsertDTO categoryInsertDTO);
-        Task<CategoryDTO> Update(CategoryInsertDTO categoryDTO, int id);
-        Task<CategoryDTO> DeleteById(int id);
+        Task<CategoryDTO> Update(CategoryInsertDTO categoryDTO, int Id);
+        Task<CategoryDTO> DeleteById(int Id);
 
     }
 }
